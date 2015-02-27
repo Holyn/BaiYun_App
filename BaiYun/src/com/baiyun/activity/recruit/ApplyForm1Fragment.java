@@ -84,7 +84,7 @@ public class ApplyForm1Fragment extends BaseFragment{
 			
 			@Override
 			public void onClick(View v) {
-				System.out.println("=== 开始提交报名表 ....");
+				System.out.println("=== onClick。开始提交报名表 ....");
 				httpUtils.postForm1(params, tvTest);
 			}
 		});
