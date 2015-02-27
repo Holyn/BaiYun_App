@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <FrameLayout
+        android:id="@+id/fl_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <include
+            layout="@layout/baiyun_actionbar"
+            android:focusable="true" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_container_common"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/fl_actionbar"
+        tools:ignore="MergeRootFrame" />
+
+    <FrameLayout
+        android:id="@+id/fl_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fl_actionbar"
+        android:visibility="gone" >
+    </FrameLayout>
+
+</RelativeLayout>

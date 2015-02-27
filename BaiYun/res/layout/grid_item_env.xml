@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:orientation="vertical"
+    android:background="@drawable/selector_item"
+    android:gravity="center"
+    android:padding="10dp">
+
+    <ImageView 
+        android:id="@+id/iv_pic"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/iv_home_ad"
+        android:contentDescription="@string/app_name"/>
+    
+    <TextView 
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_16"
+        android:text="校园风光"/>
+        
+
+</LinearLayout>

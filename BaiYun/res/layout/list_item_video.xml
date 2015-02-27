@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_light_gray_70_pre"
+    android:padding="10dp" >
+
+    <ImageView
+        android:id="@+id/iv_header"
+        android:layout_width="85dp"
+        android:layout_height="70dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@drawable/iv_photo_empty" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_creater"
+        android:layout_alignLeft="@+id/tv_creater"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="Android 开源框架ActionBarSherlock 和 ViewPager 仿网易新闻客户端dddddddddddddddddddddddd"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_18" />
+
+    <TextView
+        android:id="@+id/tv_creater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_header"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/iv_header"
+        android:text="晨晨"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_size_14" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_header"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/tv_creater"
+        android:text="2015-01-29"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_size_14" />
+
+    <TextView
+        android:id="@+id/tv_viewtimes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_header"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="播放：0"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_size_14" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_more_video" />
+
+</RelativeLayout>

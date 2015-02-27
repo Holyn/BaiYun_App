@@ -1,0 +1,148 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_line"
+        tools:ignore="MergeRootFrame" />
+
+    <LinearLayout
+        android:id="@+id/ll_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rg_main"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/rb_tab_line_1"
+                android:layout_width="64dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/tab_bottom_text"
+                android:contentDescription="@string/app_name" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/rb_tab_line_2"
+                android:layout_width="64dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/tab_bottom_text"
+                android:contentDescription="@string/app_name"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/rb_tab_line_3"
+                android:layout_width="64dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/tab_bottom_text"
+                android:contentDescription="@string/app_name"
+                android:visibility="gone"  />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/rb_tab_line_4"
+                android:layout_width="64dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/tab_bottom_text"
+                android:contentDescription="@string/app_name" 
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/tab_bottom_bg"
+        android:checkedButton="@+id/rb_tab_home"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/rb_tab_home"
+                style="@style/tab_radio_button"
+                android:layout_centerHorizontal="true"
+                android:drawableTop="@drawable/selector_rb_home"
+                android:tag="radio_button1"
+                android:text="首页" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/rb_tab_recruit"
+                style="@style/tab_radio_button"
+                android:layout_centerHorizontal="true"
+                android:drawableTop="@drawable/selector_rb_recruit"
+                android:tag="radio_button2"
+                android:text="招生服务" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/rb_tab_life"
+                style="@style/tab_radio_button"
+                android:layout_centerHorizontal="true"
+                android:drawableTop="@drawable/selector_rb_school_life"
+                android:tag="radio_button3"
+                android:text="校园生活" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/rb_tab_service"
+                style="@style/tab_radio_button"
+                android:layout_centerHorizontal="true"
+                android:drawableTop="@drawable/selector_rb_school_service"
+                android:tag="radio_button4"
+                android:text="校内服务" />
+        </RelativeLayout>
+    </RadioGroup>
+
+</RelativeLayout>

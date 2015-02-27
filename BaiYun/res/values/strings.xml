@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">白云工商学院</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- network -->
+    <string name="netstate">网络状态</string>
+    <string name="setnetwork">当前网络不可用，是否设置网络？</string>
+    <string name="ok_set">设置</string>
+    <string name="cancel_set">取消</string>
+
+</resources>

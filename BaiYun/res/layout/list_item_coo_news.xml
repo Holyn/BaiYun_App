@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@color/white" >
+
+    <ImageView
+        android:id="@+id/iv_header"
+        android:layout_width="85dp"
+        android:layout_height="70dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@drawable/iv_photo_empty" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignTop="@+id/iv_header"
+        android:layout_toRightOf="@+id/iv_header"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="Android 开源框架ActionBarSherlock 和 ViewPager 仿网易新闻客户端"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_16" />
+    
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_header"
+        android:layout_alignParentRight="true"
+        android:text="2015-01-29"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_size_12" />
+
+</RelativeLayout>

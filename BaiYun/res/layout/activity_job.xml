@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <RelativeLayout
+        android:id="@+id/rl_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/actionbar_bg" >
+
+        <ImageButton
+            android:id="@+id/ib_actionbar_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_black_70_pre"
+            android:contentDescription="@string/app_name"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_actionbar_back" />
+
+        <ImageView
+            android:id="@+id/iv_actionbar_line_left"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ib_actionbar_back"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_actionbar_separate_line" />
+
+        <TextView
+            android:id="@+id/tv_actionbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="就业服务"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_18" />
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/rl_actionbar"
+        android:background="@color/right_menu_bg"
+        android:orientation="horizontal"
+        android:checkedButton="@+id/rb_tab_1" >
+
+        <RadioButton
+            android:id="@+id/rb_tab_1"
+            style="@style/tab_top_style"
+            android:text="就业概况" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/right_menu_line" />
+
+        <RadioButton
+            android:id="@+id/rb_tab_2"
+            style="@style/tab_top_style"
+            android:text="招聘信息" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/right_menu_line" />
+
+        <RadioButton
+            android:id="@+id/rb_tab_3"
+            style="@style/tab_top_style"
+            android:text="校企合作" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rg_tab"
+        tools:ignore="MergeRootFrame" />
+
+    <FrameLayout
+        android:id="@+id/fl_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rg_tab"
+        android:visibility="gone" >
+    </FrameLayout>
+
+</RelativeLayout>

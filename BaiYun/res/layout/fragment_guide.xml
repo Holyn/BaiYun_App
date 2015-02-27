@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_guide"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:persistentDrawingCache="animation" />
+
+    <RadioGroup
+        android:id="@+id/rg_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="40dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_guide_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/selector_rb_guide_point"
+            android:textStyle="italic"
+            android:background="@null"
+            android:button="@null"
+            android:clickable="false"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/rb_guide_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:drawableBottom="@drawable/selector_rb_guide_point"
+            android:textStyle="italic"
+            android:background="@null"
+            android:button="@null"
+            android:clickable="false" />
+
+        <RadioButton
+            android:id="@+id/rb_guide_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:drawableBottom="@drawable/selector_rb_guide_point"
+            android:textStyle="italic"
+            android:background="@null"
+            android:button="@null"
+            android:clickable="false" />
+
+    </RadioGroup>
+
+    <Button 
+        android:id="@+id/btn_guide_enter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/selector_guide_btn_go"/>
+</RelativeLayout>

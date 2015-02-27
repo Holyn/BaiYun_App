@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/baiyun_actionbar"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/actionbar_bg" >
+
+    <ImageButton
+        android:id="@+id/ib_actionbar_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/selector_black_70_pre"
+        android:contentDescription="@string/app_name"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_actionbar_back" 
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/iv_actionbar_line_left"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/ib_actionbar_back"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_actionbar_separate_line" 
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_actionbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="广州市白云工商技师学院"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_18" />
+
+    <ImageButton
+        android:id="@+id/ib_actionbar_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/selector_black_70_pre"
+        android:contentDescription="@string/app_name"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_actionbar_more"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/iv_actionbar_line_right"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/ib_actionbar_right"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_actionbar_separate_line"
+        android:visibility="gone"/>
+
+</RelativeLayout>
