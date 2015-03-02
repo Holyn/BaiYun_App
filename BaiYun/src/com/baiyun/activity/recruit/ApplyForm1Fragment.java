@@ -76,7 +76,7 @@ public class ApplyForm1Fragment extends BaseFragment{
 		params.addBodyParameter("telephone", "10086");
 		params.addBodyParameter("linkman", "陈浩林");
 		params.addBodyParameter("note", "留言");
-		params.addBodyParameter("birthday", "88年8月8日");
+		params.addBodyParameter("birthday", "1988/08/08");
 
 
 		btnSubmit = (Button)rootView.findViewById(R.id.btn_submit);
