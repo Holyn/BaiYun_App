@@ -1,5 +1,6 @@
 package com.baiyun.activity.recruit;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -7,10 +8,15 @@ import android.widget.TextView;
 import com.baiyun.activity.R;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.httputils.RecruitHttpUtils;
+import com.baiyun.vo.parcelable.ApplyPar;
 import com.lidroid.xutils.http.RequestParams;
 
 public class ApplyForm1Fragment extends BaseFragment{
+	private ApplyPar applyPar;
 	private RecruitHttpUtils httpUtils;
+	
+	private TextView tvTitle;
+	
 	private Button btnSubmit;
 	
 	public static ApplyForm1Fragment newInstance() {
@@ -19,6 +25,13 @@ public class ApplyForm1Fragment extends BaseFragment{
 	
 	public ApplyForm1Fragment() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		applyPar = getArguments().getParcelable(ApplyFormActivity.VALUE_APPLYPAR);
 	}
 
 	@Override
@@ -31,7 +44,8 @@ public class ApplyForm1Fragment extends BaseFragment{
 	public void createMyView(View rootView) {
 		httpUtils = new RecruitHttpUtils(getActivity());
 		
-		final TextView tvTest = (TextView)rootView.findViewById(R.id.tv_test);
+		tvTitle = (TextView)rootView.findViewById(R.id.tv_title);
+		tvTitle.setText(applyPar.getName());
 		
 		
 		final RequestParams params = new RequestParams();
@@ -85,7 +99,7 @@ public class ApplyForm1Fragment extends BaseFragment{
 			@Override
 			public void onClick(View v) {
 				System.out.println("=== onClick。开始提交报名表 ....");
-				httpUtils.postForm1(params, tvTest);
+				httpUtils.postForm1(params);
 			}
 		});
 	}

@@ -57,6 +57,7 @@ public class ApplyFragment extends BaseFragment{
 				}else if (type.equalsIgnoreCase("132")) {//导入报名表2接口：导入职业技能培训招生报名表至后台
 					intent.putExtra(ApplyFormActivity.FORM_TYPE_INT, ApplyFormActivity.FORM_2); 
 				}
+				intent.putExtra(ApplyFormActivity.VALUE_APPLYPAR, applyPars.get(position)); 
 				getActivity().startActivity(intent);
 			}
 			

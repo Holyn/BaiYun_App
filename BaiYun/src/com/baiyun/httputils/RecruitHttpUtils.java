@@ -162,7 +162,7 @@ public class RecruitHttpUtils  extends HttpUtils{
 		});
 	}
 	
-	public void postForm1(RequestParams params,final TextView tvTest){
+	public void postForm1(RequestParams params){
 		send(HttpMethod.POST, HttpURL.APPLY_FORM_1, params, new RequestCallBack<String>() {
 
 			@Override
@@ -174,14 +174,12 @@ public class RecruitHttpUtils  extends HttpUtils{
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
 				System.out.println(responseInfo.result);
-				tvTest.setText("测试返回：\t\n "+responseInfo.result);
 			}
 
 			@Override
 			public void onFailure(HttpException error, String msg) {
 				System.out.println(error);
 				System.out.println(msg);
-				tvTest.setText("测试返回：\t\n "+msg);
 			}
 		});
 	}

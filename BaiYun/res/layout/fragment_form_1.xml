@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp" >
 
@@ -217,24 +217,439 @@
                 android:textSize="@dimen/text_size_16" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_test"
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="测试返回："
-            android:textColor="@color/gray"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/radio0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio_btn_bg"
+                android:checked="true"
+                android:text="  农村应届"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:button="@drawable/radio_btn_bg"
+                android:text="  城镇应届"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/radio2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio_btn_bg"
+                android:checked="true"
+                android:text="  农村往届"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <RadioButton
+                android:id="@+id/radio3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:button="@drawable/radio_btn_bg"
+                android:text="  城镇往届"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="报名层次级专业:"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_16" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:button="@drawable/radio_btn_bg"
+            android:checked="true"
+            android:text="成人本科+技师双学历(四年制)"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_major"
+            android:layout_width="280dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/select_box_bg_2"
+            android:ellipsize="end"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="8dp"
+            android:paddingRight="40dp"
+            android:singleLine="true"
+            android:text="441225111111111111ssssssssssssssssssssssssssssssssssssssssssssss"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="户口所在地:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <RadioButton
+            android:id="@+id/radio4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:button="@drawable/radio_btn_bg"
+            android:checked="true"
+            android:text="  居民户"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="32dp"
+                android:background="@drawable/edittext_bg_2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:text="市"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_14" />
+
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="32dp"
+                android:background="@drawable/edittext_bg_2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:text="区"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_14" />
+
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="32dp"
+                android:background="@drawable/edittext_bg_2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:text="派出所"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
+
+        <RadioButton
+            android:id="@+id/radio5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:button="@drawable/radio_btn_bg"
+            android:checked="true"
+            android:text="  农业户"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="32dp"
+                android:background="@drawable/edittext_bg_2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:text="市"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_14" />
+
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="32dp"
+                android:background="@drawable/edittext_bg_2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:text="区"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_14" />
+
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="32dp"
+                android:background="@drawable/edittext_bg_2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:text="(乡.镇)"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="考生类别:是否“粤北、东西两翼”考生"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="14dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="220dp"
+                android:layout_height="32dp"
+                android:background="@drawable/edittext_bg_1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:hint="毕业成绩"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_size_16" />
+
+                <EditText
+                    android:id="@+id/et_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="88"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:gravity="center_horizontal"
+                android:hint="(无成绩输入0)"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/edittext_bg_1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:hint="通讯地址"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_16" />
+
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="佛大"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="220dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/edittext_bg_1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:hint="邮政编码"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_16" />
+
+            <EditText
+                android:id="@+id/et_postal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="528000"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/edittext_bg_1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:hint="固定电话"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_16" />
+
+            <EditText
+                android:id="@+id/et_tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="14259873"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/edittext_bg_1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:hint="手机号码"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_16" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="13599999999"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/edittext_bg_1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:hint="联系人"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_16" />
+
+            <EditText
+                android:id="@+id/et_man"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="李小龙"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/edittext_bg_1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:hint="留言"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_16" />
+
+            <EditText
+                android:id="@+id/et_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="没事没事没事"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
-            android:layout_height="34dp"
+            android:layout_height="40dp"
             android:layout_marginTop="25dp"
             android:background="@drawable/selector_btn_submit"
             android:text="报    名"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_18" />
     </LinearLayout>
 
 </ScrollView>
