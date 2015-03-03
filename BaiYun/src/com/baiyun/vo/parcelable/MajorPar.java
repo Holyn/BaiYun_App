@@ -2,7 +2,9 @@ package com.baiyun.vo.parcelable;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
+/**
+ *招生服务-网上报名
+ */
 public class MajorPar implements Parcelable {
 	private String id;
 	private String typeId;

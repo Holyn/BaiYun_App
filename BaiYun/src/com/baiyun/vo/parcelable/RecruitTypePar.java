@@ -2,7 +2,9 @@ package com.baiyun.vo.parcelable;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
+/**
+ * 招生服务-招生类别
+ */
 public class RecruitTypePar implements Parcelable {
 	private String contentId;
 	private String menuSubId;
