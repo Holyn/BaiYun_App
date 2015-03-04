@@ -1,5 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarStyle="outsideOverlay"
@@ -14,44 +15,58 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             android:text="高中生(职中、中专、中技)报读专区"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_16" />
 
-        <TextView
+        <com.baiyun.custom.ListViewForScrollView
+            android:id="@+id/lvsv_1"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/apply_item_bg" />
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#00000000"
+            android:dividerHeight="0dp"
+            android:fadingEdge="none"
+            android:listSelector="#00000000" >
+        </com.baiyun.custom.ListViewForScrollView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:text="初中生报读专区"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_16" />
 
-        <TextView
+        <com.baiyun.custom.ListViewForScrollView
+            android:id="@+id/lvsv_2"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/apply_item_bg" />
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#00000000"
+            android:dividerHeight="0dp"
+            android:fadingEdge="none"
+            android:listSelector="#00000000" >
+        </com.baiyun.custom.ListViewForScrollView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:text="职能培训报读专区"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_16" />
 
-        <TextView
+        <com.baiyun.custom.ListViewForScrollView
+            android:id="@+id/lvsv_3"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/apply_item_bg" />
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#00000000"
+            android:dividerHeight="0dp"
+            android:fadingEdge="none"
+            android:listSelector="#00000000" >
+        </com.baiyun.custom.ListViewForScrollView>
     </LinearLayout>
 
 </ScrollView>
