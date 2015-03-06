@@ -158,4 +158,13 @@ public class HttpURL {
 	 * http://183.237.48.209:8085/app/onlineRegisterForm?id=
 	 */
 	public final static String APPLY_FORM_1 = URL_PRE + "onlineRegisterForm";
+	
+	/**
+	 * 校园生活--（获取学工动态、体育创新、科技创新上方的图片和下方的新闻）
+	 * type=24,学工动态（id=24）、体育创新（id=26）、科技创新（id=27）
+	 * http://183.237.48.209:8085/app/schoolLifeDetails?type=24&id=26
+	 */
+	public final static String NEWS_24 = "24";
+	
+	public final static String LIFE_NEWS = URL_PRE + "schoolLifeDetails?type=24&id=";
 }

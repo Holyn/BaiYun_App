@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="@color/bg" >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_ad"
+        android:layout_width="match_parent"
+        android:layout_height="120dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/black_trans_50" />
+
+    <RadioGroup
+        android:id="@+id/rg_ad"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_ad_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:button="@null"
+            android:checked="true"
+            android:clickable="false"
+            android:drawableRight="@drawable/selector_rb_ad_point"
+            android:textStyle="italic" />
+
+        <RadioButton
+            android:id="@+id/rb_ad_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:background="@null"
+            android:button="@null"
+            android:clickable="false"
+            android:drawableRight="@drawable/selector_rb_ad_point"
+            android:textStyle="italic" />
+
+        <RadioButton
+            android:id="@+id/rb_ad_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:background="@null"
+            android:button="@null"
+            android:clickable="false"
+            android:drawableRight="@drawable/selector_rb_ad_point"
+            android:textStyle="italic" />
+
+        <RadioButton
+            android:id="@+id/rb_ad_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:background="@null"
+            android:button="@null"
+            android:clickable="false"
+            android:drawableRight="@drawable/selector_rb_ad_point"
+            android:textStyle="italic" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="4dp"
+        android:layout_toLeftOf="@+id/rg_ad"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_12" />
+
+</RelativeLayout>
