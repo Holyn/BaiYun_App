@@ -85,6 +85,10 @@
             android:name=".life.LGuideActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".schoolservice.SNoticeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
