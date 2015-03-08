@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/right_menu_bg"
+        android:orientation="horizontal"
+        android:checkedButton="@+id/rb_tab_1" >
+
+        <RadioButton
+            android:id="@+id/rb_tab_1"
+            style="@style/tab_top_style"
+            android:text="社团介绍" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/right_menu_line" />
+
+        <RadioButton
+            android:id="@+id/rb_tab_2"
+            style="@style/tab_top_style"
+            android:text="社团动态" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/fl_child_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rg_tab"
+        tools:ignore="MergeRootFrame" />
+
+    <FrameLayout
+        android:id="@+id/fl_child_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rg_tab"
+        android:visibility="gone" >
+    </FrameLayout>
+
+</RelativeLayout>
