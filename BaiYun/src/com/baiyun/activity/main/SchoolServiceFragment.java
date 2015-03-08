@@ -1,11 +1,26 @@
 package com.baiyun.activity.main;
 
+import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 
 import com.baiyun.activity.R;
+import com.baiyun.activity.schoolservice.SNoticeActivity;
 import com.baiyun.base.BaseFragment;
 
 public class SchoolServiceFragment extends BaseFragment{
+	private Button btnNotice;//通知公告
+	private Button btnSchedule;//课表查询
+	private Button btnScore;//成绩查询
+	private Button btnOA;//办公OA
+	private Button btnLostFound;//失物招领
+	private Button btnLostPublish;//发布失物
+	private Button btnTeach;//教学任务
+	private Button btnExam;//考试安排
+	private Button btnUtilities;//水电查询
+	private Button btnRepairs;//故障报修
+	private Button btnPhone;//办公电话
+	private Button btnLibrary;//图书馆
 	
 	public static SchoolServiceFragment newInstance() {
 		return new SchoolServiceFragment();
@@ -23,8 +38,124 @@ public class SchoolServiceFragment extends BaseFragment{
 
 	@Override
 	public void createMyView(View rootView) {
+		//1.通知公告
+		btnNotice = (Button)rootView.findViewById(R.id.btn_notice);
+		btnNotice.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(), SNoticeActivity.class);
+				getActivity().startActivity(intent);
+			}
+		});
+		//2.课表查询
+		btnSchedule = (Button)rootView.findViewById(R.id.btn_schedule);
+		btnSchedule.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		//3.成绩查询
+		btnScore = (Button)rootView.findViewById(R.id.btn_score);
+		btnScore.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
 		
+		//4.办公OA
+		btnOA = (Button)rootView.findViewById(R.id.btn_oa);
+		btnOA.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		
+		//5.失物招领
+		btnLostFound = (Button)rootView.findViewById(R.id.btn_lost_found);
+		btnLostFound.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		
+		//6.发布失物
+		btnLostPublish = (Button)rootView.findViewById(R.id.btn_lost_publish);
+		btnLostPublish.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		
+		//7.教学任务
+		btnTeach = (Button)rootView.findViewById(R.id.btn_teach);
+		btnTeach.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		
+		//8.考试安排
+		btnExam = (Button)rootView.findViewById(R.id.btn_exam);
+		btnExam.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		
+		//9.水电查询
+		btnUtilities = (Button)rootView.findViewById(R.id.btn_utilities);
+		btnUtilities.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		
+		//10.故障报修
+		btnRepairs = (Button)rootView.findViewById(R.id.btn_repairs);
+		btnRepairs.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		
+		//11.办公电话
+		btnPhone = (Button)rootView.findViewById(R.id.btn_phone);
+		btnPhone.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		
+		//12.图书馆
+		btnLibrary = (Button)rootView.findViewById(R.id.btn_library);
+		btnLibrary.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
 	}
-
 	
 }
