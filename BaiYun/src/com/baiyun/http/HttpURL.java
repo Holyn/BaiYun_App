@@ -166,7 +166,7 @@ public class HttpURL {
 	/**
 	 * 校园生活--（获取学工动态、体育创新、科技创新上方的图片和下方的新闻）
 	 * type=24,学工动态（id=24）、体育创新（id=26）、科技创新（id=27）
-	 * http://183.237.48.209:8085/app/schoolLifeDetails?type=24&id=26
+	 * http://183.237.48.209:8085/app/schoolLifeDetails?type=24&id=26&limit=10&page=1
 	 */
 	public final static String LIFE_NEWS = URL_PRE + "schoolLifeDetails?type=24&id=";
 	
@@ -194,4 +194,11 @@ public class HttpURL {
 	 * http://183.237.48.209:8085/app/schoolLifeDetails?type=27
 	 */
 	public final static String LIFE_GUIDE = URL_PRE + "schoolLifeDetails?type=27";
+	
+	/**
+	 * 校内服务--通知公告
+	 * http://183.237.48.209:8085/app/serviceType?type=31&limit=10&page=1
+	 */
+	public final static String S_NOTICE = URL_PRE + "serviceType?type=31&limit=10&page=";
+	
 }
