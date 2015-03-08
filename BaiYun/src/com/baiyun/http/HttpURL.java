@@ -8,6 +8,10 @@ public class HttpURL {
 	public final static String HOST = HTTP+"183.237.48.209:8085";
 	public final static String URL_PRE = HOST+"/app/";
 	
+	/* 参数前缀 */
+	public final static String LIMIT_PARAM = "&limit=";
+	public final static String PAGE_PARAM = "&page=";
+	
 	/**
 	 * 首页-广告图片
 	 * http://183.237.48.209:8085/app/homePage?type=10
@@ -164,7 +168,30 @@ public class HttpURL {
 	 * type=24,学工动态（id=24）、体育创新（id=26）、科技创新（id=27）
 	 * http://183.237.48.209:8085/app/schoolLifeDetails?type=24&id=26
 	 */
-	public final static String NEWS_24 = "24";
-	
 	public final static String LIFE_NEWS = URL_PRE + "schoolLifeDetails?type=24&id=";
+	
+	/**
+	 * 校园生活--学生社团(包含社团解析的图文链接)
+	 * http://183.237.48.209:8085/app/schoolLifeDetails?type=25
+	 */
+	public final static String LIFE_ASSOCIATION = URL_PRE + "schoolLifeDetails?type=25";
+	
+	/**
+	 * 校园生活--学生社团--社团动态新闻
+	 * 访问地址：http://183.237.48.209:8085/app/associationNews?
+	 * id=（接口{@link LIFE_ASSOCIATION}返回的社团id)&page=页数&limit=一页里最多的条数
+	 */
+	public final static String LIFE_ASSOCIATION_NEWS = URL_PRE + "associationNews?limit=10&id=";
+	
+	/**
+	 * 校园生活--榜样白云(List)
+	 * http://183.237.48.209:8085/app/schoolLifeDetails?type=26&limit=10&page=1
+	 */
+	public final static String LIFE_MODEL = URL_PRE + "schoolLifeDetails?type=26&limit=10&page=";
+	
+	/**
+	 * 校园生活--服务指南
+	 * http://183.237.48.209:8085/app/schoolLifeDetails?type=27
+	 */
+	public final static String LIFE_GUIDE = URL_PRE + "schoolLifeDetails?type=27";
 }

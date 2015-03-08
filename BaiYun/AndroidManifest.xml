@@ -73,6 +73,18 @@
             android:name=".life.LNewsActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".life.LAssociationActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".life.LModelActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".life.LGuideActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

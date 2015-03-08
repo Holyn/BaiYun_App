@@ -160,9 +160,13 @@ public class LNewsFragment extends BaseFragment{
 					voPicPars = picPars;
 					
 					//设置广告标题
-					String title = voPicPars.get(currentItem).getName().toString();
-					if (!TextUtils.isEmpty(title)) {
-						tvTitle.setText(title);
+					if (currentItem < voPicPars.size()) {
+						String title = voPicPars.get(currentItem).getName().toString();
+						if (!TextUtils.isEmpty(title)) {
+							tvTitle.setText(title);
+						}
+					}else {
+						tvTitle.setText("");
 					}
 					
 					//设置显示广告图片
@@ -230,12 +234,8 @@ public class LNewsFragment extends BaseFragment{
 				return;
 			}
 			int realPosition = (int) id;
-//			HomeNewsPar news = homeNewsPars.get(realPosition);
-//
-//			Intent intent = new Intent(getActivity(), WebViewActiviry.class);
-//			intent.putExtra(WebViewActiviry.KEY_WEB_VIEW_TYPE, WebViewActiviry.NEWS_DETAIL);
-//			intent.putExtra(WebViewActiviry.KEY_CONTENT_URL, news.getContentUrl());
-//			getActivity().startActivity(intent);
+			Vo2Par news = newsList.get(realPosition);
+			((LNewsActivity)getActivity()).showWebViewFragment2(news.getContentUrl(), "新闻详情");
 		}
 
 	}
@@ -324,6 +324,7 @@ public class LNewsFragment extends BaseFragment{
 				holder.ivHeader = (ImageView) convertView.findViewById(R.id.iv_header);
 				holder.tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
 				holder.tvContent = (TextView) convertView.findViewById(R.id.tv_content);
+				holder.tvTime = (TextView) convertView.findViewById(R.id.tv_time);
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
@@ -336,6 +337,7 @@ public class LNewsFragment extends BaseFragment{
 			}
 			holder.tvTitle.setText(news.getTitle());
 			holder.tvContent.setText(news.getBrief());
+			holder.tvTime.setText(news.getContentCreateTime());
 
 			return convertView;
 		}
@@ -344,6 +346,7 @@ public class LNewsFragment extends BaseFragment{
 			public ImageView ivHeader;
 			public TextView tvTitle;
 			public TextView tvContent;
+			public TextView tvTime;
 		}
 		
 	}

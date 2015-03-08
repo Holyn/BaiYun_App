@@ -5,6 +5,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.baiyun.activity.R;
+import com.baiyun.activity.life.LAssociationActivity;
+import com.baiyun.activity.life.LGuideActivity;
+import com.baiyun.activity.life.LModelActivity;
 import com.baiyun.activity.life.LNewsActivity;
 import com.baiyun.base.BaseFragment;
 
@@ -49,8 +52,8 @@ public class SchoolLifeFragment extends BaseFragment{
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				Intent intent = new Intent(getActivity(), LAssociationActivity.class);
+				getActivity().startActivity(intent);
 			}
 		});
 		
@@ -81,8 +84,8 @@ public class SchoolLifeFragment extends BaseFragment{
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				Intent intent = new Intent(getActivity(), LModelActivity.class);
+				getActivity().startActivity(intent);
 			}
 		});
 		
@@ -91,8 +94,8 @@ public class SchoolLifeFragment extends BaseFragment{
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				Intent intent = new Intent(getActivity(), LGuideActivity.class);
+				getActivity().startActivity(intent);
 			}
 		});
 	}
