@@ -2,11 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
-    android:paddingTop="60dp" 
-    android:background="@color/white">
+    android:paddingTop="60dp" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -41,10 +41,10 @@
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textPassword"
             android:layout_centerVertical="true"
             android:background="@drawable/selector_edittext"
             android:hint="密码"
+            android:inputType="textPassword"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_16" />
 
@@ -59,15 +59,16 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="140dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="25dp" >
 
         <EditText
             android:id="@+id/et_veri_code"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
+            android:layout_marginRight="120dp"
             android:background="@drawable/selector_edittext"
             android:hint="验证码"
             android:textColor="@color/black"
@@ -81,16 +82,26 @@
             android:contentDescription="@string/app_name"
             android:scaleType="centerInside"
             android:src="@drawable/ic_veri_code_nor" />
+
+        <ImageButton
+            android:id="@+id/ib_veri_code"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_veri_code_nor" />
     </RelativeLayout>
-    
-    <Button 
+
+    <Button
         android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="25dp"
-        android:textColor="@color/white"
-       	android:textSize="@dimen/text_size_18"
+        android:background="@drawable/selector_btn_submit"
         android:text="登    录"
-        android:background="@drawable/selector_btn_submit"/>
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_18" />
 
 </LinearLayout>
