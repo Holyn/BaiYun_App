@@ -201,4 +201,16 @@ public class HttpURL {
 	 */
 	public final static String S_NOTICE = URL_PRE + "serviceType?type=31&limit=10&page=";
 	
+	/**
+	 * 校内服务--办公电话
+	 * http://183.237.48.209:8085/app/serviceType?type=38
+	 */
+	public final static String S_PHONE = URL_PRE + "serviceType?type=38";
+	
+	/**
+	 * 校内服务--故障报修
+	 * http://183.237.48.209:8085/app/serviceType?type=42
+	 */
+	public final static String S_REPAIRS = URL_PRE + "serviceType?type=42";
+	
 }
