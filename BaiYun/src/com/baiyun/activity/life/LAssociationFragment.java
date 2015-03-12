@@ -15,8 +15,10 @@ import android.widget.TextView;
 
 import com.baiyun.activity.R;
 import com.baiyun.base.BaseFragment;
+import com.baiyun.http.HttpURL;
 import com.baiyun.httputils.SchoolLifeHttpUtils;
 import com.baiyun.vo.parcelable.LifeAssociationPar;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class LAssociationFragment extends BaseFragment{
 	private SchoolLifeHttpUtils httpUtils;
@@ -135,16 +137,16 @@ public class LAssociationFragment extends BaseFragment{
 			}
 			
 			if ((position+1)%3 == 0) {
-				holder.ivLineRight.setVisibility(View.GONE);
+				holder.ivLineRight.setVisibility(View.INVISIBLE);
 			}else {
 				holder.ivLineRight.setVisibility(View.VISIBLE);
 			}
 			
 			LifeAssociationPar associationPar = associationPars.get(position);
-//			if (associationPar.getUrl() != null && !(associationPar.getUrl().trim().equalsIgnoreCase(""))) {
-//				String picUrl = HttpURL.HOST+associationPar.getUrl().substring(1);
-//				ImageLoader.getInstance().displayImage(picUrl, holder.ivIcon);
-//			}
+			if (associationPar.getImg() != null && !(associationPar.getImg().trim().equalsIgnoreCase(""))) {
+				String picUrl = HttpURL.HOST+associationPar.getImg().substring(1);
+				ImageLoader.getInstance().displayImage(picUrl, holder.ivIcon);
+			}
 			holder.tvTitle.setText(associationPar.getName());
 			
 			return convertView;

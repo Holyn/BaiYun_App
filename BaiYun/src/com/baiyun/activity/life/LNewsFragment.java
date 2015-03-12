@@ -7,7 +7,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -24,14 +23,11 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.baiyun.activity.R;
-import com.baiyun.activity.home.DepartmentActivity;
-import com.baiyun.activity.webview.WebViewActiviry;
 import com.baiyun.base.BaseAdAdapter;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.http.HttpURL;
 import com.baiyun.httputils.SchoolLifeHttpUtils;
-import com.baiyun.vo.parcelable.HomeNewsPar;
-import com.baiyun.vo.parcelable.Vo2Par;
+import com.baiyun.vo.parcelable.LNewsPar;
 import com.baiyun.vo.parcelable.VoPicPar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -56,7 +52,9 @@ public class LNewsFragment extends BaseFragment{
 	
 	private ListView listView;
 	private ListViewAdapter adapter;
-	private List<Vo2Par> newsList = new ArrayList<Vo2Par>();
+	private List<LNewsPar> newsList = new ArrayList<LNewsPar>();
+	
+	private int page = 1;
 	
 	public static LNewsFragment newInstance() {
 		return new LNewsFragment();
@@ -84,7 +82,10 @@ public class LNewsFragment extends BaseFragment{
 	public void createMyView(View rootView) {
 		initHeaderView();
 		initListView(rootView);
-		getNetData();
+		
+		((LNewsActivity)getActivity()).setLoadingBarVisible();
+		getNewsAd();
+		getNewsList(page);
 	}
 	
 	@Override
@@ -145,17 +146,12 @@ public class LNewsFragment extends BaseFragment{
 		listView.setOnItemClickListener(new NewsListOnItemClickListener());
 	}
 	
-	private void getNetData() {
-		((LNewsActivity)getActivity()).setLoadingBarVisible();
-		
-		httpUtils.getNews(HttpURL.LIFE_NEWS + newsId, new SchoolLifeHttpUtils.onGetNewsListener() {
+	//顶部图片
+	private void getNewsAd(){
+		httpUtils.getNewsAd(newsId, new SchoolLifeHttpUtils.onGetNewsAdListener() {
 			
 			@Override
-			public void onGetNews(List<VoPicPar> picPars, List<Vo2Par> vo2Pars) {
-				if (getActivity() != null) {
-					((LNewsActivity)getActivity()).setLoadingBarGone();
-				}
-				
+			public void onGetNewsAd(List<VoPicPar> picPars) {
 				if (picPars != null) {//广告图片
 					voPicPars = picPars;
 					
@@ -186,12 +182,23 @@ public class LNewsFragment extends BaseFragment{
 						}
 					}
 				}
-				
-				if (vo2Pars != null) {//新闻
-					newsList = vo2Pars;
+			}
+		});
+	}
+	
+	//新闻列表
+	private void getNewsList(int page){
+		httpUtils.getNewsList(newsId, page, new SchoolLifeHttpUtils.onGetNewsListListener() {
+			
+			@Override
+			public void onGetNewsList(List<LNewsPar> lNewsPars) {
+				if (getActivity() != null) {
+					((LNewsActivity)getActivity()).setLoadingBarGone();
+				}
+				if (lNewsPars != null) {//新闻
+					newsList.addAll(lNewsPars);
 					adapter.notifyDataSetChanged();
 				}
-				
 			}
 		});
 	}
@@ -234,7 +241,7 @@ public class LNewsFragment extends BaseFragment{
 				return;
 			}
 			int realPosition = (int) id;
-			Vo2Par news = newsList.get(realPosition);
+			LNewsPar news = newsList.get(realPosition);
 			((LNewsActivity)getActivity()).showWebViewFragment2(news.getContentUrl(), "新闻详情");
 		}
 
@@ -288,24 +295,24 @@ public class LNewsFragment extends BaseFragment{
 	
 	private class ListViewAdapter extends BaseAdapter{
 		private LayoutInflater inflater;
-		private List<Vo2Par> vo2Pars;
+		private List<LNewsPar> list;
 
-		public ListViewAdapter(Context context, List<Vo2Par> vo2Pars) {
+		public ListViewAdapter(Context context, List<LNewsPar> list) {
 			inflater = LayoutInflater.from(context);
-			this.vo2Pars = vo2Pars;
+			this.list = list;
 			
 		}
 		
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return vo2Pars.size();
+			return list.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
 			// TODO Auto-generated method stub
-			return vo2Pars.get(position);
+			return list.get(position);
 		}
 
 		@Override
@@ -330,7 +337,7 @@ public class LNewsFragment extends BaseFragment{
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			Vo2Par news = vo2Pars.get(position);
+			LNewsPar news = list.get(position);
 			if (news.getPicUrl() != null && !(news.getPicUrl().trim().equalsIgnoreCase(""))) {
 				String picUrl = HttpURL.HOST + news.getPicUrl().substring(1);
 				ImageLoader.getInstance().displayImage(picUrl, holder.ivHeader);

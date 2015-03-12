@@ -110,7 +110,6 @@ public class LModelFragment extends BaseFragment{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				System.out.println("====> position = "+position);
 				Vo2Par model = models.get(position);
 				((LModelActivity)getActivity()).showWebViewFragment2(model.getContentUrl(), "个人简介");
 			}
@@ -174,7 +173,7 @@ public class LModelFragment extends BaseFragment{
 			}
 			
 			if ((position+1)%3 == 0) {
-				holder.ivLineRight.setVisibility(View.GONE);
+				holder.ivLineRight.setVisibility(View.INVISIBLE);
 			}else {
 				holder.ivLineRight.setVisibility(View.VISIBLE);
 			}
