@@ -115,32 +115,5 @@ public class LoginFragment extends BaseFragment {
 
 		ImageLoader.getInstance().displayImage(uri, imageButton, defaultOptions);
 		
-//		ImageLoader.getInstance().loadImage(uri, defaultOptions, new ImageLoadingListener() {
-//			
-//			@Override
-//			public void onLoadingStarted(String imageUri, View view) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//			@Override
-//			public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//			@Override
-//			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-//				System.out.println("====> imageUri = "+imageUri);
-//				imageButton.setImageBitmap(loadedImage);
-//			}
-//			
-//			@Override
-//			public void onLoadingCancelled(String imageUri, View view) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//		});
-		
 	}
 }
