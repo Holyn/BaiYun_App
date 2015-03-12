@@ -164,11 +164,18 @@ public class HttpURL {
 	public final static String APPLY_FORM_1 = URL_PRE + "onlineRegisterForm";
 	
 	/**
-	 * 校园生活--（获取学工动态、体育创新、科技创新上方的图片和下方的新闻）
+	 * 校园生活--（获取学工动态、体育创新、科技创新上方的图片）
 	 * type=24,学工动态（id=24）、体育创新（id=26）、科技创新（id=27）
 	 * http://183.237.48.209:8085/app/schoolLifeDetails?type=24&id=26&limit=10&page=1
 	 */
-	public final static String LIFE_NEWS = URL_PRE + "schoolLifeDetails?type=24&id=";
+	public final static String LIFE_NEWS_AD = URL_PRE + "schoolLifeDetails?type=24&id=";
+	
+	/**
+	 * 校园生活--（获取学工动态、体育创新、科技创新下方的新闻）
+	 * type=24,学工动态（id=24）、体育创新（id=26）、科技创新（id=27）
+	 * http://183.237.48.209:8085/app/schoolLifeDetails?type=24&id=26&limit=10&page=1
+	 */
+	public final static String LIFE_NEWS_LIST = URL_PRE + "schoolLifeDetails?type=24&limit=20&id=";
 	
 	/**
 	 * 校园生活--学生社团(包含社团解析的图文链接)
@@ -219,8 +226,22 @@ public class HttpURL {
 	
 	/**
 	 * 右侧菜单--登录
+	 * url=URL+/app/userLogin?userName=用户输入的用户名
+	 * &password=用户输入的密码
+	 * &randomString=（用户输入的验证码）
+	 * &mobileChannelId=手机mobileChannelId
+	 * &mobileUserId=手机mobileUserId
+	 * 客户端输入用户登录里的用户名、密码、验证码和推送所需的mobileChannelId和mobileUserId后，
+	 * 点击【登录】，发送url请求，获取用户是否成功登录信息和导入推送关联的用户
+	 * 
+	 * http://183.237.48.209:8085/app/userLogin?
+	 * userName=admin&password=123456&randomString=3183&mobileChannelId=1111&mobileUserId=2222
 	 */
-	public final static String R_LOGIN = URL_PRE + "";
+	public final static String PASSWORD_PARAM = "&password=";
+	public final static String RANDOM_STRING_PARAM = "&password=";
+	public final static String MOBILE_CHANNEL_ID_PARAM = "&password=";
+	public final static String MOBILE_USER_ID_PARAM = "&password=";
+	public final static String R_LOGIN = URL_PRE + "userLogin?userName=";
 	
 	/**
 	 * 右侧菜单--使用工具--班车表
