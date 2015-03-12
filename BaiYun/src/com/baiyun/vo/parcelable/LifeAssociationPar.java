@@ -9,6 +9,7 @@ public class LifeAssociationPar implements Parcelable {
 	private String introduceId;
 	private String userId;
 	private String brief;
+	private String img;
 	private String creater;
 	private String url;
 	private String createTime;
@@ -26,6 +27,7 @@ public class LifeAssociationPar implements Parcelable {
 		dest.writeString(introduceId);
 		dest.writeString(userId);
 		dest.writeString(brief);
+		dest.writeString(img);
 		dest.writeString(creater);
 		dest.writeString(url);
 		dest.writeString(createTime);
@@ -39,6 +41,7 @@ public class LifeAssociationPar implements Parcelable {
 			par.introduceId = in.readString();
 			par.userId = in.readString();
 			par.brief = in.readString();
+			par.img = in.readString();
 			par.creater = in.readString();
 			par.url = in.readString();
 			par.createTime = in.readString();
@@ -112,6 +115,14 @@ public class LifeAssociationPar implements Parcelable {
 
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 }
