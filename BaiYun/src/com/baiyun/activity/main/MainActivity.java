@@ -149,9 +149,9 @@ public class MainActivity extends BaseSlidingFragmentActivity {
                 transaction.hide(curFragment).show(nextFragment).commit(); // 隐藏当前的fragment，显示下一个  
             } 
 			/* ToolsFragment可能需要实时更新，所以在hide的同时remove*/
-			if (curFragment == toolsFragment) {
-				fragmentManager.beginTransaction().remove(curFragment).commit();
-			}
+//			if (curFragment == toolsFragment) {
+//				fragmentManager.beginTransaction().remove(curFragment).commit();
+//			}
 			
 			curPosition = position;
 			curFragment = nextFragment;
