@@ -213,4 +213,47 @@ public class HttpURL {
 	 */
 	public final static String S_REPAIRS = URL_PRE + "serviceType?type=42";
 	
+	/**
+	 * 右侧菜单--获取验证码
+	 */
+	
+	/**
+	 * 右侧菜单--登录
+	 */
+	public final static String R_LOGIN = URL_PRE + "";
+	
+	/**
+	 * 右侧菜单--使用工具--班车表
+	 * http://183.237.48.209:8085/app/utilityToolDetails?id=168
+	 */
+	public final static String R_TOOLS_BUS = URL_PRE + "utilityToolDetails?id=168";
+	
+	/**
+	 * 右侧菜单--使用工具--地铁路线图
+	 * http://183.237.48.209:8085/app/utilityToolDetails?id=169
+	 */
+	public final static String R_TOOLS_METRO = URL_PRE + "utilityToolDetails?id=169";
+	/**
+	 * 右侧菜单--使用帮助
+	 * http://183.237.48.209:8085/app/settingDetails?id=129
+	 */
+	public final static String R_HELP = URL_PRE + "settingDetails?id=129";
+	
+	/**
+	 * 右侧菜单--关于我们
+	 * http://183.237.48.209:8085/app/settingDetails?id=171
+	 */
+	public final static String R_ABOUT = URL_PRE + "settingDetails?id=171";
+	
+	/**
+	 * 右侧菜单--版本更新
+	 */
+	
+	/**
+	 * 右侧菜单--意见反馈
+	 */
+	
+	/**
+	 * 右侧菜单--修改密码
+	 */
 }
