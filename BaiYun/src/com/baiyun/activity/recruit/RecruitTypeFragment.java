@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import com.baiyun.activity.R;
 import com.baiyun.activity.main.MainActivity;
+import com.baiyun.activity.webview.WebViewActiviry;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.custom.ListViewForScrollView;
 import com.baiyun.httputils.RecruitHttpUtils;
@@ -92,10 +94,8 @@ public class RecruitTypeFragment extends BaseFragment{
 				}
 				if (typePars != null) {
 					recruitTypePars = typePars;
-					System.out.println("====> typePars.size() = "+typePars.size());
-//					separateList(typePars);
-//					
-//					adapter_1.notifyDataSetChanged();
+					System.out.println("====> recruitTypePars.size() = "+recruitTypePars.size());
+					separateList(typePars);
 				}
 			}
 		});
@@ -108,10 +108,13 @@ public class RecruitTypeFragment extends BaseFragment{
 			RecruitTypePar recruitTypePar = (RecruitTypePar) iterator.next();
 			if (recruitTypePar.getMenuSubId().equalsIgnoreCase("16")) {
 				list_1.add(recruitTypePar);
+				adapter_1.notifyDataSetChanged();
 			}else if (recruitTypePar.getMenuSubId().equalsIgnoreCase("17")) {
 				list_2.add(recruitTypePar);
+				adapter_2.notifyDataSetChanged();
 			}else if (recruitTypePar.getMenuSubId().equalsIgnoreCase("18")) {
 				list_3.add(recruitTypePar);
+				adapter_3.notifyDataSetChanged();
 			}
 		}
 	}
@@ -136,14 +139,13 @@ public class RecruitTypeFragment extends BaseFragment{
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-//			return list.size()/2;
-			return 2;
+			return list.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
 			// TODO Auto-generated method stub
-			return null;
+			return list.get(position);
 		}
 
 		@Override
@@ -160,16 +162,34 @@ public class RecruitTypeFragment extends BaseFragment{
 				convertView = inflater.inflate(R.layout.list_item_recruit_type, parent, false);
 				holder.tvTitle = (TextView)convertView.findViewById(R.id.tv_title);
 				holder.btnPlan = (Button)convertView.findViewById(R.id.btn_plan);
-				holder.btnIntroduce = (Button)convertView.findViewById(R.id.btn_intro);
+				holder.btnIntroduce = (Button)convertView.findViewById(R.id.btn_introduce);
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 			
+			final RecruitTypePar typePar = list.get(position);
+			holder.tvTitle.setText(typePar.getThreeMenuName());
+			
 			holder.btnPlan.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					System.out.println("====> holder.btnPlan.setOnClick。。。。");
+//					System.out.println("====> holder.btnPlan.setOnClick。。。。"+typePar.getPlanUrl());
+				    Intent intent = new Intent(getActivity(), WebViewActiviry.class);
+				    intent.putExtra(WebViewActiviry.KEY_WEB_VIEW_TYPE, WebViewActiviry.RECRUIT_PLAN);
+				    intent.putExtra(WebViewActiviry.KEY_CONTENT_URL, typePar.getPlanUrl());
+				    getActivity().startActivity(intent);
+				}
+			});
+			
+			holder.btnIntroduce.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+//					System.out.println("====> holder.btnIntroduce.setOnClick。。。。"+typePar.getIntroUrl());
+				    Intent intent = new Intent(getActivity(), WebViewActiviry.class);
+				    intent.putExtra(WebViewActiviry.KEY_WEB_VIEW_TYPE, WebViewActiviry.RECRUIT_INTRO);
+				    intent.putExtra(WebViewActiviry.KEY_CONTENT_URL, typePar.getIntroUrl());
+				    getActivity().startActivity(intent);
 				}
 			});
 			
