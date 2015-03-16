@@ -30,6 +30,8 @@ public class WebViewActiviry extends FragmentActivity{
 	public static final int VIDEO = 2;//标题为：视频白云
 	public static final int JOB_RECRUIT = 3;//标题为:招聘信息
 	public static final int COOPERATION = 4;//标题为:校企合作
+	public static final int RECRUIT_PLAN = 5;//标题为:招生计划
+	public static final int RECRUIT_INTRO = 6;//标题为:专业介绍
 	
 	private FrameLayout flTopBar = null;
 	private TextView tvTitle = null;
@@ -64,6 +66,10 @@ public class WebViewActiviry extends FragmentActivity{
 			setTopBarTitle("招聘信息");
 		}else if (webViewType == COOPERATION) {
 			setTopBarTitle("校企合作");
+		}else if (webViewType == RECRUIT_PLAN) {
+			setTopBarTitle("招生计划");
+		}else if (webViewType == RECRUIT_INTRO) {
+			setTopBarTitle("专业介绍");
 		}
 		
 		if (contentUrl == null) {
@@ -72,7 +78,7 @@ public class WebViewActiviry extends FragmentActivity{
 			if (contentUrl.equalsIgnoreCase("")) {
 			}else {
 				contentUrl = HttpURL.HOST+contentUrl;//构造完整Html5路径
-				System.out.println("====> WebView-URL: "+contentUrl);
+//				System.out.println("====> WebView-URL: "+contentUrl);
 				
 				
 				webView.getSettings().setJavaScriptEnabled(true);
