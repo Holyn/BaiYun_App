@@ -6,27 +6,30 @@ import android.os.Parcelable;
  * 招生服务-招生类别
  */
 public class RecruitTypePar implements Parcelable {
-	private String contentId;
 	private String menuSubId;
 	private String subMenuName;
 	private String subMenuType;
 	private String menuThreeId;
 	private String threeMenuName;
 	private String threeMenuType;
-	private String creater;
-	private String updateUserName;
-	private String sortOrder;
-	private String title;
-	private String brief;
-	private String contentType;
-	private String url;
-	private String contentSort;
-	private String status;
-	private String viewTimes;
-	private String contentCreater;
-	private String createTime;
-	private String updateTime;
-	private String contentCreateTime;
+	
+	private String planContentId;
+	private String planTitle;
+	private String planBrief;
+	private String planUrl;
+	private String planViewTimes;
+	private String planCreater;
+	
+	private String introContentId;
+	private String introTitle;
+	private String introBrief;
+	private String introUrl;
+	private String introViewTimes;
+	private String introCreater;
+	
+	private String planCreateTime;
+	private String introCreateTime;
+
 
 	@Override
 	public int describeContents() {
@@ -36,55 +39,58 @@ public class RecruitTypePar implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeString(contentId);
 		dest.writeString(menuSubId);
 		dest.writeString(subMenuName);
 		dest.writeString(subMenuType);
 		dest.writeString(menuThreeId);
 		dest.writeString(threeMenuName);
 		dest.writeString(threeMenuType);
-		dest.writeString(creater);
-		dest.writeString(updateUserName);
-		dest.writeString(sortOrder);
-		dest.writeString(title);
-		dest.writeString(brief);
-		dest.writeString(contentType);
-		dest.writeString(url);
-		dest.writeString(contentSort);
-		dest.writeString(status);
-		dest.writeString(viewTimes);
-		dest.writeString(contentCreater);
-		dest.writeString(createTime);
-		dest.writeString(updateTime);
-		dest.writeString(contentCreateTime);
+		
+		dest.writeString(planContentId);
+		dest.writeString(planTitle);
+		dest.writeString(planBrief);
+		dest.writeString(planUrl);
+		dest.writeString(planViewTimes);
+		dest.writeString(planCreater);
+		
+		dest.writeString(introContentId);
+		dest.writeString(introTitle);
+		dest.writeString(introBrief);
+		dest.writeString(introUrl);
+		dest.writeString(introViewTimes);
+		dest.writeString(introCreater);
+		
+		dest.writeString(planCreateTime);
+		dest.writeString(introCreateTime);
 
 	}
 
 	public static final Parcelable.Creator<RecruitTypePar> CREATOR = new Parcelable.Creator<RecruitTypePar>() {
 		public RecruitTypePar createFromParcel(Parcel in) {
 			RecruitTypePar par = new RecruitTypePar();
-			
-			par.contentId = in.readString();
 			par.menuSubId = in.readString();
 			par.subMenuName = in.readString();
 			par.subMenuType = in.readString();
 			par.menuThreeId = in.readString();
 			par.threeMenuName = in.readString();
 			par.threeMenuType = in.readString();
-			par.creater = in.readString();
-			par.updateUserName = in.readString();
-			par.sortOrder = in.readString();
-			par.title = in.readString();
-			par.brief = in.readString();
-			par.contentType = in.readString();
-			par.url = in.readString();
-			par.contentSort = in.readString();
-			par.status = in.readString();
-			par.viewTimes = in.readString();
-			par.contentCreater = in.readString();
-			par.createTime = in.readString();
-			par.updateTime = in.readString();
-			par.contentCreateTime = in.readString();
+			
+			par.planContentId = in.readString();
+			par.planTitle = in.readString();
+			par.planBrief = in.readString();
+			par.planUrl = in.readString();
+			par.planViewTimes = in.readString();
+			par.planCreater = in.readString();
+			
+			par.introContentId = in.readString();
+			par.introTitle = in.readString();
+			par.introBrief = in.readString();
+			par.introUrl = in.readString();
+			par.introViewTimes = in.readString();
+			par.introCreater = in.readString();
+			
+			par.planCreateTime = in.readString();
+			par.introCreateTime = in.readString();
 			
 			return par;
 		}
@@ -94,13 +100,6 @@ public class RecruitTypePar implements Parcelable {
 		}
 	};
 
-	public String getContentId() {
-		return contentId;
-	}
-
-	public void setContentId(String contentId) {
-		this.contentId = contentId;
-	}
 
 	public String getMenuSubId() {
 		return menuSubId;
@@ -150,116 +149,117 @@ public class RecruitTypePar implements Parcelable {
 		this.threeMenuType = threeMenuType;
 	}
 
-	public String getCreater() {
-		return creater;
+	public String getPlanContentId() {
+		return planContentId;
 	}
 
-	public void setCreater(String creater) {
-		this.creater = creater;
+	public void setPlanContentId(String planContentId) {
+		this.planContentId = planContentId;
 	}
 
-	public String getUpdateUserName() {
-		return updateUserName;
+	public String getPlanTitle() {
+		return planTitle;
 	}
 
-	public void setUpdateUserName(String updateUserName) {
-		this.updateUserName = updateUserName;
+	public void setPlanTitle(String planTitle) {
+		this.planTitle = planTitle;
 	}
 
-	public String getSortOrder() {
-		return sortOrder;
+	public String getPlanBrief() {
+		return planBrief;
 	}
 
-	public void setSortOrder(String sortOrder) {
-		this.sortOrder = sortOrder;
+	public void setPlanBrief(String planBrief) {
+		this.planBrief = planBrief;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getPlanUrl() {
+		return planUrl;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setPlanUrl(String planUrl) {
+		this.planUrl = planUrl;
 	}
 
-	public String getBrief() {
-		return brief;
+	public String getPlanViewTimes() {
+		return planViewTimes;
 	}
 
-	public void setBrief(String brief) {
-		this.brief = brief;
+	public void setPlanViewTimes(String planViewTimes) {
+		this.planViewTimes = planViewTimes;
 	}
 
-	public String getContentType() {
-		return contentType;
+	public String getPlanCreater() {
+		return planCreater;
 	}
 
-	public void setContentType(String contentType) {
-		this.contentType = contentType;
+	public void setPlanCreater(String planCreater) {
+		this.planCreater = planCreater;
 	}
 
-	public String getUrl() {
-		return url;
+	public String getIntroContentId() {
+		return introContentId;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public void setIntroContentId(String introContentId) {
+		this.introContentId = introContentId;
 	}
 
-	public String getContentSort() {
-		return contentSort;
+	public String getIntroTitle() {
+		return introTitle;
 	}
 
-	public void setContentSort(String contentSort) {
-		this.contentSort = contentSort;
+	public void setIntroTitle(String introTitle) {
+		this.introTitle = introTitle;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getIntroBrief() {
+		return introBrief;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setIntroBrief(String introBrief) {
+		this.introBrief = introBrief;
 	}
 
-	public String getViewTimes() {
-		return viewTimes;
+	public String getIntroUrl() {
+		return introUrl;
 	}
 
-	public void setViewTimes(String viewTimes) {
-		this.viewTimes = viewTimes;
+	public void setIntroUrl(String introUrl) {
+		this.introUrl = introUrl;
 	}
 
-	public String getContentCreater() {
-		return contentCreater;
+	public String getIntroViewTimes() {
+		return introViewTimes;
 	}
 
-	public void setContentCreater(String contentCreater) {
-		this.contentCreater = contentCreater;
+	public void setIntroViewTimes(String introViewTimes) {
+		this.introViewTimes = introViewTimes;
 	}
 
-	public String getCreateTime() {
-		return createTime;
+	public String getIntroCreater() {
+		return introCreater;
 	}
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
+	public void setIntroCreater(String introCreater) {
+		this.introCreater = introCreater;
 	}
 
-	public String getUpdateTime() {
-		return updateTime;
+	public String getPlanCreateTime() {
+		return planCreateTime;
 	}
 
-	public void setUpdateTime(String updateTime) {
-		this.updateTime = updateTime;
+	public void setPlanCreateTime(String planCreateTime) {
+		this.planCreateTime = planCreateTime;
 	}
 
-	public String getContentCreateTime() {
-		return contentCreateTime;
+	public String getIntroCreateTime() {
+		return introCreateTime;
 	}
 
-	public void setContentCreateTime(String contentCreateTime) {
-		this.contentCreateTime = contentCreateTime;
+	public void setIntroCreateTime(String introCreateTime) {
+		this.introCreateTime = introCreateTime;
 	}
 
+	
 }
