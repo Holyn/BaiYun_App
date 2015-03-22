@@ -268,7 +268,9 @@ public class HttpURL {
 	
 	/**
 	 * 右侧菜单--版本更新
+	 * http://183.237.48.209:8085/app/settingDetails?id=128&version=1
 	 */
+	public final static String R_VERSION = URL_PRE + "settingDetails?id=128&version=";
 	
 	/**
 	 * 右侧菜单--意见反馈
