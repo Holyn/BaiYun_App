@@ -93,6 +93,10 @@
             android:name=".schoolservice.SPhoneActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".setting.SettingItemActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
