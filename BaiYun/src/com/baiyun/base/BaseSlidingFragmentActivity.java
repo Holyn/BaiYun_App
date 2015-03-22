@@ -156,7 +156,7 @@ public abstract class BaseSlidingFragmentActivity extends SlidingFragmentActivit
 		slidingMenu.setMode(SlidingMenu.RIGHT);// 设置是左滑
 		slidingMenu.setBehindOffset(ScreenUtil.getScreenWidth(this)>>1);// 设置菜单宽度
 		slidingMenu.setFadeDegree(0.35f);// 设置淡入淡出的比例
-		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);//设置手势模式
+		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);//设置手势模式
 		slidingMenu.setShadowDrawable(R.drawable.yejk_shadow);// 设置左菜单阴影图片
 		slidingMenu.setFadeEnabled(true);// 设置滑动时菜单的是否淡入淡出
 		slidingMenu.setBehindScrollScale(0.333f);// 设置滑动时拖拽效果
