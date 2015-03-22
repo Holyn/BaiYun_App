@@ -53,7 +53,7 @@ public class AboutFragment extends BaseFragment{
 	public void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		((MainActivity) getActivity()).setLoadingBarGone();
+		closeLoadingDialog();
 	}
 
 	private void initView(View rootView) {
@@ -75,15 +75,13 @@ public class AboutFragment extends BaseFragment{
 	}
 
 	private void getNetData() {
-		((MainActivity) getActivity()).setLoadingBarVisible();
+		showLoadingDialog();
 
 		httpUtils.getVo1(HttpURL.R_ABOUT, new VoHttpUtils.OnGetVo1Listener() {
 
 			@Override
 			public void onGetVo1(Vo1Par vo1Par) {
-				if (getActivity() != null) {
-					((MainActivity) getActivity()).setLoadingBarGone();
-				}
+				closeLoadingDialog();
 				if (vo1Par != null) {
 					String urlLast = vo1Par.getUrl();
 					if (urlLast != null && !(urlLast.equalsIgnoreCase(""))) {
