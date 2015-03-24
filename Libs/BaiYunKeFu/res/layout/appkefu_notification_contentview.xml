@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dp" >
+
+    <ImageView
+        android:id="@+id/appkefu_notification_contentview_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10dp"
+        android:contentDescription="@string/appkefu_imageview_contentdescription" />
+
+    <RelativeLayout 
+        android:id="@+id/appkefu_notification_contentview_titlelayout" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/appkefu_notification_contentview_icon"
+        >
+
+        <TextView
+            android:id="@+id/appkefu_notification_contentview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+         
+        <TextView 
+            android:id="@+id/appkefu_notification_contentview_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="#ffffff"
+            android:textSize="15sp" 
+            />
+        
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/appkefu_notification_contentview_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appkefu_notification_contentview_titlelayout"
+        android:layout_toRightOf="@id/appkefu_notification_contentview_icon"
+        android:layout_marginTop="5dp"
+        android:textColor="#ffffff"
+        android:textSize="15sp" />
+
+</RelativeLayout>
+
+
+

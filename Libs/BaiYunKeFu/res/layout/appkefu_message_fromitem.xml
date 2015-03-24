@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+        android:id="@+id/appkefu_message_item_timestamp_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        
+        <TextView 
+            android:id="@+id/appkefu_message_item_timestamp_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="timestamp"
+            android:visibility="gone"/>
+        
+    </LinearLayout>
+    
+    
+    <RelativeLayout 
+        android:id="@+id/appkefu_message_item_content_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        
+        <ImageView 
+            android:id="@+id/appkefu_message_item_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/appkefu_ic_sex_female"
+            android:contentDescription="@string/appkefu_imageview_content_description"/>
+        
+        <TextView 
+            android:id="@+id/appkefu_message_item_content"
+            style="@style/appkefu_chat_content_date_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="50dp"
+            android:layout_toRightOf="@+id/appkefu_message_item_header"
+            android:autoLink="phone|email"
+            android:textColorLink="#0082CB"
+            android:background="@drawable/appkefu_messageitem_fromcontent"
+            />
+        
+        <TextView 
+            android:id="@+id/appkefu_message_item_content_voice"
+            style="@style/appkefu_chat_content_date_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/appkefu_message_item_header"
+            android:background="@drawable/appkefu_messageitem_fromcontent"
+            android:visibility="gone"
+            />
+        
+        <TextView 
+            android:id="@+id/appkefu_message_item_voice_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/appkefu_message_item_content_voice"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:visibility="gone"/>
+        
+        
+        <RelativeLayout 
+            android:id="@+id/appkefu_message_item_robot_rate_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/appkefu_message_item_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/appkefu_messageitem_ratelayout"
+            android:visibility="gone">
+            
+            <TextView 
+                android:id="@+id/appkefu_message_item_robot_rate_promotion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/appkefu_robot_rate_is_helpfull"
+                android:layout_marginTop="5dp"
+                android:textSize="16sp"
+                android:textColor="#000"/>
+            
+            <RelativeLayout
+                android:id="@+id/appkefu_message_item_robot_ratebtn_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/appkefu_message_item_robot_rate_promotion"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp" >
+                
+                <Button 
+                	android:id="@+id/appkefu_message_item_robot_ratebtn_usefull"
+                	android:layout_width="70dp"
+                	android:layout_height="35dp"
+                	android:text="@string/appkefu_robot_rate_usefull"
+                	android:background="@drawable/appkefu_messageitem_ratebtn"
+                	android:textSize="12sp"
+                	/>
+            
+            	<Button 
+                	android:id="@+id/appkefu_message_item_robot_ratebtn_useless"
+                	android:layout_width="70dp"
+               	 	android:layout_height="35dp"
+                	android:text="@string/appkefu_robot_rate_useless"
+                	android:layout_toRightOf="@+id/appkefu_message_item_robot_ratebtn_usefull"
+                	android:background="@drawable/appkefu_messageitem_ratebtn"
+                	android:layout_marginLeft="10dp"
+                	android:textSize="12sp"/>
+            
+            </RelativeLayout>
+            
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:id="@+id/appkefu_message_item_robot_rate_thanks_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/appkefu_message_item_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/appkefu_messageitem_ratelayout"
+            android:visibility="gone">
+            
+            <TextView 
+                android:id="@+id/appkefu_message_item_robot_rate_thanks"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:text="@string/appkefu_robot_rate_thanks"
+                android:textSize="16sp"/>
+            
+        </RelativeLayout>
+        
+        
+    </RelativeLayout>
+    
+    
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
