@@ -20,6 +20,7 @@ import com.baiyun.base.BaseFragment;
 import com.baiyun.custom.CircleMenuLayout;
 import com.baiyun.custom.CircleMenuLayout.OnMenuItemClickListener;
 import com.baiyun.httputils.HomeHttpUtils;
+import com.baiyun.kefu.KeFuManager;
 
 public class HomeFragment_2 extends BaseFragment {
 	private CircleMenuLayout mCircleMenuLayout;
@@ -81,7 +82,7 @@ public class HomeFragment_2 extends BaseFragment {
 					getActivity().startActivity(new Intent(getActivity(), DepartmentActivity.class));
 					break;
 				case 4:// 招生咨询
-
+					new KeFuManager(getActivity()).startChat();
 					break;
 				case 5:// 白云在线
 					if (onlineUrl != null) {
