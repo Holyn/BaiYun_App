@@ -1,0 +1,12 @@
+<RadioButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rb_point"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:background="@null"
+    android:button="@null"
+    android:checked="true"
+    android:clickable="false"
+    android:drawableBottom="@drawable/selector_rb_point"
+    android:textStyle="italic" />
