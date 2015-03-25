@@ -3,6 +3,7 @@ package com.baiyun.activity.recruit;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.baiyun.activity.R;
@@ -15,9 +16,14 @@ public class ApplyForm1Fragment extends BaseFragment{
 	private ApplyPar applyPar;
 	private RecruitHttpUtils httpUtils;
 	
-	private TextView tvTitle;
+	private TextView tvTitle;//年制招生标题
+	private EditText etName;//姓名
 	
 	private Button btnSubmit;
+	
+	private void initView(View rootView){
+		etName = (EditText)rootView.findViewById(R.id.et_name);
+	}
 	
 	public static ApplyForm1Fragment newInstance() {
 		return new ApplyForm1Fragment();
@@ -49,28 +55,6 @@ public class ApplyForm1Fragment extends BaseFragment{
 		
 		
 		final RequestParams params = new RequestParams();
-		
-//		params.addQueryStringParameter("id", "32");
-//		params.addQueryStringParameter("name", "陈浩林");
-//		params.addQueryStringParameter("address", "佛山石湾");
-//		params.addQueryStringParameter("gender", "男");
-//		params.addQueryStringParameter("culturalBackground", "本科");
-//		params.addQueryStringParameter("politicalBackground", "党员");
-//		params.addQueryStringParameter("iDNumber", "888888888888888");
-//		params.addQueryStringParameter("graduateBackground", "毕业");
-//		params.addQueryStringParameter("graduateSchool", "佛大");
-//		params.addQueryStringParameter("baseCourseId", "10");
-//		params.addQueryStringParameter("residence", "广东肇庆");
-//		params.addQueryStringParameter("specialStudent", "否");
-//		params.addQueryStringParameter("graduateScore", "100");
-//		params.addQueryStringParameter("postcode", "528000");
-//		params.addQueryStringParameter("phonecall", "111111111");
-//		params.addQueryStringParameter("telephone", "10086");
-//		params.addQueryStringParameter("linkman", "陈浩林");
-//		params.addQueryStringParameter("note", "留言");
-//		params.addQueryStringParameter("birthday", "88年8月8日");
-		
-		
 		
 		params.addBodyParameter("id", "32");
 		params.addBodyParameter("name", "陈浩林");

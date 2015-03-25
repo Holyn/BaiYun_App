@@ -33,12 +33,16 @@ public class RecruitTypeFragment extends BaseFragment{
 	private List<RecruitTypePar> list_3 = new ArrayList<RecruitTypePar>();//menuSubId=18，职能培训报读专区
 	
 	private ScrollView scrollView;
+	
+	private TextView tvTitle_1;
 	private ListViewForScrollView lvsv_1;
 	private LvsvAdapter adapter_1;
 	
+	private TextView tvTitle_2;
 	private ListViewForScrollView lvsv_2;
 	private LvsvAdapter adapter_2;
 	
+	private TextView tvTitle_3;
 	private ListViewForScrollView lvsv_3;
 	private LvsvAdapter adapter_3;
 	
@@ -68,14 +72,17 @@ public class RecruitTypeFragment extends BaseFragment{
 		scrollView = (ScrollView)rootView.findViewById(R.id.scrollview);
 		scrollView.smoothScrollTo(0, 0);
 		
+		tvTitle_1 = (TextView)rootView.findViewById(R.id.tv_title_1);
 		lvsv_1 = (ListViewForScrollView)rootView.findViewById(R.id.lvsv_1);
 		adapter_1 = new LvsvAdapter(getActivity(),list_1);
 		lvsv_1.setAdapter(adapter_1);
 		
+		tvTitle_2 = (TextView)rootView.findViewById(R.id.tv_title_2);
 		lvsv_2 = (ListViewForScrollView)rootView.findViewById(R.id.lvsv_2);
 		adapter_2 = new LvsvAdapter(getActivity(),list_2);
 		lvsv_2.setAdapter(adapter_2);
 		
+		tvTitle_3 = (TextView)rootView.findViewById(R.id.tv_title_3);
 		lvsv_3 = (ListViewForScrollView)rootView.findViewById(R.id.lvsv_3);
 		adapter_3 = new LvsvAdapter(getActivity(),list_3);
 		lvsv_3.setAdapter(adapter_3);
@@ -94,7 +101,6 @@ public class RecruitTypeFragment extends BaseFragment{
 				}
 				if (typePars != null) {
 					recruitTypePars = typePars;
-					System.out.println("====> recruitTypePars.size() = "+recruitTypePars.size());
 					separateList(typePars);
 				}
 			}
@@ -107,12 +113,15 @@ public class RecruitTypeFragment extends BaseFragment{
 		while (iterator.hasNext()) {
 			RecruitTypePar recruitTypePar = (RecruitTypePar) iterator.next();
 			if (recruitTypePar.getMenuSubId().equalsIgnoreCase("16")) {
+				tvTitle_1.setVisibility(View.VISIBLE);
 				list_1.add(recruitTypePar);
 				adapter_1.notifyDataSetChanged();
 			}else if (recruitTypePar.getMenuSubId().equalsIgnoreCase("17")) {
+				tvTitle_2.setVisibility(View.VISIBLE);
 				list_2.add(recruitTypePar);
 				adapter_2.notifyDataSetChanged();
 			}else if (recruitTypePar.getMenuSubId().equalsIgnoreCase("18")) {
+				tvTitle_3.setVisibility(View.VISIBLE);
 				list_3.add(recruitTypePar);
 				adapter_3.notifyDataSetChanged();
 			}
