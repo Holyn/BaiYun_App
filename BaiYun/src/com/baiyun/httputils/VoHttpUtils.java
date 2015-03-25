@@ -1,5 +1,6 @@
 package com.baiyun.httputils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -41,7 +42,7 @@ public class VoHttpUtils extends HttpUtils{
 	}
 	
 	public interface OnGetPicListListener{
-		public void onGetPicList(List<VoPicPar> picPars);
+		public void onGetPicList(ArrayList<VoPicPar> picPars);
 	}
 	
 	public void getVo1(String url, final OnGetVo1Listener onGetVo1Listener){
@@ -172,7 +173,7 @@ public class VoHttpUtils extends HttpUtils{
 
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				List<VoPicPar> picPars = null;
+				ArrayList<VoPicPar> picPars = null;
 				try {
 					JsonParser parser = new JsonParser();
 					JsonObject jsonObject = parser.parse(responseInfo.result).getAsJsonObject();
@@ -184,7 +185,7 @@ public class VoHttpUtils extends HttpUtils{
 							JsonElement dataEle = jsonObject.get("data");
 							if (dataEle.isJsonArray()) {
 								JsonArray jsonArray = dataEle.getAsJsonArray();
-								java.lang.reflect.Type type = new TypeToken<List<VoPicPar>>() {}.getType();
+								java.lang.reflect.Type type = new TypeToken<ArrayList<VoPicPar>>() {}.getType();
 								picPars = new Gson().fromJson(jsonArray.toString(), type);
 							}
 						}
