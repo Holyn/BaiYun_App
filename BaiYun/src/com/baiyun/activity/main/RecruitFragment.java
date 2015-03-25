@@ -48,8 +48,8 @@ public class RecruitFragment extends BaseFragment{
 		fragmentManager = getChildFragmentManager();
 		initView(rootView);
 		
-		tuitionFragment = TuitionFragment.newInstance();
-		curFragment = tuitionFragment;
+		consultFragment = RecruitTypeFragment.newInstance();
+		curFragment = consultFragment;
 		fragmentManager.beginTransaction().add(R.id.fl_container, curFragment).commit();
 	}
 	
@@ -59,9 +59,9 @@ public class RecruitFragment extends BaseFragment{
 		rb_3 = (RadioButton)rootView.findViewById(R.id.rb_consult);
 		rb_4 = (RadioButton)rootView.findViewById(R.id.rb_apply);
 		
-		rb_1.setChecked(true);
+		rb_1.setChecked(false);
 		rb_2.setChecked(false);
-		rb_3.setChecked(false);
+		rb_3.setChecked(true);
 		rb_4.setChecked(false);
 		
 		tv_1 = (TextView)rootView.findViewById(R.id.tv_tuition);
@@ -127,7 +127,7 @@ public class RecruitFragment extends BaseFragment{
 					rb_4.setChecked(false);
 					
 					tv_3.setTextColor(getActivity().getResources().getColor(R.color.actionbar_bg));
-					tv_item_title.setText("招生类型");
+					tv_item_title.setText("招生层次");
 					
 					switchFragment(2);
 				}else {
