@@ -13,12 +13,14 @@
         android:padding="14dp" >
 
         <TextView
+            android:id="@+id/tv_title_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="高中生(职中、中专、中技)报读专区"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"
+            android:visibility="gone" />
 
         <com.baiyun.custom.ListViewForScrollView
             android:id="@+id/lvsv_1"
@@ -31,13 +33,15 @@
         </com.baiyun.custom.ListViewForScrollView>
 
         <TextView
+            android:id="@+id/tv_title_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
             android:text="初中生报读专区"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"
+            android:visibility="gone" />
 
         <com.baiyun.custom.ListViewForScrollView
             android:id="@+id/lvsv_2"
@@ -50,13 +54,15 @@
         </com.baiyun.custom.ListViewForScrollView>
 
         <TextView
+            android:id="@+id/tv_title_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
             android:text="职能培训报读专区"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"
+            android:visibility="gone" />
 
         <com.baiyun.custom.ListViewForScrollView
             android:id="@+id/lvsv_3"

@@ -223,53 +223,58 @@
             android:layout_marginTop="14dp"
             android:orientation="horizontal" >
 
-            <RadioButton
-                android:id="@+id/radio0"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:button="@drawable/radio_btn_bg"
-                android:checked="true"
-                android:text="  农村应届"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_16" />
+                android:orientation="vertical" >
 
-            <RadioButton
-                android:id="@+id/radio1"
+                <RadioButton
+                    android:id="@+id/radio0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/radio_btn_bg"
+                    android:text="  农村应届"
+                    android:checked="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16" />
+
+                <RadioButton
+                    android:id="@+id/radio2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:button="@drawable/radio_btn_bg"
+                    android:text="  农村往届"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:button="@drawable/radio_btn_bg"
-                android:text="  城镇应届"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_16" />
-        </RadioGroup>
+                android:orientation="vertical" >
 
-        <RadioGroup
-            android:id="@+id/radioGroup2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:orientation="horizontal" >
+                <RadioButton
+                    android:id="@+id/radio1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:button="@drawable/radio_btn_bg"
+                    android:text="  城镇应届"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16" />
 
-            <RadioButton
-                android:id="@+id/radio2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/radio_btn_bg"
-                android:checked="true"
-                android:text="  农村往届"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_16" />
-
-            <RadioButton
-                android:id="@+id/radio3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:button="@drawable/radio_btn_bg"
-                android:text="  城镇往届"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_16" />
+                <RadioButton
+                    android:id="@+id/radio3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginLeft="24dp"
+                    android:button="@drawable/radio_btn_bg"
+                    android:text="  城镇往届"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16" />
+            </LinearLayout>
         </RadioGroup>
 
         <TextView
