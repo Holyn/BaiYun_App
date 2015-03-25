@@ -1,11 +1,14 @@
 package com.baiyun.activity.home;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -15,6 +18,7 @@ import com.baiyun.activity.R;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.http.HttpURL;
 import com.baiyun.httputils.VoHttpUtils;
+import com.baiyun.picturesviewer.PicturesViewPagerActivity;
 import com.baiyun.vo.parcelable.VoPicPar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -22,7 +26,8 @@ public class OveEnvFragment extends BaseFragment{
 	private VoHttpUtils httpUtils;
 	
 	private GridView gridView;
-	private List<VoPicPar> picPars = new ArrayList<VoPicPar>();
+	private ArrayList<VoPicPar> picPars = new ArrayList<VoPicPar>();
+	private ArrayList<String> imagePathList = new ArrayList<String>();
 	private MyGridAdapter gridAdapter;
 	
 	public static OveEnvFragment newInstance() {
@@ -47,6 +52,18 @@ public class OveEnvFragment extends BaseFragment{
 		gridAdapter = new MyGridAdapter();
 		gridView.setAdapter(gridAdapter);
 		
+		gridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getActivity(), PicturesViewPagerActivity.class);
+				intent.putStringArrayListExtra(PicturesViewPagerActivity.EXTRA_IMAGE_LIST, imagePathList);
+				intent.putExtra(PicturesViewPagerActivity.EXTRA_CUR_POSITION, position);
+				getActivity().startActivity(intent);
+			}
+		});
+		
 		getData();
 	}
 	
@@ -69,13 +86,19 @@ public class OveEnvFragment extends BaseFragment{
 		httpUtils.getPicList(HttpURL.SCHOOL_ENVIRONMENT, new VoHttpUtils.OnGetPicListListener() {
 			
 			@Override
-			public void onGetPicList(List<VoPicPar> picPars) {
+			public void onGetPicList(ArrayList<VoPicPar> picPars) {
 				if (getActivity() != null) {
 					((OverviewActivity)getActivity()).setLoadingBarGone();
 				}
 				if (picPars != null) {
 					OveEnvFragment.this.picPars = picPars;
 					gridAdapter.notifyDataSetChanged();
+					
+					Iterator<VoPicPar> pivParIterator = picPars.iterator();
+					while (pivParIterator.hasNext()) {
+						VoPicPar voPicPar = (VoPicPar) pivParIterator.next();
+						imagePathList.add(HttpURL.HOST+voPicPar.getUrl().substring(1));
+					}
 				}
 			}
 		});
