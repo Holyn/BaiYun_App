@@ -96,7 +96,7 @@ public class ProgressWebView extends WebView {
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			// TODO Auto-generated method stub
-//			view.loadUrl(url);
+			view.loadUrl(url);
 			return super.shouldOverrideUrlLoading(view, url);
 		}
 
