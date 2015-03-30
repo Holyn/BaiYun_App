@@ -90,9 +90,9 @@ public class StringPopupWindow extends PopupWindow{
 	}
 	
 	public void notifyListChange(List<String> sList){
-//		for (int i = 0; i < sList.size(); i++) {
-//			System.out.println("====> "+sList.get(i));
-//		}
+		for (int i = 0; i < sList.size(); i++) {
+			System.out.println("====> "+sList.get(i));
+		}
 		stringList.clear();
 		stringList.addAll(sList);
 		adapter.notifyDataSetChanged();
