@@ -50,7 +50,7 @@ public class HttpURL {
 	
 	/**
 	 * 首页-学校概况-师资队伍-列表
-	 * http://183.237.48.209:8085/app/schoolIntroContent?type=1020
+	 * http://183.237.48.209:8085/app/schoolIntroContent?type=1020&limit=10&page=1
 	 */
 	public final static String SCHOOL_TEACHERS_LIST = URL_PRE + "schoolIntroContent?type=1020";
 	
