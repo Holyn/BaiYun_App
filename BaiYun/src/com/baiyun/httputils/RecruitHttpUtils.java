@@ -162,7 +162,7 @@ public class RecruitHttpUtils  extends HttpUtils{
 		});
 	}
 	
-	public void postForm1(RequestParams params){
+	public void postForm1(RequestParams params, final OnPostForm1Listener onPostForm1Listener){
 		send(HttpMethod.POST, HttpURL.APPLY_FORM_1, params, new RequestCallBack<String>() {
 
 			@Override
@@ -174,10 +174,12 @@ public class RecruitHttpUtils  extends HttpUtils{
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
 				System.out.println(responseInfo.result);
+				onPostForm1Listener.OnPostForm1(true);
 			}
 
 			@Override
 			public void onFailure(HttpException error, String msg) {
+				onPostForm1Listener.OnPostForm1(false);
 				System.out.println(error);
 				System.out.println(msg);
 			}
