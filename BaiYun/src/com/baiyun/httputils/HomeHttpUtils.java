@@ -7,9 +7,11 @@ import android.widget.Toast;
 
 import com.baiyun.http.HttpRecode;
 import com.baiyun.http.HttpURL;
+import com.baiyun.vo.parcelable.OveDepPar;
 import com.baiyun.vo.parcelable.HomeAdPar;
 import com.baiyun.vo.parcelable.HomeNewsPar;
 import com.baiyun.vo.parcelable.HomeVideoPar;
+import com.baiyun.vo.parcelable.Vo2Par;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -38,6 +40,10 @@ public class HomeHttpUtils extends HttpUtils{
 	
 	public interface OnGetOnlineUrlListener{
 		public void onGetOnlineUrl(String url);
+	}
+	
+	public interface OnGetOveDepParsListener{
+		public void onGetOveDepPars(List<OveDepPar> oveDepPars);
 	}
 	
 	public void getHomeAdPar(final OnGetHomeAdParsListener onGetHomeAdParListener) {
@@ -132,5 +138,52 @@ public class HomeHttpUtils extends HttpUtils{
 			}
 		});
 	
+	}
+	
+	public void getOveDepPars(int page, final OnGetOveDepParsListener onGetOveDepParsListener){
+		String pageStr = String.valueOf(page);
+		String url = HttpURL.SCHOOL_TEACHERS_SUM+pageStr;
+		send(HttpMethod.GET, url, new RequestCallBack<String>() {
+			
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				List<OveDepPar> depPars = null;
+				try {
+					JsonParser parser = new JsonParser();
+					JsonObject jsonObject = parser.parse(responseInfo.result).getAsJsonObject();
+
+					JsonElement recodeEle = jsonObject.get("recode");
+					if (recodeEle.isJsonPrimitive()) {
+						String recode = recodeEle.getAsString();
+						if (recode.equalsIgnoreCase(HttpRecode.GET_SUCCESS)) {
+							JsonElement dataEle = jsonObject.get("data");
+							if (dataEle.isJsonObject()) {
+								jsonObject = dataEle.getAsJsonObject();
+//								int total = jsonObject.get("total").getAsInt();
+								JsonElement itemsEle = jsonObject.get("items");
+								if (itemsEle.isJsonArray()) {
+									JsonArray jsonArray = itemsEle.getAsJsonArray();
+									java.lang.reflect.Type type = new TypeToken<List<OveDepPar>>() {}.getType();
+									depPars = new Gson().fromJson(jsonArray.toString(), type);
+								}
+							}
+						}else if (recode.equalsIgnoreCase(HttpRecode.GET_ERROR)) {
+							Toast.makeText(context, "无更多数据", Toast.LENGTH_SHORT).show();
+						}
+					}
+				} catch (Exception e) {
+					depPars = null;
+					System.out.println(e);
+				}
+				onGetOveDepParsListener.onGetOveDepPars(depPars);
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				onGetOveDepParsListener.onGetOveDepPars(null);
+				Toast.makeText(context, "数据请求失败", Toast.LENGTH_SHORT).show();
+			}
+			
+		});
 	}
 }
