@@ -3,6 +3,7 @@ package com.baiyun.activity.home;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,20 +15,31 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.baiyun.activity.R;
+import com.baiyun.activity.life.LModelActivity;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.http.HttpURL;
+import com.baiyun.httputils.HomeHttpUtils;
 import com.baiyun.httputils.VoHttpUtils;
+import com.baiyun.vo.parcelable.OveDepPar;
 import com.baiyun.vo.parcelable.Vo1Par;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshGridView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 
 public class OveTeachersFragment extends BaseFragment implements OnClickListener{
 	private VoHttpUtils httpUtils;
+	private HomeHttpUtils depParHttpUtils;
+	
 	private LinearLayout llSummary;
 	private TextView tvSummary;
 	private Vo1Par vo1Par = null;
 	
+	private PullToRefreshGridView mPullRefreshGridView;
 	private GridView gridView;
-	private List<Vo1Par> teacherList = new ArrayList<Vo1Par>();
+	private List<OveDepPar> depPars = new ArrayList<OveDepPar>();
 	private MyGridAdapter gridAdapter;
+	
+	private int page = 1;
 	
 	public static OveTeachersFragment newInstance() {
 		return new OveTeachersFragment();
@@ -46,11 +58,12 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 	@Override
 	public void createMyView(View rootView) {
 		httpUtils = new VoHttpUtils(getActivity());
+		depParHttpUtils = new HomeHttpUtils(getActivity());
 		
 		initView(rootView);
 		
 		getSum();
-		getList();
+//		getList();
 	}
 	
 	@Override
@@ -71,16 +84,34 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 		llSummary = (LinearLayout)rootView.findViewById(R.id.ll_summary);
 		tvSummary = (TextView)rootView.findViewById(R.id.tv_summary);
 		
-		gridView = (GridView)rootView.findViewById(R.id.gv_teachers);
+		mPullRefreshGridView = (PullToRefreshGridView)rootView.findViewById(R.id.reflesh_gridview);
+		mPullRefreshGridView.setMode(Mode.PULL_FROM_END);
+		
+		gridView = mPullRefreshGridView.getRefreshableView();
 		gridAdapter = new MyGridAdapter();
 		gridView.setAdapter(gridAdapter);
+		
+		mPullRefreshGridView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<GridView>() {
+
+			@Override
+			public void onRefresh(PullToRefreshBase<GridView> refreshView) {
+				String label = DateUtils.formatDateTime(getActivity(), System.currentTimeMillis(),
+						DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
+				// Update the LastUpdatedLabel
+				mPullRefreshGridView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+				
+				page++;
+				getDepParList(page);
+			}
+			
+		});
 		
 		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				
-				((OverviewActivity)getActivity()).showWebViewFragment2(teacherList.get(position).getUrl(), teacherList.get(position).getTitle());
+//				((OverviewActivity)getActivity()).showWebViewFragment2(teacherList.get(position).getUrl(), teacherList.get(position).getTitle());
 			}
 			
 		});
@@ -105,9 +136,6 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 			
 			@Override
 			public void onGetVo1(Vo1Par vo1Par) {
-				if (getActivity() != null) {
-					((OverviewActivity)getActivity()).setLoadingBarGone();
-				}
 				if (vo1Par != null) {
 					OveTeachersFragment.this.vo1Par = vo1Par;
 					tvSummary.setText(vo1Par.getBrief());
@@ -117,15 +145,37 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 		});
 	}
 
-	private void getList(){
-		httpUtils.getVo1List(HttpURL.SCHOOL_TEACHERS_LIST, new VoHttpUtils.OnGetVo1ListListener() {
+//	private void getList(){
+//		httpUtils.getVo1List(HttpURL.SCHOOL_TEACHERS_LIST, new VoHttpUtils.OnGetVo1ListListener() {
+//			
+//			@Override
+//			public void onGetVo1List(List<Vo1Par> vo1Pars) {
+//				if (vo1Pars != null) {
+//					teacherList = vo1Pars;
+//					gridAdapter.notifyDataSetChanged();
+//				}
+//			}
+//		});
+//	}
+	
+	private void getDepParList(final int page){
+		depParHttpUtils.getOveDepPars(page, new HomeHttpUtils.OnGetOveDepParsListener() {
 			
 			@Override
-			public void onGetVo1List(List<Vo1Par> vo1Pars) {
-				if (vo1Pars != null) {
-					teacherList = vo1Pars;
-					gridAdapter.notifyDataSetChanged();
+			public void onGetOveDepPars(List<OveDepPar> oveDepPars) {
+				
+				if (page == 1) {
+					if (getActivity() != null) {
+						((OverviewActivity)getActivity()).setLoadingBarGone();
+					}
 				}
+				if (oveDepPars != null) {
+//					models.addAll(vo2Pars);
+//					gridAdapter.notifyDataSetChanged();
+//					gridView.smoothScrollToPosition(models.size());
+				}
+				mPullRefreshGridView.onRefreshComplete();
+				
 			}
 		});
 	}
@@ -135,13 +185,13 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return teacherList.size();
+			return depPars.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
 			// TODO Auto-generated method stub
-			return teacherList.get(position);
+			return depPars.get(position);
 		}
 
 		@Override
@@ -163,8 +213,8 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 				holder = (ViewHolder)convertView.getTag();
 			}
 			
-			Vo1Par teacher = teacherList.get(position);
-			holder.tvTitle.setText(teacher.getTitle());
+			OveDepPar depPar = depPars.get(position);
+			holder.tvTitle.setText(depPar.getName());
 			
 			return convertView;
 		}
