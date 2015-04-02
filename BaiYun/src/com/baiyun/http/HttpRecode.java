@@ -13,9 +13,16 @@ package com.baiyun.http;
  * 0007	已是最新版本
  * 0008	旧密码有误
  * 0009	用户名不存在
+ * 0010	图片上传失败
+ * 0011	没有查询到结果
+ * 0012	查询到结果
  *
  */
 public class HttpRecode {
 	public static final String GET_SUCCESS = "0000";
 	public static final String GET_ERROR = "0001";
+	
+	public static final String INSERT_SUCCESS = "0002";
+	
+	public static final String SEARCH_SUCCESS = "0012";
 }
