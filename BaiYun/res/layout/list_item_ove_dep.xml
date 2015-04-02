@@ -11,9 +11,10 @@
         android:layout_height="wrap_content"
         android:background="@color/black_trans_50"
         android:ellipsize="end"
-        android:padding="4dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         android:singleLine="true"
-        android:text="李老师"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_16" />
 
@@ -21,6 +22,8 @@
         android:id="@+id/gv_picture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:background="@null"
         android:gravity="center"
         android:horizontalSpacing="2dp"
