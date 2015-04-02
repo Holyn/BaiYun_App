@@ -355,10 +355,8 @@ public class ApplyForm1Fragment extends BaseFragment{
 						
 						@Override
 						public void OnItemClick(String string, int position) {
-							System.out.println("====> string = "+string);
 							tvMajor.setText(string);
 							baseCourseId = majorPars.get(position).getId();
-							System.out.println("====> baseCourseId = "+baseCourseId);
 						}
 					});
 					majorPop.showFullScreen(rootView);
