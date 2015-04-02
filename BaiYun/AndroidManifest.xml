@@ -121,6 +121,11 @@
             android:name="com.baiyun.picturesviewer.PicturesViewPagerActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".recruit.RSearchActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        
 
         <!-- 聊天窗口, 可通过修改layout文件appkefu_activity_kfvip_chat.xml自定义窗口UI -->
         <activity
