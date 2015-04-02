@@ -3,6 +3,7 @@ package com.baiyun.activity.home;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,9 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.baiyun.activity.R;
@@ -21,10 +24,13 @@ import com.baiyun.http.HttpURL;
 import com.baiyun.httputils.HomeHttpUtils;
 import com.baiyun.httputils.VoHttpUtils;
 import com.baiyun.vo.parcelable.OveDepPar;
+import com.baiyun.vo.parcelable.OveDepTeacherPar;
 import com.baiyun.vo.parcelable.Vo1Par;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshGridView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class OveTeachersFragment extends BaseFragment implements OnClickListener{
 	private VoHttpUtils httpUtils;
@@ -34,10 +40,9 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 	private TextView tvSummary;
 	private Vo1Par vo1Par = null;
 	
-	private PullToRefreshGridView mPullRefreshGridView;
-	private GridView gridView;
+	private PullToRefreshListView pullToRefreshListView;
 	private List<OveDepPar> depPars = new ArrayList<OveDepPar>();
-	private MyGridAdapter gridAdapter;
+	private MyListAdapter listAdapter;
 	
 	private int page = 1;
 	
@@ -63,7 +68,7 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 		initView(rootView);
 		
 		getSum();
-//		getList();
+		getDepParList(page);
 	}
 	
 	@Override
@@ -84,34 +89,23 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 		llSummary = (LinearLayout)rootView.findViewById(R.id.ll_summary);
 		tvSummary = (TextView)rootView.findViewById(R.id.tv_summary);
 		
-		mPullRefreshGridView = (PullToRefreshGridView)rootView.findViewById(R.id.reflesh_gridview);
-		mPullRefreshGridView.setMode(Mode.PULL_FROM_END);
+		pullToRefreshListView= (PullToRefreshListView)rootView.findViewById(R.id.reflesh_listview);
+		pullToRefreshListView.setMode(Mode.PULL_FROM_END);
 		
-		gridView = mPullRefreshGridView.getRefreshableView();
-		gridAdapter = new MyGridAdapter();
-		gridView.setAdapter(gridAdapter);
+		listAdapter = new MyListAdapter();
+		pullToRefreshListView.getRefreshableView().setAdapter(listAdapter);
 		
-		mPullRefreshGridView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<GridView>() {
+		pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
 
 			@Override
-			public void onRefresh(PullToRefreshBase<GridView> refreshView) {
+			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
 				String label = DateUtils.formatDateTime(getActivity(), System.currentTimeMillis(),
 						DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
 				// Update the LastUpdatedLabel
-				mPullRefreshGridView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+				pullToRefreshListView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
 				
 				page++;
 				getDepParList(page);
-			}
-			
-		});
-		
-		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				
-//				((OverviewActivity)getActivity()).showWebViewFragment2(teacherList.get(position).getUrl(), teacherList.get(position).getTitle());
 			}
 			
 		});
@@ -144,19 +138,6 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 			}
 		});
 	}
-
-//	private void getList(){
-//		httpUtils.getVo1List(HttpURL.SCHOOL_TEACHERS_LIST, new VoHttpUtils.OnGetVo1ListListener() {
-//			
-//			@Override
-//			public void onGetVo1List(List<Vo1Par> vo1Pars) {
-//				if (vo1Pars != null) {
-//					teacherList = vo1Pars;
-//					gridAdapter.notifyDataSetChanged();
-//				}
-//			}
-//		});
-//	}
 	
 	private void getDepParList(final int page){
 		depParHttpUtils.getOveDepPars(page, new HomeHttpUtils.OnGetOveDepParsListener() {
@@ -170,33 +151,29 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 					}
 				}
 				if (oveDepPars != null) {
-//					models.addAll(vo2Pars);
-//					gridAdapter.notifyDataSetChanged();
-//					gridView.smoothScrollToPosition(models.size());
+					depPars.addAll(oveDepPars);
+					listAdapter.notifyDataSetChanged();
 				}
-				mPullRefreshGridView.onRefreshComplete();
+				pullToRefreshListView.onRefreshComplete();
 				
 			}
 		});
 	}
 	
-	private class MyGridAdapter extends BaseAdapter{
+	private class MyListAdapter extends BaseAdapter{
 
 		@Override
 		public int getCount() {
-			// TODO Auto-generated method stub
 			return depPars.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			// TODO Auto-generated method stub
 			return depPars.get(position);
 		}
 
 		@Override
 		public long getItemId(int position) {
-			// TODO Auto-generated method stub
 			return position;
 		}
 
@@ -205,8 +182,9 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 			ViewHolder holder;
 			if (convertView == null) {
 				holder = new ViewHolder();
-				convertView = LayoutInflater.from(getActivity()).inflate(R.layout.grid_item_teacher, null);
+				convertView = LayoutInflater.from(getActivity()).inflate(R.layout.list_item_ove_dep, null);
 				holder.tvTitle = (TextView)convertView.findViewById(R.id.tv_title);
+				holder.gridView = (GridView)convertView.findViewById(R.id.gv_picture);
 				
 				convertView.setTag(holder);
 			}else {
@@ -216,11 +194,68 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 			OveDepPar depPar = depPars.get(position);
 			holder.tvTitle.setText(depPar.getName());
 			
+			MyGridAdapter gridAdapter = new MyGridAdapter(getActivity(), depPar.getgAppContentPicViewList());
+			holder.gridView.setAdapter(gridAdapter);
+			
 			return convertView;
 		}
 		
 		public final class ViewHolder{
 			TextView tvTitle;
+			GridView gridView;
+		}
+		
+	}
+	
+	private class MyGridAdapter extends BaseAdapter{
+		private Context context;
+		private List<OveDepTeacherPar> teacherPars;
+		
+		public MyGridAdapter(Context context, List<OveDepTeacherPar> teacherPars) {
+			this.context = context;
+			this.teacherPars = teacherPars;
+		}
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return teacherPars.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			return teacherPars.get(position);
+		}
+
+		@Override
+		public long getItemId(int position) {
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			ViewHolder holder;
+			if (convertView == null) {
+				holder = new ViewHolder();
+				convertView = LayoutInflater.from(context).inflate(R.layout.grid_item_ove_dep_teacher, null);
+				holder.tvTitle = (TextView)convertView.findViewById(R.id.tv_name);
+				holder.ivPicture = (ImageView)convertView.findViewById(R.id.iv_picture);
+				
+				convertView.setTag(holder);
+			}else {
+				holder = (ViewHolder)convertView.getTag();
+			}
+			
+			OveDepTeacherPar teacherPar = teacherPars.get(position);
+			holder.tvTitle.setText(teacherPar.getTitle());
+			ImageLoader.getInstance().displayImage(teacherPar.getPicUrl(), holder.ivPicture);
+			
+			return convertView;
+		}
+		
+		public final class ViewHolder{
+			TextView tvTitle;
+			ImageView ivPicture;
 		}
 		
 	}
