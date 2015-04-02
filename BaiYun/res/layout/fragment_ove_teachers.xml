@@ -49,9 +49,9 @@
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_16" />
 
-    <com.handmark.pulltorefresh.library.PullToRefreshGridView
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/reflesh_gridview"
+        android:id="@+id/reflesh_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@null"

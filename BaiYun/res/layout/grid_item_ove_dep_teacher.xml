@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.krbb.customview.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_light_gray_70_pre" >
+
+    <ImageView
+        android:id="@+id/iv_picture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_trans_50"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:padding="4dp"
+        android:singleLine="true"
+        android:text="李老师"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16" />
+
+</com.krbb.customview.SquareLayout>
