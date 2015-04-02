@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -18,7 +19,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.baiyun.activity.R;
-import com.baiyun.activity.life.LModelActivity;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.http.HttpURL;
 import com.baiyun.httputils.HomeHttpUtils;
@@ -27,7 +27,6 @@ import com.baiyun.vo.parcelable.OveDepPar;
 import com.baiyun.vo.parcelable.OveDepTeacherPar;
 import com.baiyun.vo.parcelable.Vo1Par;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshGridView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -144,7 +143,6 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 			
 			@Override
 			public void onGetOveDepPars(List<OveDepPar> oveDepPars) {
-				
 				if (page == 1) {
 					if (getActivity() != null) {
 						((OverviewActivity)getActivity()).setLoadingBarGone();
@@ -194,8 +192,19 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 			OveDepPar depPar = depPars.get(position);
 			holder.tvTitle.setText(depPar.getName());
 			
-			MyGridAdapter gridAdapter = new MyGridAdapter(getActivity(), depPar.getgAppContentPicViewList());
+			final List<OveDepTeacherPar> teacherPars = depPar.getgAppContentPicViewList();
+			
+			MyGridAdapter gridAdapter = new MyGridAdapter(getActivity(), teacherPars);
 			holder.gridView.setAdapter(gridAdapter);
+			holder.gridView.setOnItemClickListener(new OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+					OveDepTeacherPar teacherPar = teacherPars.get(position);
+					((OverviewActivity)getActivity()).showWebViewFragment2(teacherPar.getContentUrl(), teacherPar.getTitle());
+				}
+				
+			});
 			
 			return convertView;
 		}
@@ -248,7 +257,8 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 			
 			OveDepTeacherPar teacherPar = teacherPars.get(position);
 			holder.tvTitle.setText(teacherPar.getTitle());
-			ImageLoader.getInstance().displayImage(teacherPar.getPicUrl(), holder.ivPicture);
+			String picUrl = HttpURL.HOST+teacherPar.getPicUrl().substring(1);
+			ImageLoader.getInstance().displayImage(picUrl, holder.ivPicture);
 			
 			return convertView;
 		}
