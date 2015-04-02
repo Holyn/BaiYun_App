@@ -142,7 +142,7 @@ public class HomeHttpUtils extends HttpUtils{
 	
 	public void getOveDepPars(int page, final OnGetOveDepParsListener onGetOveDepParsListener){
 		String pageStr = String.valueOf(page);
-		String url = HttpURL.SCHOOL_TEACHERS_SUM+pageStr;
+		String url = HttpURL.SCHOOL_TEACHERS_LIST+pageStr;
 		send(HttpMethod.GET, url, new RequestCallBack<String>() {
 			
 			@Override

@@ -8,7 +8,9 @@ import android.widget.Toast;
 
 import com.baiyun.http.HttpRecode;
 import com.baiyun.http.HttpURL;
+import com.baiyun.vo.parcelable.AdmissionResultPar;
 import com.baiyun.vo.parcelable.ApplyPar;
+import com.baiyun.vo.parcelable.HomeCooSumPar;
 import com.baiyun.vo.parcelable.MajorPar;
 import com.baiyun.vo.parcelable.RecruitTypePar;
 import com.google.gson.Gson;
@@ -45,6 +47,14 @@ public class RecruitHttpUtils  extends HttpUtils{
 	
 	public interface OnPostForm1Listener{
 		public void OnPostForm1(boolean isSuccess);
+	}
+	
+	public interface OnPostForm2Listener{
+		public void OnPostForm2(boolean isSuccess);
+	}
+	
+	public interface OnResultCheckListener{
+		public void onResultCheck(AdmissionResultPar resultPar);
 	}
 	
 	public void getTypeList(final OnGetTypeListListener onGetTypeListListener) {
@@ -173,16 +183,99 @@ public class RecruitHttpUtils  extends HttpUtils{
 
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				System.out.println(responseInfo.result);
-				onPostForm1Listener.OnPostForm1(true);
+				try {
+					JsonParser parser = new JsonParser();
+					JsonObject jsonObject = parser.parse(responseInfo.result).getAsJsonObject();
+
+					JsonElement recodeEle = jsonObject.get("recode");
+					if (recodeEle.isJsonPrimitive()) {
+						String recode = recodeEle.getAsString();
+						if (recode.equalsIgnoreCase(HttpRecode.INSERT_SUCCESS)) {
+							onPostForm1Listener.OnPostForm1(true);
+						}
+					}
+				} catch (Exception e) {
+					onPostForm1Listener.OnPostForm1(false);
+				}
+//				System.out.println(responseInfo.result);
 			}
 
 			@Override
 			public void onFailure(HttpException error, String msg) {
 				onPostForm1Listener.OnPostForm1(false);
-				System.out.println(error);
-				System.out.println(msg);
 			}
+		});
+	}
+	
+	public void postForm2(RequestParams params, final OnPostForm2Listener onPostForm2Listener){
+		send(HttpMethod.POST, HttpURL.APPLY_FORM_2, params, new RequestCallBack<String>() {
+
+			@Override
+			public void onStart() {
+				// TODO Auto-generated method stub
+				super.onStart();
+			}
+
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				try {
+					JsonParser parser = new JsonParser();
+					JsonObject jsonObject = parser.parse(responseInfo.result).getAsJsonObject();
+
+					JsonElement recodeEle = jsonObject.get("recode");
+					if (recodeEle.isJsonPrimitive()) {
+						String recode = recodeEle.getAsString();
+						if (recode.equalsIgnoreCase(HttpRecode.INSERT_SUCCESS)) {
+							onPostForm2Listener.OnPostForm2(true);
+						}
+					}
+				} catch (Exception e) {
+					onPostForm2Listener.OnPostForm2(false);
+				}
+//				System.out.println(responseInfo.result);
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				onPostForm2Listener.OnPostForm2(false);
+			}
+		});
+	}
+	
+	public void resultCheck(String name, String phone, final OnResultCheckListener onResultCheckListener) {
+		String url = HttpURL.RECRUIT_RESULT_CHECK+name+HttpURL.TELEPHONE_PARAM+phone;
+		send(HttpMethod.GET, url, new RequestCallBack<String>() {
+
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				AdmissionResultPar resultPar = null;
+				try {
+					JsonParser parser = new JsonParser();
+					JsonObject jsonObject = parser.parse(responseInfo.result).getAsJsonObject();
+
+					JsonElement recodeEle = jsonObject.get("recode");
+					if (recodeEle.isJsonPrimitive()) {
+						String recode = recodeEle.getAsString();
+						if (recode.equalsIgnoreCase(HttpRecode.SEARCH_SUCCESS)) {
+							JsonElement dataEle = jsonObject.get("data");
+							if (dataEle.isJsonObject()) {
+								resultPar = new Gson().fromJson(dataEle, AdmissionResultPar.class);
+							}
+						}
+					}
+				} catch (Exception e) {
+					resultPar = null;
+					System.out.println(e);
+				}		
+				onResultCheckListener.onResultCheck(resultPar);
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				onResultCheckListener.onResultCheck(null);
+				Toast.makeText(context, "数据请求失败", Toast.LENGTH_SHORT).show();
+			}
+			
 		});
 	}
 }
