@@ -22,6 +22,7 @@
     <color name="black_trans_100">#00000000</color>
     <color name="blue_actionbar_top">#0090e6</color>
     <color name="blue_tab_bottom">#5b8fdb</color>
+    <color name="black_trans_25">#40000000</color>
     <color name="black_trans_50">#80000000</color>
     <color name="black_trans_70">#b4000000</color>
     <color name="black_trans_80">#cc000000</color>
