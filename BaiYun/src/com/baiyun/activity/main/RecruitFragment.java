@@ -1,24 +1,31 @@
 package com.baiyun.activity.main;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.baiyun.activity.R;
 import com.baiyun.activity.recruit.ApplyFragment;
+import com.baiyun.activity.recruit.RSearchActivity;
 import com.baiyun.activity.recruit.RecruitTypeFragment;
 import com.baiyun.activity.recruit.EnterFragment;
 import com.baiyun.activity.recruit.TuitionFragment;
 import com.baiyun.base.BaseFragment;
+import com.baiyun.kefu.KeFuManager;
 
 public class RecruitFragment extends BaseFragment{
 	private RadioButton rb_1,rb_2,rb_3,rb_4;
 	private TextView tv_1,tv_2,tv_3,tv_4;
+	
+	private Button btnConsult;
 	private TextView tv_item_title;
+	private Button btnSearch;
 	
 	private FragmentManager fragmentManager;
 	private Fragment curFragment;
@@ -70,6 +77,24 @@ public class RecruitFragment extends BaseFragment{
 		tv_4 = (TextView)rootView.findViewById(R.id.tv_apply);
 		
 		tv_item_title = (TextView)rootView.findViewById(R.id.tv_item_title);
+		btnConsult = (Button)rootView.findViewById(R.id.btn_consult);
+		btnConsult.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				new KeFuManager(getActivity()).startChat();
+			}
+		});
+		
+		btnSearch = (Button)rootView.findViewById(R.id.btn_search);
+		btnSearch.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(), RSearchActivity.class);
+				getActivity().startActivity(intent);
+			}
+		});
 		
 		initRadioButtonListener();
 	}
