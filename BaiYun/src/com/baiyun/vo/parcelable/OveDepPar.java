@@ -12,6 +12,7 @@ public class OveDepPar implements Parcelable{
 	private String creater;
 	private String sortOrder;
 	private List<OveDepTeacherPar> gAppContentPicViewList;
+	private String createTime;
 	
 	@Override
 	public int describeContents() {
@@ -26,6 +27,7 @@ public class OveDepPar implements Parcelable{
 		dest.writeString(creater);
 		dest.writeString(sortOrder);
 		dest.writeList(gAppContentPicViewList);
+		dest.writeString(createTime);
 	}
 	
 	public static final Parcelable.Creator<OveDepPar> CREATOR = new Parcelable.Creator<OveDepPar>() {
@@ -37,6 +39,7 @@ public class OveDepPar implements Parcelable{
 			par.creater = in.readString();
 			par.sortOrder = in.readString();
 			par.gAppContentPicViewList = in.readArrayList((List.class.getClassLoader()));
+			par.createTime = in.readString();
 			return par;
 		}
 
@@ -81,6 +84,11 @@ public class OveDepPar implements Parcelable{
 	public void setgAppContentPicViewList(List<OveDepTeacherPar> gAppContentPicViewList) {
 		this.gAppContentPicViewList = gAppContentPicViewList;
 	}
-	
+	public String getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
 	
 }
