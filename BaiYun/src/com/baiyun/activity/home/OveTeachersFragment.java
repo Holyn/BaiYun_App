@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -257,8 +258,11 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 			
 			OveDepTeacherPar teacherPar = teacherPars.get(position);
 			holder.tvTitle.setText(teacherPar.getTitle());
-			String picUrl = HttpURL.HOST+teacherPar.getPicUrl().substring(1);
-			ImageLoader.getInstance().displayImage(picUrl, holder.ivPicture);
+			String urlLast = teacherPar.getPicUrl();
+			if (!TextUtils.isEmpty(urlLast)) {
+				String picUrl = HttpURL.HOST+urlLast.substring(1);
+				ImageLoader.getInstance().displayImage(picUrl, holder.ivPicture);
+			}
 			
 			return convertView;
 		}
