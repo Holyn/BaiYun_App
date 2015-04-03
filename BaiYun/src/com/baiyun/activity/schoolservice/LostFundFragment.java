@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,12 @@ import android.widget.TextView;
 
 import com.baiyun.activity.R;
 import com.baiyun.base.BaseFragment;
+import com.baiyun.custom.CommonAdapter;
 import com.baiyun.http.HttpURL;
 import com.baiyun.httputils.VoHttpUtils;
+import com.baiyun.vo.parcelable.LostPar;
 import com.baiyun.vo.parcelable.Vo1Par;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class LostFundFragment extends BaseFragment{
 	private VoHttpUtils httpUtils;
@@ -130,6 +134,26 @@ public class LostFundFragment extends BaseFragment{
 			public TextView tvTitle;
 		}
 
+	}
+	
+	private class MyGridAdapter extends CommonAdapter<LostPar>{
+
+		public MyGridAdapter(Context context, List<LostPar> mDatas, int itemLayoutId) {
+			super(context, mDatas, R.layout.grid_item_imageview);
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		public void convert(com.baiyun.custom.ViewHolder helper, LostPar item) {
+			// TODO Auto-generated method stub
+			
+			String urlLast = item.getPicUrl();
+			if (!TextUtils.isEmpty(urlLast)) {
+				String picUrl = HttpURL.HOST+urlLast.substring(1);
+				helper.setImageByUrl(R.id.iv_picture, picUrl);
+			}
+		}
+		
 	}
 
 }
