@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.baiyun.activity.R;
+import com.baiyun.activity.schoolservice.SLostFoundActivity;
 import com.baiyun.activity.schoolservice.SNoticeActivity;
 import com.baiyun.activity.schoolservice.SPhoneActivity;
 import com.baiyun.base.BaseFragment;
@@ -108,7 +109,8 @@ public class SchoolServiceFragment extends BaseFragment {
 
 			@Override
 			public void onClick(View v) {
-
+				Intent intent = new Intent(getActivity(), SLostFoundActivity.class);
+				getActivity().startActivity(intent);
 			}
 		});
 
