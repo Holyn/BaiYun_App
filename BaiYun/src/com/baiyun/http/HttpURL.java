@@ -222,6 +222,12 @@ public class HttpURL {
 	public final static String S_NOTICE = URL_PRE + "serviceType?type=31&limit=10&page=";
 	
 	/**
+	 * 校内服务--失物招领
+	 * http://119.145.135.181/GZBYSystem/app/getLostAndFound?userName=
+	 */
+	public final static String S_LOST_FOUND = URL_PRE + "/getLostAndFound";
+	
+	/**
 	 * 校内服务--办公电话
 	 * http://119.145.135.181/GZBYSystem/app/serviceType?type=38
 	 */
