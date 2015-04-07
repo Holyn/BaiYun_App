@@ -110,6 +110,10 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".schoolservice.SLostFoundActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".schoolservice.SPhoneActivity"
             android:screenOrientation="portrait" >
         </activity>
