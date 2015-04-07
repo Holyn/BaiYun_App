@@ -20,10 +20,10 @@ public class SNoticeActivity extends BaseFragmentActivity{
 		setBackPressEnabled(true);
 		fragmentManager = getSupportFragmentManager();
 		
-		showLModelFragment();
+		showNoticeFragment();
 	}
 	
-	private void showLModelFragment(){
+	private void showNoticeFragment(){
 		if (noticeFragment == null) {
 			noticeFragment = SNoticeFragment.newInstance();
 		}
