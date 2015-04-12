@@ -110,6 +110,9 @@ public class RecruitFragment extends BaseFragment{
 					rb_3.setChecked(false);
 					rb_4.setChecked(false);
 					
+					btnConsult.setVisibility(View.GONE);
+					btnSearch.setVisibility(View.GONE);
+					
 					tv_1.setTextColor(getActivity().getResources().getColor(R.color.actionbar_bg));
 					tv_item_title.setText("减免学费申请指南");
 					
@@ -131,6 +134,9 @@ public class RecruitFragment extends BaseFragment{
 					rb_3.setChecked(false);
 					rb_4.setChecked(false);
 					
+					btnConsult.setVisibility(View.GONE);
+					btnSearch.setVisibility(View.GONE);
+					
 					tv_2.setTextColor(getActivity().getResources().getColor(R.color.actionbar_bg));
 					tv_item_title.setText("新生入学须知");
 					
@@ -151,6 +157,9 @@ public class RecruitFragment extends BaseFragment{
 					rb_3.setChecked(true);
 					rb_4.setChecked(false);
 					
+					btnConsult.setVisibility(View.GONE);
+					btnSearch.setVisibility(View.GONE);
+					
 					tv_3.setTextColor(getActivity().getResources().getColor(R.color.actionbar_bg));
 					tv_item_title.setText("招生层次");
 					
@@ -170,6 +179,9 @@ public class RecruitFragment extends BaseFragment{
 					rb_2.setChecked(false);
 					rb_3.setChecked(false);
 					rb_4.setChecked(true);
+					
+					btnConsult.setVisibility(View.VISIBLE);
+					btnSearch.setVisibility(View.VISIBLE);
 					
 					tv_4.setTextColor(getActivity().getResources().getColor(R.color.actionbar_bg));
 					tv_item_title.setText("网上报名");
