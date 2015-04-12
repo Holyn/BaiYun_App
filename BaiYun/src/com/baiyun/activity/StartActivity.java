@@ -21,9 +21,18 @@ public class StartActivity extends BaseFragmentActivity implements StartFragment
 		
 		setTopBarEnable(false);//关闭头部的导航栏
 		
-		showStartFragment();
+//		showStartFragment();
 		
 		appSettingSP = AppSettingSP.getSingleInstance(this);
+		
+		if (appSettingSP.getIsFirst()) {
+			showGuideFragment();
+			appSettingSP.setIsFirst(false);
+		}else {
+			Intent intent = new Intent(StartActivity.this, MainActivity.class);
+			startActivity(intent);
+			this.finish();
+		}
 		
 	}
 
