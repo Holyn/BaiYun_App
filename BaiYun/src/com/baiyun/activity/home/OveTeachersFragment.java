@@ -191,7 +191,7 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 			}
 			
 			OveDepPar depPar = depPars.get(position);
-			holder.tvTitle.setText(depPar.getName());
+			holder.tvTitle.setText(depPar.getName()+":");
 			
 			final List<OveDepTeacherPar> teacherPars = depPar.getgAppContentPicViewList();
 			
