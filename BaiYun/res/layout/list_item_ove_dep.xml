@@ -8,14 +8,14 @@
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black_trans_50"
+        android:layout_height="34dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_textview_1"
         android:ellipsize="end"
         android:paddingLeft="10dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
+        android:layout_marginBottom="2dp"
         android:singleLine="true"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_size_16" />
 
     <GridView

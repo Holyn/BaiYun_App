@@ -120,7 +120,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:background="@color/grey_divide"
         android:paddingBottom="4dp"
         android:paddingTop="4dp" >
@@ -128,18 +128,17 @@
         <Button
             android:id="@+id/btn_consult"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="26dp"
             android:gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
             android:background="@drawable/selector_btn_submit"
-            android:paddingBottom="4dp"
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
-            android:paddingTop="4dp"
-            android:text="招生咨询"
+            android:text="咨询"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_item_title"
@@ -153,19 +152,18 @@
         <Button
             android:id="@+id/btn_search"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="26dp"
             android:gravity="center"
             android:layout_marginRight="10dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/selector_btn_submit"
-            android:paddingBottom="4dp"
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
-            android:paddingTop="4dp"
-            android:text="录取查询"
+            android:text="查询"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <FrameLayout
