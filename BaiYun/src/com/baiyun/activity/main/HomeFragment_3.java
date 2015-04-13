@@ -20,6 +20,7 @@ import com.baiyun.activity.home.VideoActivity;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.httputils.HomeHttpUtils;
 import com.baiyun.kefu.KeFuManager;
+import com.baiyun.util.ScreenUtil;
 
 public class HomeFragment_3 extends BaseFragment{
 	private HomeHttpUtils httpUtils;
@@ -43,8 +44,12 @@ public class HomeFragment_3 extends BaseFragment{
 	
 	@Override
 	public int getLayoutId() {
-		// TODO Auto-generated method stub
-		return R.layout.fragment_home_3;
+		int height = ScreenUtil.getScreenHeight(getActivity());
+		if (height > 800) {
+			return R.layout.fragment_home_3;
+		}else {
+			return R.layout.fragment_home_3_small;
+		}
 	}
 
 	@Override

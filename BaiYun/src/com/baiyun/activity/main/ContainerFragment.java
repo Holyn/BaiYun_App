@@ -188,6 +188,15 @@ public class ContainerFragment extends BaseFragment{
             } else {  
                 transaction.hide(curFragment).show(nextFragment).commit(); // 隐藏当前的fragment，显示下一个  
             } 
+			
+			/**
+			 * remove了对应的Fragment之后，那么下次切换到这个Fragment就会重新OnResum，不可见是OnPause
+			 */
+			if (curFragment == recruitFragment) {
+				fragmentManager.beginTransaction().remove(curFragment).commit();
+				recruitFragment = null;
+			}
+			
 			curPosition = position;
 			curFragment = nextFragment;
 		}

@@ -1,6 +1,7 @@
 package com.baiyun.activity.main;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.baiyun.activity.MyApplication;
 import com.baiyun.activity.R;
 import com.baiyun.activity.recruit.ApplyFragment;
 import com.baiyun.activity.recruit.RSearchActivity;
@@ -20,6 +22,8 @@ import com.baiyun.base.BaseFragment;
 import com.baiyun.kefu.KeFuManager;
 
 public class RecruitFragment extends BaseFragment{
+	private MyApplication myApplication = null;
+	
 	private RadioButton rb_1,rb_2,rb_3,rb_4;
 	private TextView tv_1,tv_2,tv_3,tv_4;
 	
@@ -43,6 +47,14 @@ public class RecruitFragment extends BaseFragment{
 	public RecruitFragment() {
 		
 	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		myApplication = (MyApplication)getActivity().getApplicationContext();
+		curPosition = myApplication.getCurRecruitFragmentPosition();
+	}
 
 	@Override
 	public int getLayoutId() {
@@ -55,11 +67,58 @@ public class RecruitFragment extends BaseFragment{
 		fragmentManager = getChildFragmentManager();
 		initView(rootView);
 		
-		consultFragment = RecruitTypeFragment.newInstance();
-		curFragment = consultFragment;
+		if (curPosition == 0) {
+			rb_1.setChecked(true);
+			rb_2.setChecked(false);
+			rb_3.setChecked(false);
+			rb_4.setChecked(false);
+			tuitionFragment = TuitionFragment.newInstance();
+			curFragment = tuitionFragment;
+		}else if (curPosition == 1) {
+			rb_1.setChecked(false);
+			rb_2.setChecked(true);
+			rb_3.setChecked(false);
+			rb_4.setChecked(false);
+			enterFragment = EnterFragment.newInstance();
+			curFragment = enterFragment;
+		}else if (curPosition == 2 || curPosition == -1) {//curPosition == -1 是默认
+			rb_1.setChecked(false);
+			rb_2.setChecked(false);
+			rb_3.setChecked(true);
+			rb_4.setChecked(false);
+			consultFragment = RecruitTypeFragment.newInstance();
+			curFragment = consultFragment;
+		}else if (curPosition == 3) {
+			rb_1.setChecked(false);
+			rb_2.setChecked(false);
+			rb_3.setChecked(false);
+			rb_4.setChecked(true);
+			applyFragment = ApplyFragment.newInstance();
+			curFragment = applyFragment;
+		}
 		fragmentManager.beginTransaction().add(R.id.fl_container, curFragment).commit();
 	}
 	
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if (curPosition == 3) {
+			if (btnConsult != null) {
+				btnConsult.setVisibility(View.VISIBLE);
+			}
+		}
+	}
+
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		if (btnConsult != null) {
+			btnConsult.setVisibility(View.GONE);
+		}
+	}
+
 	private void initView(View rootView){
 		rb_1 = (RadioButton)rootView.findViewById(R.id.rb_tuition);
 		rb_2 = (RadioButton)rootView.findViewById(R.id.rb_enter);
@@ -77,7 +136,8 @@ public class RecruitFragment extends BaseFragment{
 		tv_4 = (TextView)rootView.findViewById(R.id.tv_apply);
 		
 		tv_item_title = (TextView)rootView.findViewById(R.id.tv_item_title);
-		btnConsult = (Button)rootView.findViewById(R.id.btn_consult);
+		btnConsult = ((MainActivity)getActivity()).getBtnMenu2();
+		btnConsult.setText("咨询");
 		btnConsult.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -226,8 +286,18 @@ public class RecruitFragment extends BaseFragment{
             } else {  
                 transaction.hide(curFragment).show(nextFragment).commit(); // 隐藏当前的fragment，显示下一个  
             } 
+			
+			/**
+			 * remove了对应的Fragment之后，那么下次切换到这个Fragment就会重新OnResum，不可见是OnPause
+			 */
+			if (curFragment == applyFragment) {
+				fragmentManager.beginTransaction().remove(curFragment).commit();
+				applyFragment = null;
+			}
+			
 			curPosition = position;
 			curFragment = nextFragment;
 		}
+		myApplication.setCurRecruitFragmentPosition(position);
 	}
 }
