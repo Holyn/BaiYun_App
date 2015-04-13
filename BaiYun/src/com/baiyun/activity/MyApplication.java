@@ -19,11 +19,20 @@ import android.graphics.Bitmap;
 
 public class MyApplication extends Application {
 	private String cookie = null;
+	
+	private int curRecruitFragmentPosition = -1;//记住当前打开的ContainerFragment里面对应的Fragment位置
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		initImageLoader(getApplicationContext());
+	}
+	
+	public int getCurRecruitFragmentPosition() {
+		return curRecruitFragmentPosition;
+	}
+	public void setCurRecruitFragmentPosition(int position) {
+		this.curRecruitFragmentPosition = position;
 	}
 
 	public static void initImageLoader(Context context) {
