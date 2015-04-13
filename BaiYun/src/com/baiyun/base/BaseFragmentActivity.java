@@ -2,8 +2,10 @@ package com.baiyun.base;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,6 +20,8 @@ public abstract class BaseFragmentActivity extends FragmentActivity{
 	private TextView tvTitle = null;
 	private ImageButton ibBack = null, ibTopRight = null;
 	private ImageView ivLineLeft = null, ivLineRight = null;
+	
+	private Button btnMenu2 = null;//定制多一个菜单
 	
 	public FrameLayout loadingBar;
 	
@@ -111,11 +115,41 @@ public abstract class BaseFragmentActivity extends FragmentActivity{
 		}
 	}
 	
+	/**
+	 * 默认顶部导航栏右边的第二个菜单是不可见的
+	 */
+	public void setBtnMenu2Enable(boolean isEnable){
+		if (btnMenu2 == null) {
+			btnMenu2 = (Button)findViewById(R.id.btn_menu_2);
+		}
+		if (isEnable) {
+			btnMenu2.setVisibility(View.VISIBLE);
+		}else {
+			btnMenu2.setVisibility(View.GONE);
+		}
+	}
+	
+	public void setBtnMenu2Name(String menuName) {
+		if (btnMenu2 == null) {
+			btnMenu2 = (Button)findViewById(R.id.btn_menu_2);
+		}
+		if (!TextUtils.isEmpty(menuName)) {
+			btnMenu2.setText(menuName);
+		}
+	}
+	
 	public ImageButton getTopBarRightImageButton() {
 		if (ibTopRight == null) {
 			setTopBarRightBtnEnable(true);
 		}
 		return ibTopRight;
+	}
+	
+	public Button getBtnMenu2() {
+		if (btnMenu2 == null) {
+			btnMenu2 = (Button)findViewById(R.id.btn_menu_2);
+		}
+		return btnMenu2;
 	}
 	
 	public void setLoadingBarVisible() {
