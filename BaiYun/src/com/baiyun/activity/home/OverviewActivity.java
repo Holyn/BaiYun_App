@@ -8,6 +8,7 @@ import com.baiyun.activity.webview.WebViewFragment;
 import com.baiyun.activity.webview.WebViewFragment2;
 import com.baiyun.base.BaseFragmentActivity;
 import com.baiyun.util.ui.FragmentUtil;
+import com.baiyun.vo.parcelable.OveDepTeacherPar;
 
 public class OverviewActivity extends BaseFragmentActivity{
 	private FragmentManager fragmentManager;
@@ -17,6 +18,8 @@ public class OverviewActivity extends BaseFragmentActivity{
 	private OveTeachersFragment oveTeachersFragment = null;
 	private WebViewFragment2 webViewFragment2 = null;
 	private OveEnvFragment oveEnvFragment = null;
+	
+	private OveTeachersDetailFragment teachersDetailFragment = null;
 	
 	@Override
 	public void init() {
@@ -66,5 +69,14 @@ public class OverviewActivity extends BaseFragmentActivity{
 			oveEnvFragment = OveEnvFragment.newInstance();
 		}
 		FragmentUtil.replaceAddToBack(oveEnvFragment, fragmentManager, R.id.fl_container_common);
+	}
+	
+	public void showOveTeachersDetailFragment(OveDepTeacherPar teacherPar) {
+		Bundle args = new Bundle();
+		args.putParcelable(OveTeachersDetailFragment.KEY_OveDepTeacherPar, teacherPar);
+		if (teachersDetailFragment == null) {
+			teachersDetailFragment = OveTeachersDetailFragment.newInstance();
+		}
+		FragmentUtil.replaceAddToBack(teachersDetailFragment, fragmentManager, R.id.fl_container_common, args);
 	}
 }

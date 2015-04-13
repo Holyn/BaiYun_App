@@ -202,7 +202,7 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 					OveDepTeacherPar teacherPar = teacherPars.get(position);
-					((OverviewActivity)getActivity()).showWebViewFragment2(teacherPar.getContentUrl(), teacherPar.getTitle());
+					((OverviewActivity)getActivity()).showOveTeachersDetailFragment(teacherPar);
 				}
 				
 			});
