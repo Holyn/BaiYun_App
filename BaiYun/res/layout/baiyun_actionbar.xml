@@ -16,8 +16,8 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_actionbar_back" 
-        android:visibility="gone"/>
+        android:src="@drawable/ic_actionbar_back"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/iv_actionbar_line_left"
@@ -26,40 +26,58 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/ib_actionbar_back"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_actionbar_separate_line" 
-        android:visibility="gone"/>
+        android:src="@drawable/ic_actionbar_separate_line"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/tv_actionbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="广州市白云工商技师学院"
+        android:text="白云工商技师学院"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_18" />
 
-    <ImageButton
-        android:id="@+id/ib_actionbar_right"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/selector_black_70_pre"
-        android:contentDescription="@string/app_name"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_actionbar_more"
-        android:visibility="gone"/>
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
 
-    <ImageView
-        android:id="@+id/iv_actionbar_line_right"
-        android:layout_width="wrap_content"
-        android:layout_height="22dp"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/ib_actionbar_right"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_actionbar_separate_line"
-        android:visibility="gone"/>
+        <Button
+            android:id="@+id/btn_menu_2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_black_70_pre"
+            android:contentDescription="@string/app_name"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:scaleType="centerInside"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_18"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_actionbar_line_right"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_actionbar_separate_line"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/ib_actionbar_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_black_70_pre"
+            android:contentDescription="@string/app_name"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_actionbar_more"
+            android:visibility="gone" />
+    </LinearLayout>
 
 </RelativeLayout>
