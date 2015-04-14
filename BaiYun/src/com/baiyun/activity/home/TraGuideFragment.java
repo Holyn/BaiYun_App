@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.WebSettings.ZoomDensity;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.baiyun.activity.R;
@@ -17,6 +18,8 @@ import com.baiyun.vo.parcelable.Vo1Par;
 public class TraGuideFragment extends BaseFragment{
 	private VoHttpUtils httpUtils;
 	private ProgressWebView webView;
+	
+	private ImageButton ibSearch;
 	
 	public static TraGuideFragment newInstance() {
 		return new TraGuideFragment();
@@ -49,6 +52,15 @@ public class TraGuideFragment extends BaseFragment{
 			public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
 				if (url != null && url.startsWith("http://"))
 					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+			}
+		});
+		
+		ibSearch = ((TrafficActivity)getActivity()).getTopBarRightImageButton();
+		ibSearch.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				webView.loadUrl("javascript:opentext()");
 			}
 		});
 

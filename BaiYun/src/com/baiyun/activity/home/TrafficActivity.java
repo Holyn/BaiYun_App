@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 public class TrafficActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
@@ -25,6 +26,9 @@ public class TrafficActivity extends FragmentActivity implements RadioGroup.OnCh
 	private RadioGroup rgTab;
 	private ImageButton ibBack;
 	public FrameLayout loadingBar;
+	
+	private ImageButton ibTopRight = null;
+	private ImageView ivLineRight = null;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -62,9 +66,11 @@ public class TrafficActivity extends FragmentActivity implements RadioGroup.OnCh
 		switch (checkedId) {
 		case R.id.rb_tab_1:
 			switchFragment(0);
+			setTopBarRightBtnEnable(true);
 			break;
 		case R.id.rb_tab_2:
 			switchFragment(1);
+			setTopBarRightBtnEnable(false);
 			break;
 		default:
 			break;
@@ -95,6 +101,32 @@ public class TrafficActivity extends FragmentActivity implements RadioGroup.OnCh
 			curFragment = nextFragment;
 		}
 		
+	}
+	
+	/**
+	 * 设置顶部导航栏右边的菜单是否可见，默认为可见
+	 */
+	public void setTopBarRightBtnEnable(boolean isEnable) {
+		if (ibTopRight == null) {
+			ibTopRight = (ImageButton)findViewById(R.id.ib_actionbar_right);
+		}
+		if (ivLineRight == null) {
+			ivLineRight = (ImageView)findViewById(R.id.iv_actionbar_line_right);
+		}
+		if (isEnable) {
+			ibTopRight.setVisibility(View.VISIBLE);
+			ivLineRight.setVisibility(View.VISIBLE);
+		}else {
+			ibTopRight.setVisibility(View.GONE);
+			ivLineRight.setVisibility(View.GONE);
+		}
+	}
+	
+	public ImageButton getTopBarRightImageButton() {
+		if (ibTopRight == null) {
+			setTopBarRightBtnEnable(true);
+		}
+		return ibTopRight;
 	}
 	
 	public void setLoadingBarVisible() {
