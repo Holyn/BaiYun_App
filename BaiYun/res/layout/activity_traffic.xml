@@ -40,6 +40,30 @@
             android:text="交通查询"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_18" />
+
+        <ImageView
+            android:id="@+id/iv_actionbar_line_right"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/ib_actionbar_right"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_actionbar_separate_line"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/ib_actionbar_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_black_70_pre"
+            android:contentDescription="@string/app_name"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_pageview_white_24dp"
+            android:visibility="visible" />
     </RelativeLayout>
 
     <RadioGroup
@@ -48,8 +72,8 @@
         android:layout_height="40dp"
         android:layout_below="@+id/rl_actionbar"
         android:background="@color/right_menu_bg"
-        android:orientation="horizontal"
-        android:checkedButton="@+id/rb_tab_1" >
+        android:checkedButton="@+id/rb_tab_1"
+        android:orientation="horizontal" >
 
         <RadioButton
             android:id="@+id/rb_tab_1"
