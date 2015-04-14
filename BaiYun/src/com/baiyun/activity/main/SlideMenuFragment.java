@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class SlideMenuFragment extends Fragment{
@@ -42,15 +43,15 @@ public class SlideMenuFragment extends Fragment{
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		rootView = inflater.inflate(R.layout.fragment_slide_menu, container, false);
 		
-//		Button btn = (Button)rootView.findViewById(R.id.btn);
-//		btn.setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				onSlideMenuFragmentEventListener.onSlideMenuFragmentEvent(MENU_LOGIN);
-//				
-//			}
-//		});
+		LinearLayout llInfo = (LinearLayout)rootView.findViewById(R.id.ll_info);
+		llInfo.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		RelativeLayout rlLogin = (RelativeLayout)rootView.findViewById(R.id.rl_login);
 		rlLogin.setOnClickListener(new View.OnClickListener() {
