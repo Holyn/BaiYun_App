@@ -5,107 +5,146 @@
     android:background="@color/bg"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@drawable/iv_intro_ad" />
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal" >
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/btn_intro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/selector_overview_intro" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="学校简介"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/text_size_16" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/btn_organization"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/selector_overview_organization" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="组织架构"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/text_size_16"  />
-        </LinearLayout>
-    </LinearLayout>
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:background="@drawable/iv_intro_line"
+        android:contentDescription="@string/app_name" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal" >
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical" >
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/btn_teachers"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/selector_overview_teachers" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/btn_intro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_overview_intro" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="学校简介"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_size_16" />
+            </LinearLayout>
 
             <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#3994e0" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="师资队伍"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/text_size_16" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/btn_organization"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_overview_organization" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="组织架构"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_size_16" />
+            </LinearLayout>
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#3994e0" />
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical" >
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/btn_environment"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/selector_overview_environment" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/btn_teachers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_overview_teachers" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="师资队伍"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_size_16" />
+            </LinearLayout>
 
             <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#3994e0" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="学校环境"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/text_size_16" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/btn_environment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_overview_environment" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="学校环境"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_size_16" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
