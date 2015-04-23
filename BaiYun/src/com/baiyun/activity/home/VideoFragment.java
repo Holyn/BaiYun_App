@@ -88,22 +88,24 @@ public class VideoFragment extends BaseFragment{
 	}
 	
 	private void getData(final int page){
-		httpUtils.getVideos(page, new HomeVideoHttpUtils.OnGetVideoListener() {
-			
-			@Override
-			public void onGetVideo(List<HomeVideoPar> videoPars) {
-				if (page == 1) {
-					if (getActivity() != null) {
-						((VideoActivity)getActivity()).setLoadingBarGone();
-					}
-				}
-				if (videoPars != null) {
-					videoList.addAll(videoPars);
-					listAdapter.notifyDataSetChanged();
-				}
-				refreshListView.onRefreshComplete();
-			}
-		});
+		
+//		httpUtils.getVideos("", page, new HomeVideoHttpUtils.OnGetVideoListener() {
+//			
+//			@Override
+//			public void onGetVideo(List<HomeVideoPar> videoPars) {
+//				if (page == 1) {
+//					if (getActivity() != null) {
+//						((VideoActivity)getActivity()).setLoadingBarGone();
+//					}
+//				}
+//				if (videoPars != null) {
+//					videoList.addAll(videoPars);
+//					listAdapter.notifyDataSetChanged();
+//				}
+//				refreshListView.onRefreshComplete();
+//			}
+//		});
+		
 	}
 	/**
 	 * list的点击事件
