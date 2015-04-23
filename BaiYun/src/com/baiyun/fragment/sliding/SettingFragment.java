@@ -1,6 +1,14 @@
 package com.baiyun.fragment.sliding;
 
+import java.io.File;
+
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -8,7 +16,16 @@ import android.widget.Toast;
 import com.baiyun.activity.R;
 import com.baiyun.activity.setting.SettingItemActivity;
 import com.baiyun.base.BaseFragment;
+import com.baiyun.cache.CachePath;
+import com.baiyun.custom.DialogFactory;
 import com.baiyun.custom.SlipButton;
+import com.baiyun.httputils.SlideMenuHttpUtils;
+import com.baiyun.util.SystemUtil;
+import com.baiyun.vo.parcelable.VersionPar;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
 
 public class SettingFragment extends BaseFragment{
 	private SlipButton sbChangePush;
@@ -73,7 +90,7 @@ public class SettingFragment extends BaseFragment{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				checkVersion();
 			}
 		});
 		
@@ -108,4 +125,35 @@ public class SettingFragment extends BaseFragment{
 		});
 	}
 	
+	private void checkVersion(){
+		showLoadingDialog();
+		try {
+			String curVersionName = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0).versionName;
+			final Float curVersionNameFloat = Float.parseFloat(curVersionName);
+			
+			new SlideMenuHttpUtils(getActivity()).getVersion(curVersionName, new SlideMenuHttpUtils.OnGetVersionListener() {
+				
+				@Override
+				public void onGetVersion(VersionPar versionPar) {
+					// TODO Auto-generated method stub
+					if (versionPar != null) {
+						String serVersionName = versionPar.getLatestVersion();
+						Float serVersionNameFloat = Float.parseFloat(serVersionName);
+						if (curVersionNameFloat < serVersionNameFloat) {//有新的版本
+							DialogFactory.showVersionNotice(getActivity(), versionPar);
+						}else {
+							Toast.makeText(getActivity(), "当前已是最新版本", Toast.LENGTH_SHORT).show();
+						}
+					}
+					
+					closeLoadingDialog();
+				}
+			});
+			
+			
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
