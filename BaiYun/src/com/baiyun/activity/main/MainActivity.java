@@ -2,14 +2,18 @@ package com.baiyun.activity.main;
 
 import com.baiyun.activity.R;
 import com.baiyun.base.BaseSlidingFragmentActivity;
+import com.baiyun.custom.DialogFactory;
 import com.baiyun.fragment.sliding.AboutFragment;
 import com.baiyun.fragment.sliding.HelpFragment;
 import com.baiyun.fragment.sliding.LoginFragment;
 import com.baiyun.fragment.sliding.SettingFragment;
 import com.baiyun.fragment.sliding.ToolsFragment;
+import com.baiyun.httputils.SlideMenuHttpUtils;
+import com.baiyun.vo.parcelable.VersionPar;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -30,6 +34,8 @@ public class MainActivity extends BaseSlidingFragmentActivity {
 	
 	@Override
 	public void init() {
+		checkVersionAuto();//自动检测新版本
+		
 		setTopBarTitle("广州市白云工商技师学院");
 		setTopBarRightBtnEnable(true);
         fragmentManager = getSupportFragmentManager(); 
@@ -173,5 +179,30 @@ public class MainActivity extends BaseSlidingFragmentActivity {
     	MainActivity.this.finish();
     	System.exit(0);
     }
+	
+	private void checkVersionAuto(){
+		try {
+			String curVersionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+			final Float curVersionNameFloat = Float.parseFloat(curVersionName);
+			
+			new SlideMenuHttpUtils(MainActivity.this).getVersion(curVersionName, new SlideMenuHttpUtils.OnGetVersionListener() {
+				
+				@Override
+				public void onGetVersion(VersionPar versionPar) {
+					// TODO Auto-generated method stub
+					if (versionPar != null) {
+						String serVersionName = versionPar.getLatestVersion();
+						Float serVersionNameFloat = Float.parseFloat(serVersionName);
+						if (curVersionNameFloat < serVersionNameFloat) {//有新的版本
+							DialogFactory.showVersionNotice(MainActivity.this, versionPar);
+						}
+					}
+				}
+			});
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
