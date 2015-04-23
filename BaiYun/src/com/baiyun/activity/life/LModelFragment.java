@@ -130,7 +130,7 @@ public class LModelFragment extends BaseFragment{
 				if (vo2Pars != null) {
 					models.addAll(vo2Pars);
 					gridAdapter.notifyDataSetChanged();
-					gridView.smoothScrollToPosition(models.size());
+					gridView.smoothScrollToPosition(models.size()-vo2Pars.size());
 				}
 				mPullRefreshGridView.onRefreshComplete();
 			}
