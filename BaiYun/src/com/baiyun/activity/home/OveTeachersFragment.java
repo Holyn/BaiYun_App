@@ -183,6 +183,7 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 				holder = new ViewHolder();
 				convertView = LayoutInflater.from(getActivity()).inflate(R.layout.list_item_ove_dep, null);
 				holder.tvTitle = (TextView)convertView.findViewById(R.id.tv_title);
+				holder.tvMore = (TextView)convertView.findViewById(R.id.tv_more);
 				holder.gridView = (GridView)convertView.findViewById(R.id.gv_picture);
 				
 				convertView.setTag(holder);
@@ -190,8 +191,16 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 				holder = (ViewHolder)convertView.getTag();
 			}
 			
-			OveDepPar depPar = depPars.get(position);
+			final OveDepPar depPar = depPars.get(position);
 			holder.tvTitle.setText(depPar.getName()+":");
+			holder.tvMore.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					((OverviewActivity)getActivity()).showOveTeachersGridFragment(depPar.getId());
+				}
+			});
 			
 			final List<OveDepTeacherPar> teacherPars = depPar.getgAppContentPicViewList();
 			
@@ -212,6 +221,7 @@ public class OveTeachersFragment extends BaseFragment implements OnClickListener
 		
 		public final class ViewHolder{
 			TextView tvTitle;
+			TextView tvMore;
 			GridView gridView;
 		}
 		

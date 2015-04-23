@@ -21,6 +21,8 @@ public class OverviewActivity extends BaseFragmentActivity{
 	
 	private OveTeachersDetailFragment teachersDetailFragment = null;
 	
+	private OveTeachersGridFragment teachersGridFragment = null;
+	
 	@Override
 	public void init() {
 		setTopBarTitle("学校概况");
@@ -78,5 +80,12 @@ public class OverviewActivity extends BaseFragmentActivity{
 			teachersDetailFragment = OveTeachersDetailFragment.newInstance();
 		}
 		FragmentUtil.replaceAddToBack(teachersDetailFragment, fragmentManager, R.id.fl_container_common, args);
+	}
+	
+	public void showOveTeachersGridFragment(String id) {
+		Bundle args = new Bundle();
+		args.putString(OveTeachersGridFragment.EXTRA_ID, id);
+		teachersGridFragment = OveTeachersGridFragment.newInstance();
+		FragmentUtil.replaceAddToBack(teachersGridFragment, fragmentManager, R.id.fl_container_common, args);
 	}
 }

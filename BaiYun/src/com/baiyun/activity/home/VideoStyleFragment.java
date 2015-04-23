@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.baiyun.activity.R;
+import com.baiyun.activity.webview.WebViewActiviry;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.custom.CommonAdapter;
 import com.baiyun.custom.ViewHolder;
@@ -55,6 +57,13 @@ public class VideoStyleFragment extends BaseFragment{
 		
 		((VideoActivity)getActivity()).setLoadingBarVisible();
 		getNetData(page);
+	}
+	
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		((VideoActivity)getActivity()).setTopBarTitle("视频白云");
 	}
 	
 	@Override
@@ -116,7 +125,7 @@ public class VideoStyleFragment extends BaseFragment{
 		}
 
 		@Override
-		public void convert(ViewHolder helper, HomeVideoStylePar item) {
+		public void convert(ViewHolder helper, final HomeVideoStylePar item) {
 			helper.setText(R.id.tv_title, item.getName());
 			TextView tvMore = helper.getView(R.id.tv_more);
 			tvMore.setOnClickListener(new View.OnClickListener() {
@@ -124,10 +133,10 @@ public class VideoStyleFragment extends BaseFragment{
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					
+					((VideoActivity)getActivity()).showVideoFragment(item.getId(), item.getName());
 				}
 			});
-			List<HomeVideoPar> videoPars = item.getgAppContentPicViewList();
+			final List<HomeVideoPar> videoPars = item.getgAppContentPicViewList();
 			MyGridAdapter gridAdapter = new MyGridAdapter(getActivity(), videoPars);
 			GridView gridView = helper.getView(R.id.gv_video);
 			gridView.setAdapter(gridAdapter);
@@ -135,8 +144,11 @@ public class VideoStyleFragment extends BaseFragment{
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-					// TODO Auto-generated method stub
-					
+					HomeVideoPar videoPar = videoPars.get(position);
+					Intent intent = new Intent(getActivity(), WebViewActiviry.class);
+					intent.putExtra(WebViewActiviry.KEY_WEB_VIEW_TYPE, WebViewActiviry.VIDEO);
+					intent.putExtra(WebViewActiviry.KEY_CONTENT_URL, videoPar.getContentUrl());
+					getActivity().startActivity(intent);
 				}
 			});
 			
