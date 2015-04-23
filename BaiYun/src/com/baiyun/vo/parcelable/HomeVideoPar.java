@@ -23,6 +23,12 @@ public class HomeVideoPar implements Parcelable {
 	private String picUrl;
 	private String picType;
 	private String associationId;
+	
+	private String picStoreName;
+	private String userId;
+	private String departmentId;
+	private String videotypeId;
+	
 	private String contentCreateTime;
 	private String picCreateTime;
 
@@ -53,6 +59,12 @@ public class HomeVideoPar implements Parcelable {
 		dest.writeString(picUrl);
 		dest.writeString(picType);
 		dest.writeString(associationId);
+		
+		dest.writeString(picStoreName);
+		dest.writeString(userId);
+		dest.writeString(departmentId);
+		dest.writeString(videotypeId);
+		
 		dest.writeString(contentCreateTime);
 		dest.writeString(picCreateTime);
 
@@ -80,6 +92,12 @@ public class HomeVideoPar implements Parcelable {
 			par.picUrl = in.readString();
 			par.picType = in.readString();
 			par.associationId = in.readString();
+			
+			par.picStoreName = in.readString();
+			par.userId = in.readString();
+			par.departmentId = in.readString();
+			par.videotypeId = in.readString();
+			
 			par.contentCreateTime = in.readString();
 			par.picCreateTime = in.readString();
 			return par;
@@ -256,6 +274,38 @@ public class HomeVideoPar implements Parcelable {
 
 	public void setVid(String vid) {
 		this.vid = vid;
+	}
+
+	public String getPicStoreName() {
+		return picStoreName;
+	}
+
+	public void setPicStoreName(String picStoreName) {
+		this.picStoreName = picStoreName;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
+	}
+
+	public String getVideotypeId() {
+		return videotypeId;
+	}
+
+	public void setVideotypeId(String videotypeId) {
+		this.videotypeId = videotypeId;
 	}
 
 }
