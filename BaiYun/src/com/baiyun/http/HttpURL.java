@@ -11,6 +11,7 @@ public class HttpURL {
 	/* 参数前缀 */
 	public final static String LIMIT_PARAM = "&limit=";
 	public final static String PAGE_PARAM = "&page=";
+	public final static String ID_PARAM = "&id=";
 	
 	/**
 	 * 首页-广告图片
@@ -55,6 +56,12 @@ public class HttpURL {
 	public final static String SCHOOL_TEACHERS_LIST = URL_PRE + "schoolIntroContent?type=1020&limit=10&page=";
 	
 	/**
+	 * 首页-学校概况-师资队伍-列表(更多)
+	 * http://app.byxy.com:8080/app/teacherIntro?limit=12&page=1&id=
+	 */
+	public final static String SCHOOL_TEACHERS_LIST_MORE = URL_PRE + "teacherIntro?limit=10";
+	
+	/**
 	 * 首页-学校概况-学校环境
 	 * http://app.byxy.com:8080/app/schoolIntroContent?type=103
 	 */
@@ -73,10 +80,16 @@ public class HttpURL {
 	public final static String SCHOOL_NEWS_DETAILS = URL_PRE + "schoolNewsDetails?id=";
 	
 	/**
-	 * 首页-视频白云
+	 * 首页-视频白云（类型列表，每个类型最多有3条视频）
 	 * http://app.byxy.com:8080/app/schoolVideo?limit=10&page=1
 	 */
-	public final static String SCHOOL_VIDEO = URL_PRE + "schoolVideo?limit=10&page=";
+	public final static String SCHOOL_VIDEO_STYLE = URL_PRE + "schoolVideo?limit=10&page=";
+	
+	/**
+	 * 首页-视频白云（视频列表）
+	 * http://app.byxy.com:8080/app/schoolVideoDetails?id=（3.5接口返回的视频类型id）&page=页数&limit=一页里的最多条数
+	 */
+	public final static String SCHOOL_VIDEO = URL_PRE + "schoolVideoDetails?limit=12";
 	
 	/**
 	 * 首页-系部设置
@@ -207,7 +220,7 @@ public class HttpURL {
 	 * 校园生活--榜样白云(List)
 	 * http://app.byxy.com:8080/app/schoolLifeDetails?type=26&limit=10&page=1
 	 */
-	public final static String LIFE_MODEL = URL_PRE + "schoolLifeDetails?type=26&limit=10&page=";
+	public final static String LIFE_MODEL = URL_PRE + "schoolLifeDetails?type=26&limit=12&page=";
 	
 	/**
 	 * 校园生活--服务指南
@@ -257,9 +270,9 @@ public class HttpURL {
 	 * userName=admin&password=123456&randomString=3183&mobileChannelId=1111&mobileUserId=2222
 	 */
 	public final static String PASSWORD_PARAM = "&password=";
-	public final static String RANDOM_STRING_PARAM = "&password=";
-	public final static String MOBILE_CHANNEL_ID_PARAM = "&password=";
-	public final static String MOBILE_USER_ID_PARAM = "&password=";
+	public final static String RANDOM_STRING_PARAM = "&randomString=";
+	public final static String MOBILE_CHANNEL_ID_PARAM = "&mobileChannelId=";
+	public final static String MOBILE_USER_ID_PARAM = "&mobileUserId=";
 	public final static String R_LOGIN = URL_PRE + "userLogin?userName=";
 	
 	/**
