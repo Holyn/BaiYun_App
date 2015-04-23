@@ -5,33 +5,66 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/tv_title"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="34dp"
-        android:gravity="center_vertical"
-        android:background="@drawable/bg_textview_1"
-        android:ellipsize="end"
+        android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:layout_marginBottom="2dp"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_16" />
+        android:paddingRight="10dp" >
+        
+        <View 
+            android:id="@+id/line"
+            android:layout_width="2dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:background="@color/actionbar_bg"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/line"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_mmore"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="更多>>"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
 
     <GridView
         android:id="@+id/gv_picture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:background="@null"
         android:gravity="center"
         android:horizontalSpacing="2dp"
         android:listSelector="@android:color/transparent"
         android:numColumns="3"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical"
         android:stretchMode="columnWidth"
         android:verticalSpacing="2dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/light_grey" />
 
 </LinearLayout>

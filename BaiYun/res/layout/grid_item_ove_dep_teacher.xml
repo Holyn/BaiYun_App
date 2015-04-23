@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.baiyun.custom.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/selector_light_gray_70_pre" >
+    android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/iv_picture"
+    <com.baiyun.custom.SquareLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/app_name"
-        android:scaleType="centerCrop" />
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:background="@drawable/selector_light_gray_70_pre" >
 
-    <RelativeLayout 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-            <TextView
+        <ImageView
+            android:id="@+id/iv_picture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop" />
+    </com.baiyun.custom.SquareLayout>
+
+    <TextView
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black_trans_25"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="4dp"
         android:ellipsize="end"
         android:gravity="center"
-        android:padding="4dp"
         android:singleLine="true"
-        android:text="李老师"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_size_16" />
-    </RelativeLayout>
-
-</com.baiyun.custom.SquareLayout>
+    
+</LinearLayout>
