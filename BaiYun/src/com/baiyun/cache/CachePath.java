@@ -16,7 +16,7 @@ import android.os.Environment;
  */
 public class CachePath {
 	/** 外部存储的根目录下的文件夹名称 */
-	public static final String OUT_CACHE_FILE_DIR = "yehb";
+	public static final String OUT_CACHE_FILE_DIR = "baiyun";
 	
 	/* 1）
 	 * 保存用户头像的文件夹名称，内部缓存
@@ -77,6 +77,7 @@ public class CachePath {
 		return FilePathUtil.getCacheDir(context, PICTURES);
 		
 	}
+	
 	//缓存下载的apk文件，app卸载的时候，apk跟着清除 ，使用3）
 	public static File getApkCacheDir(Context context) {
 		return FilePathUtil.getExternalFileDir(context, Environment.DIRECTORY_DOWNLOADS, "apk");
@@ -100,6 +101,10 @@ public class CachePath {
 		
 	}
 	
+	//缓存下载的apk文件，手动，外部存储，公开，不跟随app卸载而清除，使用 6）
+	public static File getApkCacheDir() {
+		return FilePathUtil.getExternalStorageDir(OUT_CACHE_FILES);
+	}
 	
 	//保存app崩溃的信息，手动，外部存储，公开，不跟随app卸载而清除，使用 6）
 	public static File getCrashFileDir() {
