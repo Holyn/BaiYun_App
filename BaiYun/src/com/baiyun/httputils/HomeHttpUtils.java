@@ -11,6 +11,7 @@ import com.baiyun.vo.parcelable.OveDepPar;
 import com.baiyun.vo.parcelable.HomeAdPar;
 import com.baiyun.vo.parcelable.HomeNewsPar;
 import com.baiyun.vo.parcelable.HomeVideoPar;
+import com.baiyun.vo.parcelable.OveDepTeacherPar;
 import com.baiyun.vo.parcelable.Vo2Par;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -44,6 +45,10 @@ public class HomeHttpUtils extends HttpUtils{
 	
 	public interface OnGetOveDepParsListener{
 		public void onGetOveDepPars(List<OveDepPar> oveDepPars);
+	}
+	
+	public interface OnGetOveDepTeacherParsListener{
+		public void onGetOveDepTeacherPars(List<OveDepTeacherPar> teacherPars);
 	}
 	
 	public void getHomeAdPar(final OnGetHomeAdParsListener onGetHomeAdParListener) {
@@ -181,6 +186,53 @@ public class HomeHttpUtils extends HttpUtils{
 			@Override
 			public void onFailure(HttpException error, String msg) {
 				onGetOveDepParsListener.onGetOveDepPars(null);
+				Toast.makeText(context, "数据请求失败", Toast.LENGTH_SHORT).show();
+			}
+			
+		});
+	}
+	
+	public void getOveDepTeacherPars(String id, int page, final OnGetOveDepTeacherParsListener depTeacherParsListener){
+		String pageStr = String.valueOf(page);
+		String url = HttpURL.SCHOOL_TEACHERS_LIST_MORE+HttpURL.PAGE_PARAM+pageStr+HttpURL.ID_PARAM+id;
+		send(HttpMethod.GET, url, new RequestCallBack<String>() {
+			
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				List<OveDepTeacherPar> teacherPars = null;
+				try {
+					JsonParser parser = new JsonParser();
+					JsonObject jsonObject = parser.parse(responseInfo.result).getAsJsonObject();
+
+					JsonElement recodeEle = jsonObject.get("recode");
+					if (recodeEle.isJsonPrimitive()) {
+						String recode = recodeEle.getAsString();
+						if (recode.equalsIgnoreCase(HttpRecode.GET_SUCCESS)) {
+							JsonElement dataEle = jsonObject.get("data");
+							if (dataEle.isJsonObject()) {
+								jsonObject = dataEle.getAsJsonObject();
+//								int total = jsonObject.get("total").getAsInt();
+								JsonElement itemsEle = jsonObject.get("items");
+								if (itemsEle.isJsonArray()) {
+									JsonArray jsonArray = itemsEle.getAsJsonArray();
+									java.lang.reflect.Type type = new TypeToken<List<OveDepTeacherPar>>() {}.getType();
+									teacherPars = new Gson().fromJson(jsonArray.toString(), type);
+								}
+							}
+						}else if (recode.equalsIgnoreCase(HttpRecode.GET_ERROR)) {
+							Toast.makeText(context, "无更多数据", Toast.LENGTH_SHORT).show();
+						}
+					}
+				} catch (Exception e) {
+					teacherPars = null;
+					System.out.println(e);
+				}
+				depTeacherParsListener.onGetOveDepTeacherPars(teacherPars);
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				depTeacherParsListener.onGetOveDepTeacherPars(null);
 				Toast.makeText(context, "数据请求失败", Toast.LENGTH_SHORT).show();
 			}
 			
