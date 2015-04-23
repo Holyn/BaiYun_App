@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/app_name"
+            android:src="@drawable/iv_header_default_2"
             android:scaleType="centerCrop" />
     </com.baiyun.custom.SquareLayout>
 

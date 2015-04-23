@@ -5,6 +5,8 @@
     android:id="@+id/ll_refresh_listview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
+    android:background="@color/light_grey"
     android:orientation="vertical" >
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
@@ -13,7 +15,7 @@
         android:layout_height="match_parent"
         android:cacheColorHint="#00000000"
         android:divider="@color/light_grey"
-        android:dividerHeight="0.5dp"
+        android:dividerHeight="8dp"
         android:fadingEdge="none"
         android:fastScrollEnabled="false"
         android:headerDividersEnabled="false"

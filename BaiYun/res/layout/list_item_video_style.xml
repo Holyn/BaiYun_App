@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" >
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp" >
         
         <View 
             android:id="@+id/line"
@@ -44,27 +45,16 @@
     </RelativeLayout>
 
     <GridView
-        android:id="@+id/gv_picture"
+        android:id="@+id/gv_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@null"
         android:gravity="center"
         android:horizontalSpacing="2dp"
         android:listSelector="@android:color/transparent"
-        android:numColumns="3"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:numColumns="2"
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical"
         android:stretchMode="columnWidth"
         android:verticalSpacing="2dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/light_grey" />
-
 </LinearLayout>
