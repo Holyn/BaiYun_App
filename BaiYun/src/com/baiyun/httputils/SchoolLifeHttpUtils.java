@@ -102,7 +102,7 @@ public class SchoolLifeHttpUtils extends HttpUtils{
 		});
 	}
 
-	public void getNewsList(String id, int page, final onGetNewsListListener onGetNewsListListener){
+	public void getNewsList(String id, final int page, final onGetNewsListListener onGetNewsListListener){
 		String pageStr = String.valueOf(page);
 		String url = HttpURL.LIFE_NEWS_LIST+id+HttpURL.PAGE_PARAM+pageStr;
 		send(HttpMethod.GET, url, new RequestCallBack<String>() {
@@ -136,6 +136,13 @@ public class SchoolLifeHttpUtils extends HttpUtils{
 				} catch (Exception e) {
 					newsPars = null;
 					System.out.println(e);
+				}
+				if (newsPars == null) {
+					if (page == 1) {
+						Toast.makeText(context, "服务器无数据", Toast.LENGTH_SHORT).show();
+					}else if (page > 1) {
+						Toast.makeText(context, "没有更多数据", Toast.LENGTH_SHORT).show();
+					}
 				}
 				onGetNewsListListener.onGetNewsList(newsPars);
 			}
@@ -189,7 +196,7 @@ public class SchoolLifeHttpUtils extends HttpUtils{
 		});
 	}
 	
-	public void getAssociationNews(String id, int page, final onGetAssociationNewsListener associationNewsListener){
+	public void getAssociationNews(String id, final int page, final onGetAssociationNewsListener associationNewsListener){
 		String pageStr = String.valueOf(page);
 		String url = HttpURL.LIFE_ASSOCIATION_NEWS+id+HttpURL.PAGE_PARAM+pageStr;
 		send(HttpMethod.GET, url, new RequestCallBack<String>() {
@@ -213,11 +220,19 @@ public class SchoolLifeHttpUtils extends HttpUtils{
 								associationNewsPars = new Gson().fromJson(jsonArray.toString(), type);
 							}
 						}else if (recode.equalsIgnoreCase(HttpRecode.GET_ERROR)) {
-							Toast.makeText(context, "无更多数据", Toast.LENGTH_SHORT).show();
+							Toast.makeText(context, "返回数据失败", Toast.LENGTH_SHORT).show();
+						}
+					}
+					if (associationNewsPars == null) {
+						if (page == 1) {
+							Toast.makeText(context, "服务器无数据", Toast.LENGTH_SHORT).show();
+						}else if (page > 1) {
+							Toast.makeText(context, "没有更多数据", Toast.LENGTH_SHORT).show();
 						}
 					}
 				} catch (Exception e) {
 					associationNewsPars = null;
+					Toast.makeText(context, "返回数据失败", Toast.LENGTH_SHORT).show();
 					System.out.println(e);
 				}
 				associationNewsListener.onGetAssociationNews(associationNewsPars);
