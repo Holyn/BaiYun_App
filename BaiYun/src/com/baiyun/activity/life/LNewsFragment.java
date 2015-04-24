@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +27,14 @@ import com.baiyun.activity.R;
 import com.baiyun.base.BaseAdAdapter;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.http.HttpURL;
+import com.baiyun.httputils.HomeNewsHttpUtils;
 import com.baiyun.httputils.SchoolLifeHttpUtils;
+import com.baiyun.vo.parcelable.HomeNewsPar;
 import com.baiyun.vo.parcelable.LNewsPar;
 import com.baiyun.vo.parcelable.VoPicPar;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class LNewsFragment extends BaseFragment{
@@ -47,9 +53,9 @@ public class LNewsFragment extends BaseFragment{
 
 	private ScheduledExecutorService scheduledExecutorService;// 控制viewpager自动滑动
 	private int currentItem = 0; // 当前图片的索引号
-
 	/* headerView 结束 */
 	
+	private PullToRefreshListView refreshListView;
 	private ListView listView;
 	private ListViewAdapter adapter;
 	private List<LNewsPar> newsList = new ArrayList<LNewsPar>();
@@ -67,13 +73,14 @@ public class LNewsFragment extends BaseFragment{
 	@Override
 	public int getLayoutId() {
 		// TODO Auto-generated method stub
-		return R.layout.listview_common;
+		return R.layout.pull_to_refresh_listview;
 	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		page = 1;
 		httpUtils = new SchoolLifeHttpUtils(getActivity());
 		newsId = getArguments().getString(LNewsActivity.NEWS_ID_VALUE);
 	}
@@ -139,11 +146,28 @@ public class LNewsFragment extends BaseFragment{
 	}
 	
 	private void initListView(View rootView) {
-		listView = (ListView) rootView.findViewById(R.id.listview);
+		refreshListView = (PullToRefreshListView)rootView.findViewById(R.id.refresh_listview);
+		refreshListView.setMode(Mode.PULL_FROM_END);
+		
+		listView = refreshListView.getRefreshableView();
 		adapter = new ListViewAdapter(getActivity(), newsList);
 		listView.addHeaderView(headerView);
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new NewsListOnItemClickListener());
+		refreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+
+			@Override
+			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+				System.out.println("====> onRefresh....");
+				String label = DateUtils.formatDateTime(getActivity(), System.currentTimeMillis(),
+						DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
+				// Update the LastUpdatedLabel
+				refreshListView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+				
+				page++;
+				getNewsList(page);
+			}
+		});
 	}
 	
 	//顶部图片
@@ -187,18 +211,22 @@ public class LNewsFragment extends BaseFragment{
 	}
 	
 	//新闻列表
-	private void getNewsList(int page){
+	private void getNewsList(final int page){
+		System.out.println("====> getNewsList....");
 		httpUtils.getNewsList(newsId, page, new SchoolLifeHttpUtils.onGetNewsListListener() {
 			
 			@Override
 			public void onGetNewsList(List<LNewsPar> lNewsPars) {
-				if (getActivity() != null) {
-					((LNewsActivity)getActivity()).setLoadingBarGone();
+				if (page == 1) {
+					if (getActivity() != null) {
+						((LNewsActivity)getActivity()).setLoadingBarGone();
+					}
 				}
 				if (lNewsPars != null) {//新闻
 					newsList.addAll(lNewsPars);
 					adapter.notifyDataSetChanged();
 				}
+				refreshListView.onRefreshComplete();
 			}
 		});
 	}
@@ -241,6 +269,7 @@ public class LNewsFragment extends BaseFragment{
 				return;
 			}
 			int realPosition = (int) id;
+			System.out.println("===> realPosition = "+realPosition);
 			LNewsPar news = newsList.get(realPosition);
 			((LNewsActivity)getActivity()).showWebViewFragment2(news.getContentUrl(), "新闻详情");
 		}

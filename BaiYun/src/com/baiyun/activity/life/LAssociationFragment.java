@@ -136,7 +136,7 @@ public class LAssociationFragment extends BaseFragment{
 				holder = (ViewHolder)convertView.getTag();
 			}
 			
-			if ((position+1)%3 == 0) {
+			if ((position+1)%2 == 0) {
 				holder.ivLineRight.setVisibility(View.INVISIBLE);
 			}else {
 				holder.ivLineRight.setVisibility(View.VISIBLE);
