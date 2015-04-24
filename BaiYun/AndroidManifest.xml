@@ -126,6 +126,10 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="com.baiyun.picturesviewer.PicturesViewPagerActivity2"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".recruit.RSearchActivity"
             android:screenOrientation="portrait" >
         </activity>
