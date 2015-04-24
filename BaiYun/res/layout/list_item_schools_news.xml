@@ -18,12 +18,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="4dp"
         android:layout_above="@+id/tv_content"
         android:layout_alignLeft="@+id/tv_content"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="Android 开源框架ActionBarSherlock 和 ViewPager 仿网易新闻客户端"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_16" />
     
@@ -31,15 +30,14 @@
         android:id="@+id/tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="2dp"
         android:layout_toRightOf="@+id/iv_header"
         android:layout_above="@+id/tv_time"
         android:ellipsize="end"
-        android:singleLine="true"
-        android:text="详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情"
+        android:maxLines="2"
         android:textColor="@color/gray"
-        android:textSize="@dimen/text_size_16" />
+        android:textSize="@dimen/text_size_12" />
 
     <TextView
         android:id="@+id/tv_time"
