@@ -86,7 +86,7 @@
                 android:layout_marginTop="4dp"
                 android:ems="4"
                 android:gravity="center_horizontal"
-                android:text="新生入学须知"
+                android:text="入学须知"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/text_size_16" />
         </LinearLayout>
@@ -112,7 +112,7 @@
                 android:layout_marginTop="4dp"
                 android:ems="4"
                 android:gravity="center_horizontal"
-                android:text="减免学费申请指南"
+                android:text="学费指南"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/text_size_16" />
         </LinearLayout>
