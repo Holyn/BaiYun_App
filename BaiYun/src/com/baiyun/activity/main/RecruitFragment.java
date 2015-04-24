@@ -19,6 +19,7 @@ import com.baiyun.activity.recruit.RecruitTypeFragment;
 import com.baiyun.activity.recruit.EnterFragment;
 import com.baiyun.activity.recruit.RecruitTypeFragment2;
 import com.baiyun.activity.recruit.TuitionFragment;
+import com.baiyun.activity.recruit.TuitionFragment2;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.kefu.KeFuManager;
 
@@ -36,7 +37,8 @@ public class RecruitFragment extends BaseFragment{
 	private Fragment curFragment;
 	
 	private int curPosition = -1;
-	private TuitionFragment tuitionFragment = null;
+//	private TuitionFragment tuitionFragment = null;
+	private TuitionFragment2 tuitionFragment2 = null;
 	private EnterFragment enterFragment = null;
 //	private RecruitTypeFragment consultFragment = null;
 	private RecruitTypeFragment2 consultFragment2 = null;
@@ -74,8 +76,8 @@ public class RecruitFragment extends BaseFragment{
 			rb_2.setChecked(false);
 			rb_3.setChecked(false);
 			rb_4.setChecked(false);
-			tuitionFragment = TuitionFragment.newInstance();
-			curFragment = tuitionFragment;
+			tuitionFragment2 = TuitionFragment2.newInstance();
+			curFragment = tuitionFragment2;
 		}else if (curPosition == 1) {
 			rb_1.setChecked(false);
 			rb_2.setChecked(true);
@@ -257,10 +259,10 @@ public class RecruitFragment extends BaseFragment{
 	public void switchFragment(int position) {
 		Fragment nextFragment = null;
 		if (position == 0) {
-			if (tuitionFragment == null) {
-				tuitionFragment = TuitionFragment.newInstance();
+			if (tuitionFragment2 == null) {
+				tuitionFragment2 = TuitionFragment2.newInstance();
 			}
-			nextFragment = tuitionFragment;
+			nextFragment = tuitionFragment2;
 		}else if (position == 1) {
 			if (enterFragment == null) {
 				enterFragment = EnterFragment.newInstance();
