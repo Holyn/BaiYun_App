@@ -4,6 +4,7 @@ import java.io.File;
 
 import com.baiyun.activity.R;
 import com.baiyun.cache.CachePath;
+import com.baiyun.http.HttpURL;
 import com.baiyun.util.SystemUtil;
 import com.baiyun.vo.parcelable.VersionPar;
 import com.lidroid.xutils.HttpUtils;
@@ -15,6 +16,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 public class DialogFactory{
@@ -71,7 +73,11 @@ public class DialogFactory{
         String apkName = "BaiYun_"+versionPar.getLatestVersion()+".apk";
         final String apkFilePath = CachePath.getFilePath(CachePath.getApkCacheDir(), apkName);
         
-        new HttpUtils().download(versionPar.getLatestUrl(), apkFilePath, new RequestCallBack<File>() {
+        String latestUrl = versionPar.getLatestUrl();
+        if (!TextUtils.isEmpty(latestUrl)) {
+			latestUrl = HttpURL.HOST+latestUrl.substring(1);
+		}
+        new HttpUtils().download(latestUrl, apkFilePath, new RequestCallBack<File>() {
 			
 			@Override
 			public void onSuccess(ResponseInfo<File> responseInfo) {
