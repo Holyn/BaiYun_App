@@ -1,7 +1,6 @@
 package com.baiyun.activity.home;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -18,7 +17,7 @@ import com.baiyun.activity.R;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.http.HttpURL;
 import com.baiyun.httputils.VoHttpUtils;
-import com.baiyun.picturesviewer.PicturesViewPagerActivity;
+import com.baiyun.picturesviewer.PicturesViewPagerActivity2;
 import com.baiyun.vo.parcelable.VoPicPar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -27,7 +26,6 @@ public class OveEnvFragment extends BaseFragment{
 	
 	private GridView gridView;
 	private ArrayList<VoPicPar> picPars = new ArrayList<VoPicPar>();
-	private ArrayList<String> imagePathList = new ArrayList<String>();
 	private MyGridAdapter gridAdapter;
 	
 	public static OveEnvFragment newInstance() {
@@ -57,9 +55,9 @@ public class OveEnvFragment extends BaseFragment{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getActivity(), PicturesViewPagerActivity.class);
-				intent.putStringArrayListExtra(PicturesViewPagerActivity.EXTRA_IMAGE_LIST, imagePathList);
-				intent.putExtra(PicturesViewPagerActivity.EXTRA_CUR_POSITION, position);
+				Intent intent = new Intent(getActivity(), PicturesViewPagerActivity2.class);
+				intent.putParcelableArrayListExtra(PicturesViewPagerActivity2.EXTRA_VO_PIC_PAR_LIST, picPars);
+				intent.putExtra(PicturesViewPagerActivity2.EXTRA_CUR_POSITION, position);
 				getActivity().startActivity(intent);
 			}
 		});
@@ -93,12 +91,6 @@ public class OveEnvFragment extends BaseFragment{
 				if (picPars != null) {
 					OveEnvFragment.this.picPars = picPars;
 					gridAdapter.notifyDataSetChanged();
-					
-					Iterator<VoPicPar> pivParIterator = picPars.iterator();
-					while (pivParIterator.hasNext()) {
-						VoPicPar voPicPar = (VoPicPar) pivParIterator.next();
-						imagePathList.add(HttpURL.HOST+voPicPar.getUrl().substring(1));
-					}
 				}
 			}
 		});
