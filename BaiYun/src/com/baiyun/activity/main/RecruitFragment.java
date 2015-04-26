@@ -112,6 +112,9 @@ public class RecruitFragment extends BaseFragment{
 				btnConsult.setVisibility(View.VISIBLE);
 			}
 		}
+		
+		btnConsult.setText("咨询");
+		btnConsult.setVisibility(View.VISIBLE);
 	}
 
 	@Override
@@ -141,8 +144,6 @@ public class RecruitFragment extends BaseFragment{
 		
 		tv_item_title = (TextView)rootView.findViewById(R.id.tv_item_title);
 		btnConsult = ((MainActivity)getActivity()).getBtnMenu2();
-		btnConsult.setText("咨询");
-		btnConsult.setVisibility(View.VISIBLE);
 		btnConsult.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
