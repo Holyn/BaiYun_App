@@ -135,7 +135,7 @@ public class OveEnvFragment extends BaseFragment{
 				String picUrl = HttpURL.HOST+picPar.getUrl().substring(1);
 				ImageLoader.getInstance().displayImage(picUrl, holder.ivPic);
 			}
-			holder.tvTitle.setText(picPar.getContent());
+			holder.tvTitle.setText(picPar.getName());
 			
 			return convertView;
 		}
