@@ -11,6 +11,15 @@
         android:layout_height="wrap_content" >
 
         <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="14dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerInside"
+            android:src="@drawable/home_bg_3_circle" />
+
+        <ImageView
             android:id="@+id/iv_center"
             android:layout_width="90dp"
             android:layout_height="90dp"

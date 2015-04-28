@@ -28,9 +28,9 @@
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:singleLine="true"
-            android:text="哈哈哈哈"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_14" />
+            android:textSize="@dimen/text_size_14" 
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <TextView
