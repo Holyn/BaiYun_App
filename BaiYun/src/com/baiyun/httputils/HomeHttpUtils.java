@@ -10,9 +10,8 @@ import com.baiyun.http.HttpURL;
 import com.baiyun.vo.parcelable.OveDepPar;
 import com.baiyun.vo.parcelable.HomeAdPar;
 import com.baiyun.vo.parcelable.HomeNewsPar;
-import com.baiyun.vo.parcelable.HomeVideoPar;
 import com.baiyun.vo.parcelable.OveDepTeacherPar;
-import com.baiyun.vo.parcelable.Vo2Par;
+import com.baiyun.vo.parcelable.OvePicPar;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -49,6 +48,10 @@ public class HomeHttpUtils extends HttpUtils{
 	
 	public interface OnGetOveDepTeacherParsListener{
 		public void onGetOveDepTeacherPars(List<OveDepTeacherPar> teacherPars);
+	}
+	
+	public interface OnGetOvePicParListener{
+		public void onGetOvePicPar(OvePicPar ovePicPar);
 	}
 	
 	public void getHomeAdPar(final OnGetHomeAdParsListener onGetHomeAdParListener) {
@@ -236,6 +239,45 @@ public class HomeHttpUtils extends HttpUtils{
 				Toast.makeText(context, "数据请求失败", Toast.LENGTH_SHORT).show();
 			}
 			
+		});
+	}
+	
+	public void getOvePicPar(final OnGetOvePicParListener onGetOvePicParListener) {
+		
+		send(HttpMethod.GET, HttpURL.SCHOOL_INTRO_PIC, new RequestCallBack<String>() {
+
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				OvePicPar ovePicPar = null;
+				try {
+					JsonParser parser = new JsonParser();
+					JsonObject jsonObject = parser.parse(responseInfo.result).getAsJsonObject();
+					
+					JsonElement recodeEle = jsonObject.get("recode");
+					if (recodeEle.isJsonPrimitive()) {
+						String recode = recodeEle.getAsString();
+						if (recode.equalsIgnoreCase(HttpRecode.GET_SUCCESS)) {
+							JsonElement dataEle = jsonObject.get("data");
+							if (dataEle.isJsonObject()) {
+								ovePicPar = new Gson().fromJson(dataEle, OvePicPar.class);
+							}
+						}else if (recode.equalsIgnoreCase(HttpRecode.GET_ERROR)) {
+							Toast.makeText(context, "返回数据失败", Toast.LENGTH_SHORT).show();
+						}
+					}
+				} catch (Exception e) {
+					ovePicPar = null;
+					System.out.println(e);
+				}
+				onGetOvePicParListener.onGetOvePicPar(ovePicPar);
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				onGetOvePicParListener.onGetOvePicPar(null);
+				//提示
+				Toast.makeText(context, "数据请求失败", Toast.LENGTH_SHORT).show();
+			}
 		});
 	}
 }

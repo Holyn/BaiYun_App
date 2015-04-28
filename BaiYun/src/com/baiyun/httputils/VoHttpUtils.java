@@ -64,7 +64,7 @@ public class VoHttpUtils extends HttpUtils{
 								vo1Par = new Gson().fromJson(dataEle, Vo1Par.class);
 							}
 						}else if (recode.equalsIgnoreCase(HttpRecode.GET_ERROR)) {
-							Toast.makeText(context, "服务器无数据", Toast.LENGTH_SHORT).show();
+							Toast.makeText(context, "返回数据失败", Toast.LENGTH_SHORT).show();
 						}
 					}
 				} catch (Exception e) {
