@@ -275,7 +275,7 @@ public class HttpURL {
 	 * 点击【登录】，发送url请求，获取用户是否成功登录信息和导入推送关联的用户
 	 * 
 	 * http://app.byxy.com:8080/app/userLogin?
-	 * userName=xuesheng&password=123456&randomString=3183&mobileChannelId=1111&mobileUserId=2222
+	 * userName=admin&password=123456&randomString=2837&mobileChannelId=3656702722203844290&mobileUserId=1460406946
 	 */
 	public final static String PASSWORD_PARAM = "&password=";
 	public final static String RANDOM_STRING_PARAM = "&randomString=";
