@@ -32,6 +32,12 @@ public class HttpURL {
 	public final static String HOME_ONLINE = URL_PRE + "homePage?type=12";
 	
 	/**
+	 * 首页-学校概况(顶部图片)
+	 * http://app.byxy.com:8080/app/schoolIntroPic
+	 */
+	public final static String SCHOOL_INTRO_PIC = URL_PRE + "schoolIntroPic";
+	
+	/**
 	 * 首页-学校概况-学校简介
 	 * http://app.byxy.com:8080/app/schoolIntroContent?type=100
 	 */
@@ -254,7 +260,9 @@ public class HttpURL {
 	
 	/**
 	 * 右侧菜单--获取验证码
+	 * http://app.byxy.com:8080/app/getRandomStringImage
 	 */
+	public final static String S_GET_RANDOM_STRING_IMAGE = URL_PRE + "getRandomStringImage";
 	
 	/**
 	 * 右侧菜单--登录
@@ -273,7 +281,7 @@ public class HttpURL {
 	public final static String RANDOM_STRING_PARAM = "&randomString=";
 	public final static String MOBILE_CHANNEL_ID_PARAM = "&mobileChannelId=";
 	public final static String MOBILE_USER_ID_PARAM = "&mobileUserId=";
-	public final static String R_LOGIN = URL_PRE + "userLogin?userName=";
+	public final static String R_LOGIN = URL_PRE + "userLogin?userName=";//接口
 	
 	/**
 	 * 右侧菜单--使用工具--班车表
