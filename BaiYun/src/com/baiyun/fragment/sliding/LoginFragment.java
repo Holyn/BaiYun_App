@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.baiyun.activity.R;
 import com.baiyun.base.BaseFragment;
+import com.baiyun.http.HttpURL;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -81,15 +82,12 @@ public class LoginFragment extends BaseFragment {
 			}
 		});
 		ibVerCode = (ImageButton) rootView.findViewById(R.id.ib_veri_code);
-//		ImageLoader.getInstance().displayImage("http://183.237.48.209:8085/app/getRandomStringImage", ibVerCode);
-		displayImage(ibVerCode, "http://183.237.48.209:8085/app/getRandomStringImage");
+		displayImage(ibVerCode, HttpURL.S_GET_RANDOM_STRING_IMAGE);
 		ibVerCode.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				System.out.println("====> click ....");
-//				ImageLoader.getInstance().displayImage("http://183.237.48.209:8085/app/getRandomStringImage", ibVerCode);
-				displayImage(ibVerCode, "http://183.237.48.209:8085/app/getRandomStringImage");
+				displayImage(ibVerCode, HttpURL.S_GET_RANDOM_STRING_IMAGE);
 			}
 		});
 
