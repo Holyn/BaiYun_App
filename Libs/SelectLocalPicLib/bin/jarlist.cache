@@ -1,6 +1,6 @@
 # cache for current jar dependency. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
-1421048082222 995624 3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28 D:\workspace\SelectLocalPicLib\libs\android-support-v4.jar
-1421048082222 995624 3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28 D:\workspace\PhotoView\libs\android-support-v4.jar
-1421048082222 995624 3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28 D:\workspace\appcompat_v7\libs\android-support-v4.jar
+1427212591386 995624 3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28 D:\github\workspace\PhotoView\libs\android-support-v4.jar
+1430326429934 995624 3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28 D:\github\workspace\SelectLocalPicLib\libs\android-support-v4.jar
+1425053170513 995624 3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28 D:\github\workspace\android-support-v7-appcompat\libs\android-support-v4.jar
