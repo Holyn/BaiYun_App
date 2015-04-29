@@ -125,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="榜样风云"
+                android:text="榜样白云"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/text_size_16" />
         </LinearLayout>
