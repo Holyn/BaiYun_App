@@ -45,11 +45,12 @@ public class OverviewFragment extends BaseFragment {
 			@Override
 			public void onGetOvePicPar(OvePicPar ovePicPar) {
 				// TODO Auto-generated method stub
-
-				String urlLast = ovePicPar.getUrl();
-				if (!TextUtils.isEmpty(urlLast)) {
-					String picUrl = HttpURL.HOST + urlLast.substring(1);
-					ImageLoader.getInstance().displayImage(picUrl, ivPicture);
+				if (ovePicPar != null) {
+					String urlLast = ovePicPar.getUrl();
+					if (!TextUtils.isEmpty(urlLast)) {
+						String picUrl = HttpURL.HOST + urlLast.substring(1);
+						ImageLoader.getInstance().displayImage(picUrl, ivPicture);
+					}
 				}
 			}
 		});
