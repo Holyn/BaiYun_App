@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="gray">#7d7d7d</color>
+    <color name="black_trans_50">#80000000</color>
+    <color name="light_gray">#cccccc</color>
+    <color name="yellow">#ffcc00</color>
+    <color name="bg_mblue">#0079ff</color>
+    <color name="light_grey_trans_70">#b4C0C0C0</color>
+    <color name="trans">#00000000</color>
+
+</resources>
