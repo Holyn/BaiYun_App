@@ -29,6 +29,7 @@ public abstract class BaseSlidingFragmentActivity extends SlidingFragmentActivit
 	private ImageView ivLineLeft = null, ivLineRight = null;
 	
 	private Button btnMenu2 = null;//定制多一个菜单
+	private boolean isBtnMenu2Enable = false;
 	
 	public FrameLayout loadingBar;
 	
@@ -138,6 +139,7 @@ public abstract class BaseSlidingFragmentActivity extends SlidingFragmentActivit
 	 * 默认顶部导航栏右边的第二个菜单是不可见的
 	 */
 	public void setBtnMenu2Enable(boolean isEnable){
+		isBtnMenu2Enable = isEnable;
 		if (btnMenu2 == null) {
 			btnMenu2 = (Button)findViewById(R.id.btn_menu_2);
 		}
@@ -148,7 +150,12 @@ public abstract class BaseSlidingFragmentActivity extends SlidingFragmentActivit
 		}
 	}
 	
+	public boolean isBtnMenu2Enable() {
+		return isBtnMenu2Enable;
+	}
+
 	public void setBtnMenu2Name(String menuName) {
+		setBtnMenu2Enable(true);
 		if (btnMenu2 == null) {
 			btnMenu2 = (Button)findViewById(R.id.btn_menu_2);
 		}

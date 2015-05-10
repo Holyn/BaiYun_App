@@ -130,6 +130,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity{
 	}
 	
 	public void setBtnMenu2Name(String menuName) {
+		setBtnMenu2Enable(true);
 		if (btnMenu2 == null) {
 			btnMenu2 = (Button)findViewById(R.id.btn_menu_2);
 		}
