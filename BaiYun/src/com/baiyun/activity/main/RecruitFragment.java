@@ -107,23 +107,26 @@ public class RecruitFragment extends BaseFragment{
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		if (curPosition == 3) {
-			if (btnConsult != null) {
-				btnConsult.setVisibility(View.VISIBLE);
-			}
-		}
+//		if (curPosition == 3) {
+//			if (btnConsult != null) {
+//				btnConsult.setVisibility(View.VISIBLE);
+//			}
+//		}
+//		
+//		btnConsult.setText("咨询");
+//		btnConsult.setVisibility(View.VISIBLE);
 		
-		btnConsult.setText("咨询");
-		btnConsult.setVisibility(View.VISIBLE);
+		((MainActivity)getActivity()).setBtnMenu2Name("咨询");
 	}
 
 	@Override
 	public void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		if (btnConsult != null) {
-			btnConsult.setVisibility(View.GONE);
-		}
+//		if (btnConsult != null) {
+//			btnConsult.setVisibility(View.GONE);
+//		}
+		((MainActivity)getActivity()).setBtnMenu2Enable(false);
 	}
 
 	private void initView(View rootView){

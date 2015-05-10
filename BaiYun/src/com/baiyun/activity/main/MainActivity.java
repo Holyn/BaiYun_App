@@ -32,6 +32,8 @@ public class MainActivity extends BaseSlidingFragmentActivity {
 	private HelpFragment helpFragment = null;
 	private AboutFragment aboutFragment = null;
 	
+	private boolean isSetBtnMenu2EnableFalse = false;
+	
 	@Override
 	public void init() {
 		checkVersionAuto();//自动检测新版本
@@ -65,6 +67,10 @@ public class MainActivity extends BaseSlidingFragmentActivity {
 			@Override
 			public void onSlideMenuFragmentEvent(int menuType) {
 				setBackPressEnabled(true);
+				if (isBtnMenu2Enable()) {
+					setBtnMenu2Enable(false);
+					isSetBtnMenu2EnableFalse = true;
+				}
 				switch (menuType) {
 				case SlideMenuFragment.MENU_LOGIN:
 					setTopBarTitle("用户登录");
@@ -170,6 +176,10 @@ public class MainActivity extends BaseSlidingFragmentActivity {
 			switchFragment(0);
 			containerFragment.setChildTitle();
 			setBackPressEnabled(false);
+			if (isSetBtnMenu2EnableFalse) {
+				setBtnMenu2Enable(true);
+				isSetBtnMenu2EnableFalse = false;
+			}
 		}else {
 			super.onBackPressed();
 		}
