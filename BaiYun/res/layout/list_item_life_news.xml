@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/iv_header"
-        android:layout_width="70dp"
-        android:layout_height="60dp"
+        android:layout_width="85dp"
+        android:layout_height="70dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/iv_photo_empty" />
@@ -18,13 +18,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/iv_header"
-        android:layout_marginRight="20dp"
         android:layout_marginBottom="6dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
         android:layout_toRightOf="@+id/iv_header"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="Android 开源框架仿网易新闻客户端"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_16" />
 
@@ -32,26 +31,25 @@
         android:id="@+id/tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_title"
+        android:layout_above="@+id/tv_time"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:layout_alignLeft="@+id/tv_title"
+        android:layout_toRightOf="@+id/iv_header"
         android:ellipsize="end"
-        android:singleLine="true"
-        android:text="详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情"
+        android:maxLines="2"
         android:textColor="@color/gray"
-        android:textSize="@dimen/text_size_16" />
+        android:textSize="@dimen/text_size_12" />
 
     <TextView
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/iv_header"
-        android:layout_marginRight="20dp"
         android:layout_alignParentRight="true"
-        android:text="2015-01-29"
+        android:layout_marginRight="20dp"
         android:textColor="@color/gray"
         android:textSize="@dimen/text_size_12" />
-    
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
