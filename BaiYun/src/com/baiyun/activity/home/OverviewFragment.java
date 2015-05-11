@@ -80,7 +80,10 @@ public class OverviewFragment extends BaseFragment {
 
 			@Override
 			public void onClick(View v) {
-				((OverviewActivity) getActivity()).showOveTeachersFragment();
+				((OverviewActivity) getActivity()).setTopBarTitle("师资队伍");
+				((OverviewActivity) getActivity()).showWebViewFragment(HttpURL.SCHOOL_TEACHERS_SUM);
+				
+//				((OverviewActivity) getActivity()).showOveTeachersFragment();//delete 2015-5-11
 			}
 		});
 

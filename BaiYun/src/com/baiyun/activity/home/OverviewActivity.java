@@ -15,13 +15,13 @@ public class OverviewActivity extends BaseFragmentActivity{
 	
 	private OverviewFragment overviewFragment = null;
 	private WebViewFragment webViewFragment = null;
-	private OveTeachersFragment oveTeachersFragment = null;
-	private WebViewFragment2 webViewFragment2 = null;
+	private OveTeachersFragment oveTeachersFragment = null;//delete 2015-5-11
+	private WebViewFragment2 webViewFragment2 = null;//delete 2015-5-11
 	private OveEnvFragment oveEnvFragment = null;
 	
-	private OveTeachersDetailFragment teachersDetailFragment = null;
+	private OveTeachersDetailFragment teachersDetailFragment = null;//delete 2015-5-11
 	
-	private OveTeachersGridFragment teachersGridFragment = null;
+	private OveTeachersGridFragment teachersGridFragment = null;//delete 2015-5-11
 	
 	@Override
 	public void init() {
@@ -88,4 +88,5 @@ public class OverviewActivity extends BaseFragmentActivity{
 		teachersGridFragment = OveTeachersGridFragment.newInstance();
 		FragmentUtil.replaceAddToBack(teachersGridFragment, fragmentManager, R.id.fl_container_common, args);
 	}
+	
 }
