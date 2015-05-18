@@ -90,6 +90,10 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".recruit.RecruitMajorActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".life.LNewsActivity"
             android:screenOrientation="portrait" >
         </activity>
