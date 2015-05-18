@@ -15,7 +15,7 @@ public class SchoolLifeFragment extends BaseFragment{
 	private Button btnNews;//学工动态
 	private Button btnAssociation;//学生社团
 	private Button btnArt;//体育艺术
-	private Button btnScience;//科技创新
+	private Button btnScience;//科技创新（社团嘉年华）
 	private Button btnModel;//榜样风云
 	private Button btnGuide;//服务指南
 	
