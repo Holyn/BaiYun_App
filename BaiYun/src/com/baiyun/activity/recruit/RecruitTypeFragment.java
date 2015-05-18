@@ -194,11 +194,7 @@ public class RecruitTypeFragment extends BaseFragment{
 			holder.btnIntroduce.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-//					System.out.println("====> holder.btnIntroduce.setOnClick。。。。"+typePar.getIntroUrl());
-				    Intent intent = new Intent(getActivity(), WebViewActiviry.class);
-				    intent.putExtra(WebViewActiviry.KEY_WEB_VIEW_TYPE, WebViewActiviry.RECRUIT_INTRO);
-				    intent.putExtra(WebViewActiviry.KEY_CONTENT_URL, typePar.getIntroUrl());
-				    getActivity().startActivity(intent);
+					
 				}
 			});
 			

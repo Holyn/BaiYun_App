@@ -7,6 +7,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.ListView;
 
@@ -157,9 +158,8 @@ public class RecruitTypeFragment2 extends BaseFragment{
 				
 				@Override
 				public void onClick(View v) {
-				    Intent intent = new Intent(getActivity(), WebViewActiviry.class);
-				    intent.putExtra(WebViewActiviry.KEY_WEB_VIEW_TYPE, WebViewActiviry.RECRUIT_INTRO);
-				    intent.putExtra(WebViewActiviry.KEY_CONTENT_URL, item.getIntroUrl());
+				    Intent intent = new Intent(getActivity(), RecruitMajorActivity.class);
+				    intent.putParcelableArrayListExtra(RecruitMajorActivity.KEY_RECRUIT_MAJOR_PAR, (ArrayList<? extends Parcelable>) item.getgCourseContentViewList());
 				    getActivity().startActivity(intent);
 				}
 			});
