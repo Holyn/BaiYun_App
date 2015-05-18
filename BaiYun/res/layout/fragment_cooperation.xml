@@ -20,8 +20,7 @@
             android:textColor="@color/black"
             android:maxLines="3"
             android:ellipsize="end"
-            android:textSize="@dimen/text_size_16"
-            android:text="述概述概述概述概述概述概述概述概述概述概述"/>
+            android:textSize="@dimen/text_size_16"/>
         <TextView 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
