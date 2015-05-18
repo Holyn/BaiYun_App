@@ -22,7 +22,7 @@
             android:button="@drawable/radio_btn_bg"
             android:gravity="center"
             android:padding="8dp"
-            android:text="城市户籍"
+            android:text="农村户籍"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_16" />
 
@@ -48,7 +48,7 @@
             android:button="@drawable/radio_btn_bg"
             android:gravity="center"
             android:padding="8dp"
-            android:text="农村户籍"
+            android:text="城市户籍"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_16" />
     </RadioGroup>

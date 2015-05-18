@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="科技创新"
+                android:text="社团嘉年华"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/text_size_16" />
         </LinearLayout>
