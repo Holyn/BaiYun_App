@@ -1,5 +1,7 @@
 package com.baiyun.vo.parcelable;
 
+import java.util.List;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 /**
@@ -20,17 +22,9 @@ public class RecruitTypePar implements Parcelable {
 	private String planViewTimes;
 	private String planCreater;
 	
-	private String introContentId;
-	private String introTitle;
-	private String introBrief;
-	private String introUrl;
-	private String introViewTimes;
-	private String introCreater;
+	private List<RecruitTypeMajorPar> gCourseContentViewList;
 	
 	private String planCreateTime;
-	private String introCreateTime;
-
-
 	@Override
 	public int describeContents() {
 		// TODO Auto-generated method stub
@@ -53,16 +47,9 @@ public class RecruitTypePar implements Parcelable {
 		dest.writeString(planViewTimes);
 		dest.writeString(planCreater);
 		
-		dest.writeString(introContentId);
-		dest.writeString(introTitle);
-		dest.writeString(introBrief);
-		dest.writeString(introUrl);
-		dest.writeString(introViewTimes);
-		dest.writeString(introCreater);
+		dest.writeList(gCourseContentViewList);
 		
 		dest.writeString(planCreateTime);
-		dest.writeString(introCreateTime);
-
 	}
 
 	public static final Parcelable.Creator<RecruitTypePar> CREATOR = new Parcelable.Creator<RecruitTypePar>() {
@@ -82,16 +69,9 @@ public class RecruitTypePar implements Parcelable {
 			par.planViewTimes = in.readString();
 			par.planCreater = in.readString();
 			
-			par.introContentId = in.readString();
-			par.introTitle = in.readString();
-			par.introBrief = in.readString();
-			par.introUrl = in.readString();
-			par.introViewTimes = in.readString();
-			par.introCreater = in.readString();
+			par.gCourseContentViewList = in.readArrayList((List.class.getClassLoader()));
 			
 			par.planCreateTime = in.readString();
-			par.introCreateTime = in.readString();
-			
 			return par;
 		}
 
@@ -99,8 +79,6 @@ public class RecruitTypePar implements Parcelable {
 			return new RecruitTypePar[size];
 		}
 	};
-
-
 	public String getMenuSubId() {
 		return menuSubId;
 	}
@@ -197,52 +175,12 @@ public class RecruitTypePar implements Parcelable {
 		this.planCreater = planCreater;
 	}
 
-	public String getIntroContentId() {
-		return introContentId;
+	public List<RecruitTypeMajorPar> getgCourseContentViewList() {
+		return gCourseContentViewList;
 	}
 
-	public void setIntroContentId(String introContentId) {
-		this.introContentId = introContentId;
-	}
-
-	public String getIntroTitle() {
-		return introTitle;
-	}
-
-	public void setIntroTitle(String introTitle) {
-		this.introTitle = introTitle;
-	}
-
-	public String getIntroBrief() {
-		return introBrief;
-	}
-
-	public void setIntroBrief(String introBrief) {
-		this.introBrief = introBrief;
-	}
-
-	public String getIntroUrl() {
-		return introUrl;
-	}
-
-	public void setIntroUrl(String introUrl) {
-		this.introUrl = introUrl;
-	}
-
-	public String getIntroViewTimes() {
-		return introViewTimes;
-	}
-
-	public void setIntroViewTimes(String introViewTimes) {
-		this.introViewTimes = introViewTimes;
-	}
-
-	public String getIntroCreater() {
-		return introCreater;
-	}
-
-	public void setIntroCreater(String introCreater) {
-		this.introCreater = introCreater;
+	public void setgCourseContentViewList(List<RecruitTypeMajorPar> gCourseContentViewList) {
+		this.gCourseContentViewList = gCourseContentViewList;
 	}
 
 	public String getPlanCreateTime() {
@@ -253,13 +191,4 @@ public class RecruitTypePar implements Parcelable {
 		this.planCreateTime = planCreateTime;
 	}
 
-	public String getIntroCreateTime() {
-		return introCreateTime;
-	}
-
-	public void setIntroCreateTime(String introCreateTime) {
-		this.introCreateTime = introCreateTime;
-	}
-
-	
 }
