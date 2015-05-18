@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +52,9 @@ public class WebViewFragment2 extends Fragment {
 		Bundle args = getArguments();
 		urlLast = args.getString(KEY_URL_LAST);
 		title = args.getString(KEY_TITLE);
-		((BaseFragmentActivity) getActivity()).setTopBarTitle(title);
+		if (!TextUtils.isEmpty(title)) {
+			((BaseFragmentActivity) getActivity()).setTopBarTitle(title);
+		}
 	}
 
 	@Override
