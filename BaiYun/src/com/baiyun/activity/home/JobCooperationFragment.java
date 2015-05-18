@@ -125,7 +125,7 @@ public class JobCooperationFragment extends BaseFragment implements View.OnClick
 				}
 				if (cooSumPar != null) {
 					JobCooperationFragment.this.cooSumPar = cooSumPar;
-					tvSummary.setText(cooSumPar.getTitle());
+					tvSummary.setText(cooSumPar.getBrief());
 					llSummary.setOnClickListener(JobCooperationFragment.this);
 				}
 			}
