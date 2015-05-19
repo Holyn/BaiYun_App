@@ -7,6 +7,7 @@ package com.baiyun.activity;
  * @modified
  */
 
+import com.baidu.frontia.FrontiaApplication;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -26,6 +27,7 @@ public class MyApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		initImageLoader(getApplicationContext());
+		FrontiaApplication.initFrontiaApplication(this);
 	}
 	
 	public int getCurRecruitFragmentPosition() {
