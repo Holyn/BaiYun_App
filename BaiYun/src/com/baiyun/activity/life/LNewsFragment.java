@@ -104,7 +104,7 @@ public class LNewsFragment extends BaseFragment{
 		}else if (newsId.equalsIgnoreCase(LNewsActivity.NEWS_ID_26)) {
 			((LNewsActivity)getActivity()).setTopBarTitle("体育艺术");
 		}else if (newsId.equalsIgnoreCase(LNewsActivity.NEWS_ID_27)) {
-			((LNewsActivity)getActivity()).setTopBarTitle("科技创新");
+			((LNewsActivity)getActivity()).setTopBarTitle("社团嘉年华");
 		}
 		
 		// 启动循环线程
