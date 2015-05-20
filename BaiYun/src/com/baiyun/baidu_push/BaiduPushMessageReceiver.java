@@ -11,8 +11,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.baidu.frontia.api.FrontiaPushMessageReceiver;
+import com.baiyun.httputils.SlideMenuHttpUtils;
 
 /**
  * Push消息处理receiver。请编写您需要的回调函数， 一般来说： onBind是必须的，用来处理startWork返回值；
@@ -73,6 +75,7 @@ public class BaiduPushMessageReceiver extends FrontiaPushMessageReceiver {
             BaiduPushUtils.setBind(context, true);
         }
         // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
+        new SlideMenuHttpUtils(context).postBaiduPush(userId, channelId, null);
     }
 
     /**
@@ -108,6 +111,7 @@ public class BaiduPushMessageReceiver extends FrontiaPushMessageReceiver {
         }
 
         // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
+        Toast.makeText(context, message+"\n"+customContentString, Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -145,7 +149,7 @@ public class BaiduPushMessageReceiver extends FrontiaPushMessageReceiver {
         }
 
         // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
-        
+        Toast.makeText(context, title+"\n"+description+"\n"+customContentString, Toast.LENGTH_LONG).show();
     }
 
     /**
