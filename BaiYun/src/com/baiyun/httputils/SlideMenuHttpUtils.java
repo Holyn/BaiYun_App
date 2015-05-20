@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
@@ -28,6 +29,14 @@ public class SlideMenuHttpUtils extends HttpUtils{
 	
 	public interface OnGetVersionListener{//获取版本信息
 		public void onGetVersion(VersionPar versionPar);
+	}
+	
+	public interface OnPostBaiduPushListener{//导入百度推送所需的mobileChannelId和mobileUserId接口
+		public void onPostBaiduPush(boolean isSuccess);
+	}
+	
+	public interface OnPostLoginListener{
+		public void onPostLogin();
 	}
 	
 	public void getVersion(String version, final OnGetVersionListener onGetVersionListener){
@@ -63,6 +72,74 @@ public class SlideMenuHttpUtils extends HttpUtils{
 			public void onFailure(HttpException error, String msg) {
 				onGetVersionListener.onGetVersion(null);
 				Toast.makeText(context, "数据请求失败", Toast.LENGTH_SHORT).show();
+			}
+			
+		});
+	}
+	
+	public void postBaiduPush(String mobileUserId, String mobileChannelId,final OnPostBaiduPushListener baiduPushListener) {
+		final RequestParams params = new RequestParams();
+		params.addBodyParameter(HttpURL.PARAM_MOBILE_USER_ID, mobileUserId);
+		params.addBodyParameter(HttpURL.PARAM_MOBILE_CHANNEL_ID, mobileChannelId);
+		
+		send(HttpMethod.POST, HttpURL.R_SET_PUSH, params, new RequestCallBack<String>() {
+
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				// TODO Auto-generated method stub
+				boolean isSuccess = false;
+				try {
+					JsonParser parser = new JsonParser();
+					JsonObject jsonObject = parser.parse(responseInfo.result).getAsJsonObject();
+
+					JsonElement recodeEle = jsonObject.get("recode");
+					if (recodeEle.isJsonPrimitive()) {
+						String recode = recodeEle.getAsString();
+						if (recode.equalsIgnoreCase(HttpRecode.INSERT_SUCCESS)) {
+							System.out.println("====> 成功导入百度推送所需的两个id");
+							isSuccess = true;
+						}
+					}
+				} catch (Exception e) {
+					isSuccess = false;
+					System.out.println(e);
+				}
+				if (baiduPushListener != null) {
+					baiduPushListener.onPostBaiduPush(isSuccess);
+				}
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				if (baiduPushListener != null) {
+					baiduPushListener.onPostBaiduPush(false);
+				}
+			}
+			
+		});
+	}
+	
+	public void postLogin(String userName, String password, String randomString, String mobileUserId, 
+			String mobileChannelId,final OnPostLoginListener onPostLoginListener) {
+		final RequestParams params = new RequestParams();
+		params.addBodyParameter(HttpURL.PARAM_USER_NAME, userName);
+		params.addBodyParameter(HttpURL.PARAM_PASSWORD, password);
+		params.addBodyParameter(HttpURL.PARAM_RANDOM_STRING, randomString);
+		params.addBodyParameter(HttpURL.PARAM_MOBILE_USER_ID, mobileUserId);
+		params.addBodyParameter(HttpURL.PARAM_MOBILE_CHANNEL_ID, mobileChannelId);
+		
+		send(HttpMethod.POST, HttpURL.R_LOGIN, params, new RequestCallBack<String>() {
+
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				// TODO Auto-generated method stub
+				
 			}
 			
 		});
