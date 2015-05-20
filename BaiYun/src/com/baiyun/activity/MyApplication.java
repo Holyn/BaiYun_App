@@ -27,7 +27,7 @@ public class MyApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		initImageLoader(getApplicationContext());
-		FrontiaApplication.initFrontiaApplication(this);
+		FrontiaApplication.initFrontiaApplication(this);//百度推送声明
 	}
 	
 	public int getCurRecruitFragmentPosition() {
