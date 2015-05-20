@@ -295,7 +295,7 @@
         <!-- 在百度开发者中心查询应用的API Key -->
         <meta-data
             android:name="api_key"
-            android:value="cwH8rVZqsrdo0dhIzQNQahMy" />
+            android:value="1rAD2UyAZnTKbLrPiXBAOMdW" />
     </application>
 
 </manifest>
