@@ -15,11 +15,13 @@ import android.widget.Toast;
 
 import com.baiyun.activity.R;
 import com.baiyun.activity.setting.SettingItemActivity;
+import com.baiyun.baidu_push.BaiduPushManager;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.cache.CachePath;
 import com.baiyun.custom.DialogFactory;
 import com.baiyun.custom.SlipButton;
 import com.baiyun.httputils.SlideMenuHttpUtils;
+import com.baiyun.sharepreferences.AppSettingSP;
 import com.baiyun.util.SystemUtil;
 import com.baiyun.vo.parcelable.VersionPar;
 import com.lidroid.xutils.HttpUtils;
@@ -57,6 +59,11 @@ public class SettingFragment extends BaseFragment{
 	
 	private void initView(View rootView){
 		sbChangePush = (SlipButton)rootView.findViewById(R.id.slip_utton);
+		if (AppSettingSP.getSingleInstance(getActivity()).isBaiduPushEnable()) {
+			sbChangePush.setCheck(true);
+		}else {
+			sbChangePush.setCheck(false);
+		}
 		
 		tvChangePwd = (TextView)rootView.findViewById(R.id.tv_change_pwd);
 		tvVersionUpdate = (TextView)rootView.findViewById(R.id.tv_version_update);
@@ -70,8 +77,10 @@ public class SettingFragment extends BaseFragment{
 			
 			@Override
 			public void OnChanged(boolean CheckState) {
-				// TODO Auto-generated method stub
-				Toast.makeText(getActivity(), String.valueOf(CheckState), Toast.LENGTH_SHORT).show();
+				AppSettingSP.getSingleInstance(getActivity()).setIsBaiduPushEnable(CheckState);
+				if (!CheckState) {
+					BaiduPushManager.stopWork(getActivity());
+				}
 			}
 		});
 		
