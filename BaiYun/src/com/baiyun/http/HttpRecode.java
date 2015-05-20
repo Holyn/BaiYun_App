@@ -26,5 +26,8 @@ public class HttpRecode {
 	public static final String LOGIN_SUCCESS = "0004";
 	public static final String ERROR_NAME_PASSWORD = "0005";
 	public static final String ERROR_RANDOM_STRING = "0006";
+	
+	public static final String ERROR_NAME_EXIST = "0009";
+	
 	public static final String SEARCH_SUCCESS = "0012";
 }
