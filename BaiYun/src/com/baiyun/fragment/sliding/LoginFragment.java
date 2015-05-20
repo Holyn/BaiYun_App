@@ -1,15 +1,20 @@
 package com.baiyun.fragment.sliding;
 
 import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.baiyun.activity.R;
 import com.baiyun.base.BaseFragment;
 import com.baiyun.http.HttpURL;
+import com.baiyun.httputils.SlideMenuHttpUtils;
+import com.baiyun.sharepreferences.UserInfoSP;
+import com.baiyun.vo.parcelable.UserInfoPar;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -97,7 +102,7 @@ public class LoginFragment extends BaseFragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				submitLogin();
 			}
 		});
 	}
@@ -112,6 +117,41 @@ public class LoginFragment extends BaseFragment {
 				.bitmapConfig(Bitmap.Config.RGB_565).build();
 
 		ImageLoader.getInstance().displayImage(uri, imageButton, defaultOptions);
+		
+	}
+	
+	private void submitLogin(){
+		String userName = etName.getText().toString().trim();
+		if (TextUtils.isEmpty(userName)) {
+			Toast.makeText(getActivity(), "用户名为空", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
+		String password = etPassword.getText().toString().trim();
+		if (TextUtils.isEmpty(password)) {
+			Toast.makeText(getActivity(), "密码为空", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
+		String randomString = etVeriCode.getText().toString().trim();
+		if (TextUtils.isEmpty(randomString)) {
+			Toast.makeText(getActivity(), "验证码为空", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
+		UserInfoSP userInfoSP = UserInfoSP.getSingleInstance(getActivity());
+		String mobileUserId = userInfoSP.getMobileUserId();
+		String mobileChannelId = userInfoSP.getMobileChannelId();
+		
+		new SlideMenuHttpUtils(getActivity()).postLogin(userName, password, randomString, 
+				mobileUserId, mobileChannelId, new SlideMenuHttpUtils.OnPostLoginListener() {
+					
+					@Override
+					public void onPostLogin(UserInfoPar userInfoPar) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
 		
 	}
 }
