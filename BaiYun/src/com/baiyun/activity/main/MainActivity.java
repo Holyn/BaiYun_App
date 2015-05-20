@@ -1,6 +1,7 @@
 package com.baiyun.activity.main;
 
 import com.baiyun.activity.R;
+import com.baiyun.baidu_push.BaiduPushManager;
 import com.baiyun.base.BaseSlidingFragmentActivity;
 import com.baiyun.custom.DialogFactory;
 import com.baiyun.fragment.sliding.AboutFragment;
@@ -46,6 +47,7 @@ public class MainActivity extends BaseSlidingFragmentActivity {
 		curFragment = containerFragment;
 		fragmentManager.beginTransaction().add(R.id.fl_container_common, curFragment).commit();
         
+		BaiduPushManager.startWork(getApplicationContext());//启动百度推送
         
         initTopBarRightClickListener();
         initgetSlideMenuFramentListener();
@@ -184,7 +186,7 @@ public class MainActivity extends BaseSlidingFragmentActivity {
 			super.onBackPressed();
 		}
 	}
-
+	
 	private void appExit(){//退出app
     	MainActivity.this.finish();
     	System.exit(0);
