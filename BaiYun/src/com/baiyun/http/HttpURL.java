@@ -265,6 +265,14 @@ public class HttpURL {
 	public final static String S_GET_RANDOM_STRING_IMAGE = URL_PRE + "getRandomStringImage";
 	
 	/**
+	 * 右侧菜单--导入百度推送所需的mobileChannelId和mobileUserId接口
+	 * http://app.byxy.com:8080/app/setPush?mobileChannelId=3656702722203844290&mobileUserId=1460406946
+	 */
+	public final static String PARAM_MOBILE_CHANNEL_ID = "mobileChannelId";
+	public final static String PARAM_MOBILE_USER_ID = "mobileUserId";
+	public final static String R_SET_PUSH = URL_PRE + "setPush";//接口
+	
+	/**
 	 * 右侧菜单--登录
 	 * url=URL+/app/userLogin?userName=用户输入的用户名
 	 * &password=用户输入的密码
@@ -277,11 +285,10 @@ public class HttpURL {
 	 * http://app.byxy.com:8080/app/userLogin?
 	 * userName=admin&password=123456&randomString=2837&mobileChannelId=3656702722203844290&mobileUserId=1460406946
 	 */
-	public final static String PASSWORD_PARAM = "&password=";
-	public final static String RANDOM_STRING_PARAM = "&randomString=";
-	public final static String MOBILE_CHANNEL_ID_PARAM = "&mobileChannelId=";
-	public final static String MOBILE_USER_ID_PARAM = "&mobileUserId=";
-	public final static String R_LOGIN = URL_PRE + "userLogin?userName=";//接口
+	public final static String PARAM_PASSWORD = "password";
+	public final static String PARAM_RANDOM_STRING = "randomString";
+	public final static String PARAM_USER_NAME = "userName";
+	public final static String R_LOGIN = URL_PRE + "userLogin";//接口
 	
 	/**
 	 * 右侧菜单--使用工具--班车表

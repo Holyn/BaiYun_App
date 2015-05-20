@@ -21,8 +21,10 @@ package com.baiyun.http;
 public class HttpRecode {
 	public static final String GET_SUCCESS = "0000";
 	public static final String GET_ERROR = "0001";
-	
 	public static final String INSERT_SUCCESS = "0002";
-	
+	public static final String INSERT_FAILE = "0003";
+	public static final String LOGIN_SUCCESS = "0004";
+	public static final String ERROR_NAME_PASSWORD = "0005";
+	public static final String ERROR_RANDOM_STRING = "0006";
 	public static final String SEARCH_SUCCESS = "0012";
 }
