@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.baidu.frontia.api.FrontiaPushMessageReceiver;
 import com.baiyun.httputils.SlideMenuHttpUtils;
+import com.baiyun.sharepreferences.UserInfoSP;
 
 /**
  * Push消息处理receiver。请编写您需要的回调函数， 一般来说： onBind是必须的，用来处理startWork返回值；
@@ -76,6 +77,9 @@ public class BaiduPushMessageReceiver extends FrontiaPushMessageReceiver {
         }
         // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
         new SlideMenuHttpUtils(context).postBaiduPush(userId, channelId, null);
+        UserInfoSP userInfoSP = UserInfoSP.getSingleInstance(context);
+        userInfoSP.setMobileUserId(userId);
+        userInfoSP.setMobileChannelId(channelId);
     }
 
     /**
