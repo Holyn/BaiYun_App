@@ -5,6 +5,8 @@ import android.widget.Toast;
 
 import com.baiyun.http.HttpRecode;
 import com.baiyun.http.HttpURL;
+import com.baiyun.sharepreferences.UserInfoSP;
+import com.baiyun.vo.parcelable.UserInfoPar;
 import com.baiyun.vo.parcelable.VersionPar;
 import com.baiyun.vo.parcelable.Vo1Par;
 import com.google.gson.Gson;
@@ -18,29 +20,29 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 
-public class SlideMenuHttpUtils extends HttpUtils{
-	
+public class SlideMenuHttpUtils extends HttpUtils {
+
 	private Context context;
-	
+
 	public SlideMenuHttpUtils(Context context) {
 		// TODO Auto-generated constructor stub
 		this.context = context;
 	}
-	
-	public interface OnGetVersionListener{//获取版本信息
+
+	public interface OnGetVersionListener {// 获取版本信息
 		public void onGetVersion(VersionPar versionPar);
 	}
-	
-	public interface OnPostBaiduPushListener{//导入百度推送所需的mobileChannelId和mobileUserId接口
+
+	public interface OnPostBaiduPushListener {// 导入百度推送所需的mobileChannelId和mobileUserId接口
 		public void onPostBaiduPush(boolean isSuccess);
 	}
-	
-	public interface OnPostLoginListener{
-		public void onPostLogin();
+
+	public interface OnPostLoginListener {
+		public void onPostLogin(UserInfoPar userInfoPar);
 	}
-	
-	public void getVersion(String version, final OnGetVersionListener onGetVersionListener){
-		send(HttpMethod.GET, HttpURL.R_VERSION+version, new RequestCallBack<String>() {
+
+	public void getVersion(String version, final OnGetVersionListener onGetVersionListener) {
+		send(HttpMethod.GET, HttpURL.R_VERSION + version, new RequestCallBack<String>() {
 
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
@@ -57,7 +59,7 @@ public class SlideMenuHttpUtils extends HttpUtils{
 							if (dataEle.isJsonObject()) {
 								versionPar = new Gson().fromJson(dataEle, VersionPar.class);
 							}
-						}else if (recode.equalsIgnoreCase(HttpRecode.GET_ERROR)) {
+						} else if (recode.equalsIgnoreCase(HttpRecode.GET_ERROR)) {
 							Toast.makeText(context, "服务器无数据", Toast.LENGTH_SHORT).show();
 						}
 					}
@@ -73,15 +75,15 @@ public class SlideMenuHttpUtils extends HttpUtils{
 				onGetVersionListener.onGetVersion(null);
 				Toast.makeText(context, "数据请求失败", Toast.LENGTH_SHORT).show();
 			}
-			
+
 		});
 	}
-	
-	public void postBaiduPush(String mobileUserId, String mobileChannelId,final OnPostBaiduPushListener baiduPushListener) {
+
+	public void postBaiduPush(String mobileUserId, String mobileChannelId, final OnPostBaiduPushListener baiduPushListener) {
 		final RequestParams params = new RequestParams();
 		params.addBodyParameter(HttpURL.PARAM_MOBILE_USER_ID, mobileUserId);
 		params.addBodyParameter(HttpURL.PARAM_MOBILE_CHANNEL_ID, mobileChannelId);
-		
+
 		send(HttpMethod.POST, HttpURL.R_SET_PUSH, params, new RequestCallBack<String>() {
 
 			@Override
@@ -115,33 +117,65 @@ public class SlideMenuHttpUtils extends HttpUtils{
 					baiduPushListener.onPostBaiduPush(false);
 				}
 			}
-			
+
 		});
 	}
-	
-	public void postLogin(String userName, String password, String randomString, String mobileUserId, 
-			String mobileChannelId,final OnPostLoginListener onPostLoginListener) {
+
+	public void postLogin(final String userName, final String password, String randomString, String mobileUserId, String mobileChannelId,
+			final OnPostLoginListener onPostLoginListener) {
 		final RequestParams params = new RequestParams();
 		params.addBodyParameter(HttpURL.PARAM_USER_NAME, userName);
 		params.addBodyParameter(HttpURL.PARAM_PASSWORD, password);
 		params.addBodyParameter(HttpURL.PARAM_RANDOM_STRING, randomString);
 		params.addBodyParameter(HttpURL.PARAM_MOBILE_USER_ID, mobileUserId);
 		params.addBodyParameter(HttpURL.PARAM_MOBILE_CHANNEL_ID, mobileChannelId);
-		
+
 		send(HttpMethod.POST, HttpURL.R_LOGIN, params, new RequestCallBack<String>() {
 
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				// TODO Auto-generated method stub
-				
+				UserInfoPar userInfoPar = null;
+				try {
+					JsonParser parser = new JsonParser();
+					JsonObject jsonObject = parser.parse(responseInfo.result).getAsJsonObject();
+
+					JsonElement recode1Ele = jsonObject.get("recode1");
+					if (recode1Ele.isJsonPrimitive()) {
+						String recode1 = recode1Ele.getAsString();
+						if (recode1.equalsIgnoreCase(HttpRecode.LOGIN_SUCCESS)) {
+							Toast.makeText(context, "登录成功", Toast.LENGTH_SHORT).show();
+							JsonElement dataEle = jsonObject.get("data");
+							if (dataEle.isJsonObject()) {
+								userInfoPar = new Gson().fromJson(dataEle, UserInfoPar.class);
+
+								// 存储到sharepreference
+								UserInfoSP userInfoSP = UserInfoSP.getSingleInstance(context);
+								userInfoSP.setUserInfoPar(userInfoPar);
+								userInfoSP.setUserName(userName);
+								userInfoSP.setPassword(password);
+
+							}
+						} else if (recode1.equalsIgnoreCase(HttpRecode.ERROR_NAME_EXIST)) {
+							Toast.makeText(context, "用户名不存在", Toast.LENGTH_LONG).show();
+						} else if (recode1.equalsIgnoreCase(HttpRecode.ERROR_NAME_PASSWORD)) {
+							Toast.makeText(context, "用户名不存在或密码错误", Toast.LENGTH_LONG).show();
+						} else if (recode1.equalsIgnoreCase(HttpRecode.ERROR_RANDOM_STRING)) {
+							Toast.makeText(context, "验证码出错", Toast.LENGTH_LONG).show();
+						}
+					}
+				} catch (Exception e) {
+					userInfoPar = null;
+					System.out.println(e);
+				}
+				onPostLoginListener.onPostLogin(userInfoPar);
 			}
 
 			@Override
 			public void onFailure(HttpException error, String msg) {
-				// TODO Auto-generated method stub
-				
+				onPostLoginListener.onPostLogin(null);
+				Toast.makeText(context, "数据发送失败", Toast.LENGTH_SHORT).show();
 			}
-			
+
 		});
 	}
 }
