@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.baiyun.http.HttpRecode;
 import com.baiyun.http.HttpURL;
 import com.baiyun.sharepreferences.UserInfoSP;
+import com.baiyun.util.Base64Util;
 import com.baiyun.vo.parcelable.UserInfoPar;
 import com.baiyun.vo.parcelable.VersionPar;
 import com.baiyun.vo.parcelable.Vo1Par;
@@ -37,8 +38,16 @@ public class SlideMenuHttpUtils extends HttpUtils {
 		public void onPostBaiduPush(boolean isSuccess);
 	}
 
-	public interface OnPostLoginListener {
+	public interface OnPostLoginListener {//登录
 		public void onPostLogin(UserInfoPar userInfoPar);
+	}
+	
+	public interface OnUploadUserImgListener{//上传头像
+		public void onUploadUserImg(boolean isSuccess);
+	}
+	
+	public interface OnPostAdvice{//意见反馈
+		
 	}
 
 	public void getVersion(String version, final OnGetVersionListener onGetVersionListener) {
@@ -174,6 +183,55 @@ public class SlideMenuHttpUtils extends HttpUtils {
 			public void onFailure(HttpException error, String msg) {
 				onPostLoginListener.onPostLogin(null);
 				Toast.makeText(context, "数据发送失败", Toast.LENGTH_SHORT).show();
+			}
+
+		});
+	}
+	
+	public void uploadUserImg(String id, String imgFilePath, final OnUploadUserImgListener onUploadUserImgListener) {
+		final RequestParams params = new RequestParams();
+		params.addBodyParameter(HttpURL.PARAM_ID, id);
+		params.addBodyParameter(HttpURL.PARAM_IMG, Base64Util.getImageStr(imgFilePath));
+		
+		send(HttpMethod.POST, HttpURL.R_UPLOAD_USER_IMG, params, new RequestCallBack<String>() {
+
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				// TODO Auto-generated method stub
+				boolean isSuccess = false;
+				try {
+					JsonParser parser = new JsonParser();
+					JsonObject jsonObject = parser.parse(responseInfo.result).getAsJsonObject();
+
+					JsonElement recodeEle = jsonObject.get("recode");
+					if (recodeEle.isJsonPrimitive()) {
+						String recode = recodeEle.getAsString();
+						if (recode.equalsIgnoreCase(HttpRecode.INSERT_SUCCESS)) {
+							Toast.makeText(context, "图片上传成功", Toast.LENGTH_SHORT).show();
+							isSuccess = true;
+						}
+					}
+				} catch (Exception e) {
+					isSuccess = false;
+					System.out.println(e);
+				}
+				if (onUploadUserImgListener != null) {
+					onUploadUserImgListener.onUploadUserImg(isSuccess);;
+				}
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				if (onUploadUserImgListener != null) {
+					onUploadUserImgListener.onUploadUserImg(false);;
+				}
+			}
+
+			@Override
+			public void onLoading(long total, long current, boolean isUploading) {
+				// TODO Auto-generated method stub
+				super.onLoading(total, current, isUploading);
+				System.out.println("====> totlal:"+total+"/ current:"+current);
 			}
 
 		});
