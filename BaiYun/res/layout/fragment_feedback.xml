@@ -38,6 +38,7 @@
                 android:src="@drawable/ic_star" />
 
             <EditText
+                android:id="@+id/et_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -78,10 +79,12 @@
                     android:textSize="@dimen/text_size_16" />
 
                 <EditText
+                    android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:textColor="@color/black"
+                    android:inputType="textEmailAddress"
                     android:textSize="@dimen/text_size_16" />
             </LinearLayout>
         </LinearLayout>
