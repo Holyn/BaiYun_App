@@ -13,6 +13,9 @@ public class HttpURL {
 	public final static String PAGE_PARAM = "&page=";
 	public final static String ID_PARAM = "&id=";
 	
+	public final static String PARAM_ID = "id";
+	public final static String PARAM_IMG = "img";
+	
 	/**
 	 * 首页-广告图片
 	 * http://app.byxy.com:8080/app/homePage?type=10
@@ -244,7 +247,7 @@ public class HttpURL {
 	 * 校内服务--失物招领
 	 * http://app.byxy.com:8080/app/getLostAndFound?userName=
 	 */
-	public final static String S_LOST_FOUND = URL_PRE + "/getLostAndFound";
+	public final static String S_LOST_FOUND = URL_PRE + "getLostAndFound";
 	
 	/**
 	 * 校内服务--办公电话
@@ -291,6 +294,12 @@ public class HttpURL {
 	public final static String R_LOGIN = URL_PRE + "userLogin";//接口
 	
 	/**
+	 * 右侧菜单--上传个人头像接口（与用户id关联）
+	 * http://app.byxy.com:8080/app/upLoadUserImg?id=用户id&img=（通过base64编码后的图片编码）
+	 */
+	public final static String R_UPLOAD_USER_IMG = URL_PRE + "upLoadUserImg";
+	
+	/**
 	 * 右侧菜单--使用工具--班车表
 	 * http://app.byxy.com:8080/app/utilityToolDetails?id=168
 	 */
@@ -321,7 +330,11 @@ public class HttpURL {
 	
 	/**
 	 * 右侧菜单--意见反馈
+	 * http://app.byxy.com:8080/app/advice?description=好好学习天天向上&creater=Holyn
 	 */
+	public final static String PARAM_DESCRIPTION = "description";
+	public final static String PARAM_CREATER = "creater";
+	public final static String R_ADVICE = URL_PRE + "advice";
 	
 	/**
 	 * 右侧菜单--修改密码
