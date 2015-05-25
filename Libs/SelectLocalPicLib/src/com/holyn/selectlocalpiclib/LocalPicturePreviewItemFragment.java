@@ -128,7 +128,7 @@ public class LocalPicturePreviewItemFragment extends Fragment {
 
 	@Override
 	public void onDestroyView() {
-		System.out.println("====> onDestroyView...."+picturePath);
+//		System.out.println("====> onDestroyView...."+picturePath);
 		mAttacher.cleanup();
 		mAttacher = null;
 		ivPhoto = null;
