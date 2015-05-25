@@ -40,7 +40,7 @@ public class SelectLocalPicActivity extends FragmentActivity {
 	public static final String EXTRA_IS_SHOW_CAMERA = "extra_is_show_camra";// 是否展示拍照
 
 	private Intent preIntent;// 从其它Activity跳转过来的Intent
-	private int maxSelect = 6;// //可选择的图片的最大数,默认为1
+	private int maxSelect = 1;// //可选择的图片的最大数,默认为1
 	private boolean isShowCamera = true;//默认显示拍照功能
 
 	private FragmentManager fragmentManager;
