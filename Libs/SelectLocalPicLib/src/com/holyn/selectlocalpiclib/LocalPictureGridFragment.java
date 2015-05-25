@@ -10,6 +10,7 @@ import com.holyn.selectlocalpiclib.util.TakePhotoUtil;
 import com.holyn.selectlocalpiclib.util.LoclImageLoader.Type;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -41,6 +42,8 @@ public class LocalPictureGridFragment extends BaseFragment {
 
 	private LocalPictureGridAdapter adapter;
 	private GridView gridView;
+	
+	private ProgressDialog scanPhotoDialog = null;//拍完照后，手机扫描存储图片的时候会消耗一定时间
 
 	/* 1.图片的选择事件 start.. */
 	public OnPictureSelectListener onPictureSelectListener;
@@ -140,6 +143,7 @@ public class LocalPictureGridFragment extends BaseFragment {
 					imgPath = new TakePhotoUtil(getActivity()).getImgPath();
 				}
 				// 启动MediaScanner，扫描图片并把图片路径保存到/data/data/com.android.providers.media/databases上的一个数据库
+				showScanPhotoDialog();
 				MediaScannerUtil scanUtil = new MediaScannerUtil(getActivity());
 				scanUtil.scanFile(imgPath, "image/jpeg");
 				scanUtil.setOnMediaScannerListener(new MediaScannerUtil.OnMediaScannnerListener() {
@@ -157,6 +161,7 @@ public class LocalPictureGridFragment extends BaseFragment {
 						} else {
 							Toast.makeText(getActivity(), "拍照失败", Toast.LENGTH_SHORT).show();
 						}
+						closeScanPhotoDialog();
 					}
 				});
 				break;
@@ -302,6 +307,29 @@ public class LocalPictureGridFragment extends BaseFragment {
 			}
 		}
 		return -1;
+	}
+	
+	private void showScanPhotoDialog(){
+		if (scanPhotoDialog == null) {
+			scanPhotoDialog = getProgressDialog("正在扫描照片....");
+			scanPhotoDialog.show();
+		}
+	}
+	
+	private void closeScanPhotoDialog(){
+		if (scanPhotoDialog != null) {
+			scanPhotoDialog.dismiss();
+			scanPhotoDialog = null;
+		}
+	}
+	
+	private ProgressDialog getProgressDialog(String message){
+		ProgressDialog dialog = new ProgressDialog(getActivity());
+		dialog.setMessage(message);
+		dialog.setIndeterminate(true);
+		dialog.setCancelable(false);
+		dialog.setCanceledOnTouchOutside(false);
+		return dialog;
 	}
 
 }
