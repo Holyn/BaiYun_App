@@ -11,6 +11,7 @@ import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,7 +85,10 @@ public class SelectLocalPicActivity extends FragmentActivity {
 	private void initData() {
 		preIntent = getIntent();
 		maxSelect = preIntent.getIntExtra(EXTRA_MAX_SELECT, 1);
-		selectImageVos = preIntent.getParcelableArrayListExtra(EXTRA_SELECT_IMAGEVOS);
+		List<LocalImageVo> selectImageVosFromIntent = preIntent.getParcelableArrayListExtra(EXTRA_SELECT_IMAGEVOS);
+		if (selectImageVosFromIntent != null) {
+			selectImageVos = selectImageVosFromIntent;
+		}
 		isShowCamera = preIntent.getBooleanExtra(EXTRA_IS_SHOW_CAMERA, true);
 	}
 
