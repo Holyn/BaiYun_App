@@ -4,10 +4,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.holyn.selectlocalpiclib.util.LoclImageLoader;
+import com.holyn.selectlocalpiclib.util.LocalImageLoader;
 import com.holyn.selectlocalpiclib.util.MediaScannerUtil;
 import com.holyn.selectlocalpiclib.util.TakePhotoUtil;
-import com.holyn.selectlocalpiclib.util.LoclImageLoader.Type;
+import com.holyn.selectlocalpiclib.util.LocalImageLoader.Type;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -31,7 +31,7 @@ public class LocalPictureGridFragment extends BaseFragment {
 	// 请求照相机拍照获取图片
 	public static final int REQUEST_CODE_TAKE_PHOTO = 1;
 	
-	private LoclImageLoader imageLoader2;
+	private LocalImageLoader imageLoader2;
 
 	private List<LocalImageVo> localImageVos;
 	private List<LocalImageVo> selectImageVos;
@@ -64,7 +64,7 @@ public class LocalPictureGridFragment extends BaseFragment {
 	public LocalPictureGridFragment() {
 		localImageVos = new ArrayList<LocalImageVo>();
 		selectImageVos = new ArrayList<LocalImageVo>();
-		imageLoader2 = LoclImageLoader.getInstance(12, Type.LIFO);
+		imageLoader2 = LocalImageLoader.getInstance(12, Type.LIFO);
 	}
 
 	@Override
